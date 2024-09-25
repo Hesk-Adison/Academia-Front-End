@@ -1,0 +1,128 @@
+
+
+<mat-toolbar class="mat-elevation-z3 MenuTopo"   (mousemove)="onUserAction()" 
+(click)="onUserAction()"
+(keypress)="onUserAction()">
+    <div class="left" (click)="AbreMenu.set(!AbreMenu())" >
+        <button mat-icon-button id="btn"  >
+           
+            <mat-icon>menu</mat-icon>
+        </button>
+         <!-- <img src="assets/foto.jpg" alt="" class="logo">  -->
+
+        <h2 style="font-size: 15px;"  class="logotxt"> <span >DMZ </span> SOFTWARE</h2>
+    
+    </div>
+    
+        
+    
+    
+    <div class="rigth" >
+       <!-- componentes icones -->
+        <!-- <p class="nomeprof">{{nomeprof}} </p>
+        <button mat-icon-button class="Leftbtn" id="btn" (click)="Refresh()" routerLink="/Login">
+     
+            <mat-icon class="saida">logout</mat-icon>   
+        </button> -->
+    
+        <div class="direita" >
+
+            <ul>
+                <li  routerLink="/AdimEstud/home">
+                    <span class="icones">
+                        <mat-icon >
+                            home
+                           </mat-icon>
+                    </span>
+                    <span class="legenda">
+                        Home
+                    </span>
+
+                </li>
+                <li routerLink="/AdimEstud/perfil">
+                    <span class="icones">
+                        <mat-icon >
+                                account_circle
+                                
+                           </mat-icon>
+                    </span>
+                    <span class="legenda">
+                        Perfil
+                    </span>
+                </li>
+
+                
+                <li (click)="Back()">
+                    <span class="icones">
+                        <mat-icon >
+                            <span class="material-symbols-outlined">
+                                arrow_back
+                                </span>
+                           </mat-icon>
+                    </span>
+                    <span class="legenda">
+                        Voltar
+                    </span>
+                </li>
+
+                <li (click)="Refresh()" routerLink="/Login">
+                    <span class="icones">
+                        <mat-icon >
+                                output_circle
+                           </mat-icon>
+                    </span>
+                    <span class="legenda">
+                        Sair
+                    </span>
+
+                </li>
+
+
+           
+            </ul>
+          
+        </div>
+    
+    </div>
+      
+    </mat-toolbar>
+    
+    <mat-sidenav-container   (mousemove)="onUserAction()" 
+    (click)="onUserAction()"
+    (keypress)="onUserAction()">
+        <mat-sidenav opened mode="side" [style.width]="FecharMenu()" class="nav-class" >
+            <app-nav-estudante [AbreMenu]="AbreMenu()"   (mousemove)="onUserAction()" 
+            (click)="onUserAction()"
+            (keypress)="onUserAction()"></app-nav-estudante>
+            
+        </mat-sidenav>
+    
+    
+        <mat-sidenav-content class="Content" [style.margin-left]="FecharMenu()" style=" @media(max-width:768px){margin-left:  0;}"   (mousemove)="onUserAction()" 
+        (click)="onUserAction()"
+        (keypress)="onUserAction()">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+    <!-- <main class="txt111111">
+        <router-outlet></router-outlet>
+
+    </main> -->
+
+    
+        <div class="navegacao">
+          <ul>
+            <li class="list" *ngFor="let item of items" [class.remov]="item.selected" (click)="ativarli(item)">
+              <a [routerLink]="item.route">
+                <mat-icon class="icon">
+                  <span class="tttt">{{ item.icon }}</span>
+                </mat-icon>
+                <span class="texto">{{ item.text }}</span>
+              </a>
+            </li>
+            <!-- <div class="indicador"></div> -->
+          </ul>
+        </div>
+
+      

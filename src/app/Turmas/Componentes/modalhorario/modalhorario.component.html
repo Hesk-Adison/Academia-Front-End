@@ -1,0 +1,185 @@
+<!-- <!-- <h2 mat-dialog-title><span class="titulo">{{titloAccao}}</span></h2>
+<button mat-icon-button class="close-button" (click)="closeDialog()">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>  
+<mat-divider></mat-divider>
+<mat-dialog-content>
+
+    <form [formGroup]="cadastro"  (ngSubmit)="Cadastrar()">           
+    
+       <mat-card  style="margin-top: 2rem;width: 100%;">
+    
+
+              <mat-card-content >   
+          
+                     <div class="contacto">
+                            
+                                 <mat-form-field>
+                                   <mat-label>Código</mat-label>
+                                   <input matInput type="number" formControlName="codigo">
+                                 </mat-form-field>
+
+                                 
+                                 <mat-form-field >
+                                  <mat-label>Descrição</mat-label>
+                                  <input matInput type="text" formControlName="descricao">
+                                </mat-form-field>
+
+                                <mat-form-field >
+                                   <mat-label>Turma</mat-label>
+                                   <input type="text" matInput [formControl]="myControlturma"
+                                    [matAutocomplete]="autos2erturma">
+                                   <mat-autocomplete #autos2erturma="matAutocomplete" >                                
+                                     <mat-option  *ngFor="let item of filteredOptionsturma | 
+                                     async; let index = index" [value]="item.descricao" (onSelectionChange)="Setturmas(item)">
+                                         {{ item.descricao | titlecase}}
+                                       </mat-option>
+                   
+                                   </mat-autocomplete>
+                                 </mat-form-field>
+                                 
+                     </div>
+                     <div class="contacto">
+                            <mat-form-field>
+                                   <mat-label>Ano/Sem</mat-label>
+                                   <input matInput type="number" formControlName="anosem">
+                                 </mat-form-field>
+                                 <mat-slide-toggle formControlName="hactivo" >Principal</mat-slide-toggle>
+                     
+                     </div>
+                    
+              </mat-card-content>
+            </mat-card>
+          
+          
+          
+            <mat-card-content>
+          
+              <mat-tab-group>
+                     <mat-tab label="Horário Semanal">                      
+                            <div formArrayName="horariol" class="agrega">
+                                
+                                
+                               <div *ngIf="visibilidadebolsa;then contentw else other_contentw">
+                               </div>              
+                               <ng-template #contentw> 
+
+                                
+                               <table>
+                                 <thead>
+                                   <tr>                                     
+                                     <th>Descrição</th>
+                                     <th>Hora</th>
+                                     <th>segunda</th>
+                                     <th>Terca</th>
+                                     <th>Quarta</th>
+                                     <th>Quinta</th>
+                                     <th>Sexta</th>
+                                     <th>Sábado</th>
+                                     <th>Domingo</th>
+                                     <th>
+                                         <button type="button" mat-mini-fab (click)="adicionargradel()"
+                                         style="background-color: rgb(2, 43, 72); color: white;">
+                                         <mat-icon>plus_one</mat-icon>
+                                     </button>
+                                       </th>
+                                   </tr>
+                                 </thead>
+                         
+                         
+                                 <tbody *ngFor="let item of horariol.controls; let i = index" [formGroupName]="i">
+                         
+                                   <tr>  
+                                       <td>
+                                         
+                                             <mat-form-field>                                            
+                                               <input type="text" matInput  formControlName="descricao" >
+                                               </mat-form-field>
+                                           </td> 
+                                           
+                                           <td>
+                                                 <!-- style="display: flex;width: 700px;" -->
+                                             <!-- <!-- <mat-form-field >                                            
+                                               <input type="text" matInput  formControlName="hora" >
+                                               </mat-form-field>
+                                           </td> 
+                                            <td>
+                                             <mat-form-field >                                            
+                                               <input type="text" matInput  formControlName="segunda" >
+                                               </mat-form-field>
+                                           </td> 
+                                           <td>
+                                            <mat-form-field >                                            
+                                              <input type="text" matInput  formControlName="terca" >
+                                              </mat-form-field>
+                                          </td> 
+                                          <td>
+                                           <mat-form-field >                                            
+                                             <input type="text" matInput  formControlName="quarta" >
+                                             </mat-form-field>
+                                         </td> 
+                                         <td>
+                                          <mat-form-field >                                            
+                                            <input type="text" matInput  formControlName="quinta" >
+                                            </mat-form-field>
+                                        </td> 
+                                        <td>
+                                         <mat-form-field >                                            
+                                           <input type="text" matInput  formControlName="sexta" >
+                                           </mat-form-field>
+                                       </td> 
+                                       <td>
+                                        <mat-form-field >                                            
+                                          <input type="text" matInput  formControlName="sabado" >
+                                          </mat-form-field>
+                                      </td> 
+                                      <td>
+                                       <mat-form-field >                                            
+                                         <input type="text" matInput  formControlName="domingo" >
+                                         </mat-form-field>
+                                     </td> 
+                                     <td>
+                                       <button type="button" mat-mini-fab color="warn" fxFlex="nogrow"
+                                       (click)="removergradel(i)"  style="cursor: pointer;
+                                       "> <mat-icon>delete_sweep</mat-icon></button>
+                                     </td>
+                                   </tr>
+                                 </tbody>
+                               </table>
+                         
+              
+                             </ng-template>
+                             <ng-template #other_contentw> 
+                               <div style="display: flex;justify-content: end;">
+                                 <button type="button" mat-mini-fab (click)="adicionargradel()"
+                                 style="background-color: rgb(2, 43, 72); color: white;">
+                                 <mat-icon>plus_one</mat-icon>
+                             </button>
+                               </div>
+                         
+                         </ng-template>
+              
+                             </div>
+                            
+                    </mat-tab>
+
+                   
+              </mat-tab-group>
+            </mat-card-content>
+        
+      
+      
+          
+      --
+    </form>
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-actions align="end">
+
+    <button mat-raised-button (click)="closeDialog()" color="warn"> Voltar </button>
+    <button mat-raised-button color="primary" [disabled]="working" (click)="Cadastrar()">
+        {{botaoAccao}} </button>
+</mat-dialog-actions> 
+-->

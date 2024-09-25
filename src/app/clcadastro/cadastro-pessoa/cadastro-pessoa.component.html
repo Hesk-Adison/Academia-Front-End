@@ -1,0 +1,981 @@
+
+<mat-card class="Header1" style="background-color:  rgb(240, 240, 240);">
+  <div class="head">
+    <div class="btnFechar">
+      <div class="btnteste">
+      <button mat-icon-button class="close-button" (click)="closeDialog()" id="fecha">
+          <mat-icon class="close-icon" color="warn">close</mat-icon>
+      </button>  
+      </div>
+  </div>
+  <h2 mat-dialog-title><span class="titulo">Novo  Professor</span></h2>
+  </div>
+</mat-card>
+
+
+<mat-dialog-content >
+  <div class="mat-elevation-z8">
+
+<form [formGroup]="cadastro" (ngSubmit)="Cadastrar()" style="padding: 1rem;">
+
+<mat-card formGroupName="clview" style="display: none;">  </mat-card>
+
+
+
+  <!-- <button type="submit" class="btn" onsubmit="Cadastrar()" [disabled]="cadastro.invalid">
+    <mat-icon style="color:rgb(178, 110, 14); font-size: 1.3rem; ">
+      save
+  </mat-icon>
+    
+    Salvar</button> -->
+
+
+ 
+
+      <div class="HeaderInput">
+    
+    
+        <div class="nomes">
+    
+          <div class="Topo1">
+            <mat-form-field appearance="outline" class="example-full-width" >
+              <mat-label>Referência</mat-label>
+              <input matInput type="text" formControlName="no">
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" >
+              <mat-label>Status</mat-label>
+              <input type="text" matInput [formControl]="myControlstatuss"
+               [matAutocomplete]="autosstatuss">
+              <mat-autocomplete #autosstatuss="matAutocomplete" #listastatuss
+               >
+           
+                <mat-option  *ngFor="let item of filteredOptionsstatuss | 
+                async; let index = index" [value]="item.descricao" (onSelectionChange)="Setstatuss(item)">
+                    {{ item.descricao | titlecase}}
+                  </mat-option>
+    
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+      
+            <div class="agrupa1">
+              <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Nome Completo</mat-label>
+                <input matInput type="text" formControlName="nome">
+              </mat-form-field>
+            </div>
+            
+    
+           
+      
+      </div>
+    
+    
+      <div class="imagem" >
+    
+    
+        <div class="mostraIMG" >
+          <img class="texte" [src]="fotos">
+        </div>
+       
+        <div class="custom-file">
+          <mat-icon >
+            photo_camera
+          </mat-icon>
+      <input type="file" accept="image/*" (change)="onFileChange($event)" [disabled]="working"  name="foto" class="fotoadd">
+         
+        </div> 
+
+      </div>
+       
+    
+      </div>
+
+
+
+
+      <mat-card-content>
+
+      <mat-tab-group>
+
+    
+          <mat-tab label="Dados Gerais" >
+
+  
+
+      
+          
+            <div class="nomes1 " >
+    
+<div class="nascimento">
+
+  <div class="primeiro">
+   
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Nacionalidade</mat-label>
+          <input type="text" matInput [formControl]="myControlNacionalidd"
+           [matAutocomplete]="Nacionalidd">
+          <mat-autocomplete #Nacionalidd="matAutocomplete" >
+       
+            <mat-option  *ngFor="let item of filteredOptionsNacionalidd | 
+            async; let index = index" [value]="item.descricao" (onSelectionChange)="setpaisnacionalidade(item)">
+                {{ item.descricao | titlecase}}
+              </mat-option>
+
+          </mat-autocomplete>
+        </mat-form-field>
+  
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Província  de nascimento</mat-label>
+          <input type="text" matInput 
+          [matAutocomplete]="auto" formControlName="provNasc">
+          <mat-autocomplete #auto="matAutocomplete" >
+       
+            <mat-option  *ngFor="let item of filteredOptions | 
+            async; let index = index" [value]="item.descricao" (onSelectionChange)="getDistrito(item)">
+                {{ item.descricao | titlecase}}
+              </mat-option>
+
+          </mat-autocomplete>
+        </mat-form-field>
+
+
+  
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Distrito de nascimento</mat-label>
+          <input type="text" matInput [formControl]="myControldistrito" 
+          [matAutocomplete]="auto58" formControlName="distNasc">
+          <mat-autocomplete #auto58="matAutocomplete">
+       
+            <mat-option  *ngFor="let item of filteredOptionsdistrito | 
+            async; let index = index" [value]="item.descricao" (onSelectionChange)="SetDistritomorada(item)">
+                {{ item.descricao | titlecase}}
+              </mat-option>
+
+          </mat-autocomplete>
+        </mat-form-field>
+
+
+
+  
+  </div>
+
+  <div class="primeiro">
+
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Posto Admin. de nascimento</mat-label>
+      <input type="text" matInput [formControl]="myControlPad" 
+      [matAutocomplete]="Pad1">
+      <mat-autocomplete #Pad1="matAutocomplete">
+    
+        <mat-option  *ngFor="let item of filteredOptionsPad | 
+        async; let index = index" [value]="item.descricao" (onSelectionChange)="Setpadnasc(item)">
+            {{ item.descricao | titlecase}}
+          </mat-option>
+    
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Estado civil</mat-label>
+      <input type="text" matInput [formControl]="myControlestadociv"
+       [matAutocomplete]="autos2ere">
+      <mat-autocomplete #autos2ere="matAutocomplete" #listaestadocivils
+       
+       >
+   
+        <mat-option  *ngFor="let item of filteredOptionsestadociv | 
+        async; let index = index" [value]="item.descricao" (onSelectionChange)="Setestadoscivil(item)">
+            {{ item.descricao | titlecase}}
+          </mat-option>
+
+      </mat-autocomplete>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Sexo</mat-label>
+      <input type="text" matInput [formControl]="myControlsexo"
+       [matAutocomplete]="autos2er">
+      <mat-autocomplete #autos2er="matAutocomplete" #listasexoss>
+   
+        <mat-option  *ngFor="let item of filteredOptionssexo | 
+        async; let index = index" [value]="item.descricao" (onSelectionChange)="SetSexo(item)">
+            {{ item.descricao | titlecase}}
+          </mat-option>
+
+      </mat-autocomplete>
+    </mat-form-field>
+
+
+  </div>
+
+  <div class="primeiro">
+
+
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Tipo de funcionário</mat-label>
+      <input type="text" matInput [formControl]="myControltipoaluno"
+       [matAutocomplete]="autos2ertipoaluno">
+      <mat-autocomplete #autos2ertipoaluno="matAutocomplete" #listatipoaluno>               
+        <mat-option  *ngFor="let item of filteredOptionstipoaluno | 
+        async; let index = index" [value]="item.descricao" (onSelectionChange)="Settipoaluno(item)">
+            {{ item.descricao | titlecase}}
+          </mat-option>
+
+      </mat-autocomplete>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Data de nascimento</mat-label>
+      <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker"  autocomplete="off" formControlName="datanascimento"   readonly>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
+
+    <!-- <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Data de nascimento</mat-label>
+      <input matInput autocomplete="off" formControlName="datanascimento" [matDatepicker]="picker11"
+          readonly>
+      <mat-datepicker-toggle matSuffix [for]="picker11"></mat-datepicker-toggle>
+      <mat-datepicker #picker11 ></mat-datepicker>
+  </mat-form-field>
+     -->
+
+
+     <!-- <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Data de casamento</mat-label>
+      <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker"  autocomplete="off"  formControlName="datacasamento"   readonly>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> -->
+
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Data de casamento</mat-label>
+    <input matInput autocomplete="off" [max]="casaDaatemax"  formControlName="datacasamento" [matDatepicker]="picker1s"
+        readonly>
+    <mat-datepicker-toggle matSuffix [for]="picker1s"></mat-datepicker-toggle>
+    <mat-datepicker #picker1s ></mat-datepicker>
+</mat-form-field>
+  </div>
+
+</div>
+
+
+
+<div class="primeiro">
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Morada</mat-label>
+    <input matInput type="text" formControlName="bairro">
+  </mat-form-field>
+  
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Província</mat-label>
+    <input type="text" matInput [formControl]="myControlprovinciamorada" 
+    [matAutocomplete]="automoradas">
+    <mat-autocomplete #automoradas="matAutocomplete" >
+ 
+      <mat-option  *ngFor="let item of filteredOptionsprovinciamorada | 
+      async; let index = index" [value]="item.descricao" (onSelectionChange)="getDistritomorada(item)">
+          {{ item.descricao | titlecase}}
+        </mat-option>
+
+    </mat-autocomplete>
+  </mat-form-field>
+
+
+
+</div>
+
+     <div class="primeiro">     
+      
+    
+
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Distrito</mat-label>
+        <input type="text" matInput [formControl]="myControldistritomorada" 
+        [matAutocomplete]="autodistmoradas">
+        <mat-autocomplete #autodistmoradas="matAutocomplete" >
+     
+          <mat-option  *ngFor="let item of filteredOptionsdistritomorada | 
+          async; let index = index" [value]="item.descricao" (onSelectionChange)="SetDistritomorada(item)">
+              {{ item.descricao | titlecase}}
+            </mat-option>
+
+        </mat-autocomplete>
+      </mat-form-field>
+
+      
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Posto Administrativo</mat-label>
+        <input type="text" matInput [formControl]="myControlPadmorada" 
+        [matAutocomplete]="autopaddistmoradas">
+        <mat-autocomplete #autopaddistmoradas="matAutocomplete" >
+     
+          <mat-option  *ngFor="let item of filteredOptionsPadmorada | 
+          async; let index = index" [value]="item.descricao" 
+          (onSelectionChange)="Setpadmorada(item)">
+              {{ item.descricao | titlecase}}
+            </mat-option>
+
+        </mat-autocomplete>
+      </mat-form-field>
+
+  
+              </div>
+              
+    
+            
+         
+              <div class="indentifi">
+
+                <div class="primeiro">
+                  <mat-form-field appearance="outline" class="example-full-width" >
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="email">
+                  </mat-form-field>
+            
+                              <mat-form-field appearance="outline" class="example-full-width" >
+                                <mat-label>Nuit </mat-label>
+                                <input matInput type="number" formControlName="nuit">
+                              </mat-form-field>
+                
+             
+                              <mat-form-field  appearance="outline" class="example-full-width" >
+                                  <mat-label>Número de BI</mat-label>
+                                  <input matInput type="text" formControlName="bi">
+                                </mat-form-field>
+                </div>
+
+              </div>  
+            
+    
+
+      
+
+          
+
+              <div class="filiacao">
+                <div class="primeiro">
+                  <mat-form-field appearance="outline" class="example-full-width" >
+                    <mat-label>Pai</mat-label>
+                    <input matInput type="text" formControlName="pai">
+                  </mat-form-field>
+    
+                  <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-label>Mãe</mat-label>
+                      <input matInput type="text" formControlName="mae">
+                    </mat-form-field>
+
+                </div>
+              </div>
+
+    
+  
+    
+             
+              
+    
+    
+    
+               
+    
+               
+          </div>
+
+            </mat-tab>
+
+      
+         
+        
+        <mat-tab label="Documentos & Linguas">              
+
+    
+
+        <mat-tab-group>
+          <mat-tab label="Documentos Pessoais" >
+
+            <ng-container formGroupName="Docsview">
+              <div formArrayName="Docs" class="agrega">
+  
+                <div *ngIf="visibilidadedoc;then content else other_content">
+                </div>
+                <ng-template #content> 
+                  
+                  <table>
+  
+                  <thead>
+                    <tr>
+                      <th>Documento</th>
+                      <th>numero</th>
+                      <th>Local de emissao</th>
+                      <th>Data de emissao</th>
+                      <th>Validade</th>
+                      <th>Bi?</th>
+                      <th>
+                         <!-- <button type="button" mat-raised-button  style="background-color: rgb(2, 43, 72); color: white;" (click)="adicionarDocs()" class="Add">+</button> -->
+                         <button type="button" mat-mini-fab (click)="adicionarDocs()"
+                          style="background-color: rgb(2, 43, 72); color: white;">
+                          <mat-icon>plus_one</mat-icon>
+                      </button>
+                        </th>
+                    </tr>
+                  </thead>
+  
+  
+                  <tbody *ngFor="let item of Docs.controls; let i = index" [formGroupName]="i">
+  
+                    <tr>
+                      <td>
+                        <!--  -->
+                          <mat-form-field appearance="outline" class="example-full-width"> 
+                            <mat-label>Documento</mat-label>       
+                            <input type="text" matInput  formControlName="documento" [formControl]="myControlbi"
+                            [matAutocomplete]="autobi">
+                           <mat-autocomplete #autobi="matAutocomplete"
+                           >
+                               <mat-option (click)="onSelectbi(item,i)" *ngFor="let item of filteredOptionsbi | 
+                               async; let index = index" [value]="item.descricao">
+                                   {{ item.descricao | titlecase}}
+                                 </mat-option>
+                           </mat-autocomplete>
+                        </mat-form-field>
+                      </td>
+  
+                        <td>
+                          <mat-form-field appearance="outline" class="example-full-width">     
+                            <mat-label>Numero</mat-label>                                        
+                            <input type="text" matInput formControlName="numero"  >
+                            </mat-form-field>
+                        </td>
+  
+                        <td>
+  
+  
+                          <!--  -->
+                    <mat-form-field appearance="outline" class="example-full-width">    
+                      <mat-label>Local de emissão</mat-label>       
+                      <input type="text" matInput 
+                      [matAutocomplete]="auto"  formControlName="local" [formControl]="myControlprovincia">
+                     <mat-autocomplete #auto="matAutocomplete"
+                     
+                     #listaprovincias                    
+                     >
+                         <mat-option (click)="onSelectprovincia(item,i)" *ngFor="let item of filteredOptionsemissao | 
+                         async; let index = index" [value]="item.descricao">
+                             {{ item.descricao | titlecase}}
+                           </mat-option>
+                     </mat-autocomplete>
+                  </mat-form-field>
+  
+  
+  
+                        </td>
+  
+  
+             
+  
+                        <td>
+                            <mat-form-field appearance="outline" class="example-full-width">
+                              <mat-label>data de emissão</mat-label>   
+                              <input matInput [matDatepicker]="picker1" formControlName="emissao">                                
+                              <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                              <mat-datepicker #picker1></mat-datepicker>
+                            </mat-form-field>
+                           
+                           
+                     </td>
+                     <td>
+                         <!-- <input type="date"  formControlName="validade" > -->
+                         <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Data de validade</mat-label>   
+                           <input matInput [matDatepicker]="picker2" formControlName="validade">                                
+                           <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                           <mat-datepicker #picker2></mat-datepicker>
+                         </mat-form-field>
+                        
+                        
+                  </td>
+  
+                  <td>
+                    <mat-slide-toggle  formControlName="bi"></mat-slide-toggle>
+  
+                  </td>
+                      <td>
+                        <button type="button" mat-mini-fab color="warn" fxFlex="nogrow"
+                        (click)="removerDocs(i)"  style="cursor: pointer;
+                        "> <mat-icon>delete_sweep</mat-icon></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+             
+             
+             
+              </ng-template>
+                <ng-template #other_content> 
+                  <div style="display: flex;justify-content: end;">
+                    <button type="button" mat-mini-fab (click)="adicionarDocs()"
+                    style="background-color: rgb(2, 43, 72); color: white;">
+                    <mat-icon>plus_one</mat-icon>
+                </button>
+                  </div>
+            
+            </ng-template>
+  
+              
+  
+  
+              
+              </div>
+             
+  
+  
+  
+              
+  
+            </ng-container>
+  
+          </mat-tab>
+          
+          <mat-tab label="Linguas">
+            
+        <ng-container formArrayName="mancfam" >
+          <div  class="agrega">
+          
+            <div *ngIf="visibilidadelingua;then contentwlingua else other_contentwlingua">
+            </div>
+          
+            <ng-template #contentwlingua> 
+           
+              <table>
+              <thead> 
+                <tr>
+                  <th>lingua</th>
+                  <th>fala</th>
+                  <th>leitura</th>
+                  <th>escrita</th>
+                  <th>compreecao</th>
+                  <th>materna?</th>
+                  <th>  <button type="button" mat-mini-fab (click)="addMancfam()"
+                      style="background-color: rgb(2, 43, 72); color: white;">
+                      <mat-icon>plus_one</mat-icon>
+                  </button>
+                    </th>
+                </tr>
+              </thead>
+          
+          
+              <tbody *ngFor="let item of mancfams().controls; let i = index" [formGroupName]="i">
+          
+                <tr>
+          
+                  <td>
+                    <!-- <input hidden="true" matInput class="form-control" formControlName="cllingstamp"> -->
+                    <!-- <mat-form-field appearance="fill" style="display: none;">
+                      <input type="text" matInput class="form-control" formControlName="cllingstamp">
+
+                    </mat-form-field> -->
+                                      
+                      <mat-form-field appearance="outline" class="example-full-width">     
+                        <mat-label>Lingua</mat-label>      
+                      <input type="text" matInput 
+                      [matAutocomplete]="autoslingua" formControlName="lingua">
+                     <mat-autocomplete #autoslingua="matAutocomplete" 
+                     
+                     #listalingua                 
+                     >
+                         <mat-option (click)="Setlingua(item,i)" *ngFor="let item of filteredOptionslingua | 
+                         async; let index = index" [value]="item.descricao">
+                             {{ item.descricao | titlecase}}
+                           </mat-option>
+                     </mat-autocomplete>
+                  </mat-form-field>
+                        </td>
+                        <td>
+                          <mat-form-field appearance="outline" class="example-full-width">  
+                            <mat-label>Fala</mat-label>         
+                            <input type="text" matInput [formControl]="myControlfala"
+                            [matAutocomplete]="autofala"  formControlName="fala">
+                           <mat-autocomplete #autofala="matAutocomplete"
+                           
+                           #listafala                 
+                           >
+                               <mat-option (click)="Setfala(item,i)" *ngFor="let item of filteredOptionsfala | 
+                               async; let index = index" [value]="item.descricao">
+                                   {{ item.descricao | titlecase}}
+                                 </mat-option>
+                           </mat-autocomplete>
+                        </mat-form-field>
+          
+          
+          
+                              </td>
+                              <td>
+                                <mat-form-field appearance="outline" class="example-full-width">   
+                                  <mat-label>Leitura</mat-label>        
+                                  <input type="text" matInput [formControl]="myControlleitura"
+                                  [matAutocomplete]="autoleitura"  formControlName="leitura">
+                                 <mat-autocomplete #autoleitura="matAutocomplete"
+                                 
+                                 #listaleitura                 
+                                 >
+                                     <mat-option (click)="Setleitura(item,i)" *ngFor="let item of filteredOptionsleitura | 
+                                     async; let index = index" [value]="item.descricao">
+                                         {{ item.descricao | titlecase}}
+                                       </mat-option>
+                                 </mat-autocomplete>
+                              </mat-form-field>
+            
+                         </td>
+                         <td>
+                        
+                          <mat-form-field appearance="outline" class="example-full-width">  
+                            <mat-label>Escrita</mat-label>         
+                            <input type="text" matInput [formControl]="myControlescrita"
+                            [matAutocomplete]="autoescrita" >
+                           <mat-autocomplete #autoescrita="matAutocomplete"
+                           
+                           #listaescrita                 
+                           >
+                               <mat-option (click)="Setescrita(item,i)" *ngFor="let item of filteredOptionsescrita | 
+                               async; let index = index" [value]="item.descricao">
+                                   {{ item.descricao | titlecase}}
+                                 </mat-option>
+                           </mat-autocomplete>
+                        </mat-form-field>
+                         
+                         
+                   </td>
+                   <td>
+                        
+                    <mat-form-field appearance="outline" class="example-full-width">  
+                      <mat-label>Compressão</mat-label>         
+                      <input type="text" matInput [formControl]="myControlcompressao"
+                      [matAutocomplete]="autocompreecao" >
+                     <mat-autocomplete #autocompreecao="matAutocomplete"
+                     
+                     #listacompressao                 
+                     >
+                         <mat-option (click)="Setcompressao(item,i)" *ngFor="let item of filteredOptionscompressao | 
+                         async; let index = index" [value]="item.descricao">
+                             {{ item.descricao | titlecase}}
+                           </mat-option>
+                     </mat-autocomplete>
+                  </mat-form-field>
+             </td>
+                 
+          <td>
+          
+          <mat-slide-toggle  formControlName="materna"></mat-slide-toggle>
+          </td>
+                 
+                  <td>  
+                    <button type="button" mat-mini-fab color="warn" fxFlex="nogrow"
+                    (click)="removerLingua(i)"  style="cursor: pointer;
+                    "> <mat-icon>delete_sweep</mat-icon></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          
+          </ng-template>
+          <ng-template #other_contentwlingua> 
+            <div style="display: flex;justify-content: end;">
+              <button type="button" mat-mini-fab (click)="addMancfam()"
+              style="background-color: rgb(2, 43, 72); color: white;">
+              <mat-icon>plus_one</mat-icon>
+          </button>
+            </div>
+          
+          </ng-template>
+          </div>
+          </ng-container>
+          </mat-tab>
+        </mat-tab-group>
+
+
+        
+
+        
+
+
+         
+       
+
+
+   
+        
+        </mat-tab>
+          <mat-tab label="Agregado Familiar" > 
+            <ng-container formGroupName="clfamview" >
+              <div formArrayName="items" class="agrega">
+          
+                <div *ngIf="visibilidadeagregado;then contentagreg else other_contentagreg">
+                </div>
+                <ng-template #contentagreg> 
+                  
+          
+          
+                <table  >
+          
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Grau de Parentesco</th>
+                      <th>Telefone</th>
+                      <th>Email</th>
+                      <th>
+                          <button type="button" mat-mini-fab (click)="adicionarItem()"
+                         style="background-color: rgb(2, 43, 72); color: white;">
+                         <mat-icon>plus_one</mat-icon>
+                        </button>
+                      
+                        </th>
+                    </tr>
+                  </thead>
+          
+          
+                  <tbody *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
+          
+                    <tr>
+                      <td>
+                        <mat-form-field appearance="outline" class="example-full-width">   
+                          <mat-label>Nome</mat-label>                         
+                          <input type="text" matInput formControlName="nome"  >
+                        </mat-form-field>
+                        </td>
+          
+                        <td>
+                          <mat-form-field appearance="outline" class="example-full-width" >
+                            <mat-label>Grau de parentesco</mat-label>   
+                            <input type="text" matInput [formControl]="myControlgrauparen"
+                             [matAutocomplete]="autosgrauparen">
+                            <mat-autocomplete #autosgrauparen="matAutocomplete" #listagrauparen
+                             >
+                         
+                              <mat-option  *ngFor="let item of filteredOptionsgrauparen | 
+                              async; let index = index" [value]="item.descricao" (onSelectionChange)="Setgrauparen(item,i)">
+                                  {{ item.descricao | titlecase}}
+                                </mat-option>
+            
+                            </mat-autocomplete>
+                          </mat-form-field>
+          
+                        </td>
+          
+                        <td>
+                          <!-- <mat-form-field appearance="fill" >
+                       
+                            <input type="text" matInput formControlName="tel"  >
+                          </mat-form-field> -->
+
+                          <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Telefone</mat-label>   
+
+                            <input type="text" matInput formControlName="tel">
+                          </mat-form-field>
+
+                    
+                        </td>
+          
+                        <td>
+                          <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Email</mat-label>   
+                           
+                            <input type="email" matInput formControlName="email" >
+                           
+                          </mat-form-field>
+                        </td>
+                  
+                      <td >
+                        <!-- <button type="button" mat-raised-button color="warn" (click)="removerItem(i)" class="btnremove">_</button> -->
+                        <button type="button" mat-mini-fab color="warn" fxFlex="nogrow"
+                        (click)="removerItem(i)"  style="cursor: pointer;
+                        "> <mat-icon>delete_sweep</mat-icon></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+          
+              </ng-template>
+              <ng-template #other_contentagreg> 
+                <div style="display: flex;justify-content: end;">
+                  <button type="button" mat-mini-fab (click)="adicionarItem()"
+                  style="background-color: rgb(2, 43, 72); color: white;">
+                  <mat-icon>plus_one</mat-icon>
+              </button>
+                </div>
+          
+          </ng-template>
+              </div>
+            </ng-container>
+           
+          </mat-tab>
+          <mat-tab label="Secretaria"> 
+           
+            
+            <mat-tab-group>
+
+              <mat-tab label="Displinas que pode leccionar">
+<ng-container formGroupName="Bolsaview">
+                  <div formArrayName="bols" class="agrega">
+                   
+                   
+                    <div *ngIf="visibilidadebolsa;then contentw else other_contentw">
+                    </div>
+
+                    <ng-template #contentw> 
+
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <!-- <th >Código</th> -->
+                          <th >Disciplina</th>
+                          <th >
+                              <button type="button" mat-mini-fab 
+                              style="background-color: rgb(2, 43, 72); color: white;">
+                              <mat-icon>plus_one</mat-icon>
+                          </button>
+
+                          <!-- (click)="adicionardiciplinas()" -->
+                            </th>
+                        </tr>
+                      </thead>
+              
+              
+                      <tbody *ngFor="let item of bolss.controls; let i = index" [formGroupName]="i">
+              
+                        <tr>
+              
+                          
+<!--                             
+                    <input hidden="true" matInput class="form-control" formControlName="pediscstamp">
+                    <input hidden="true" matInput class="form-control" formControlName="ststamp"> -->
+              
+                            <!--  -->
+                            <!-- <mat-form-field style="display: flex;width: 530px;" >        
+                              <input type="text" matInput  
+                              [matAutocomplete]="autoinstituicaoensino" 
+                              formControlName="sigla" [formControl]="myControlinstituicaoensino">
+                             <mat-autocomplete #autoinstituicaoensino="matAutocomplete" 
+                                             
+                             >
+                                 <mat-option (click)="Setinstituicaoensino(item,i)" *ngFor="let item of filteredOptionsinstituicaoensino | 
+                                 async; let index = index" [value]="item.ordem">
+                                     {{ item.ordem | titlecase}}
+                                   </mat-option>
+                             </mat-autocomplete>
+                          </mat-form-field> -->
+              
+                         
+              
+                                
+                                <td >
+                                  <!--  -->
+                                  <mat-form-field appearance="outline" class="example-full-width">        
+                                    <input type="text" matInput  formControlName="disciplina" 
+                                    [formControl]="myControltipobolsa"
+                                    [matAutocomplete]="autotipobolsa">
+                                   <mat-autocomplete #autotipobolsa="matAutocomplete"
+                                                 
+                                   >
+                                   <!-- Setinstituicaoensino(item,i) -->
+                                       <mat-option (click)="Setinstituicaoensino(item,i)" *ngFor="let item of filteredOptionstipobolsa | 
+                                       async; let index = index" [value]="item.descricao">
+                                           {{ item.descricao | titlecase}}
+                                         </mat-option>
+                                   </mat-autocomplete>
+                                </mat-form-field>
+              
+              
+              
+                                      </td>
+                          <td>
+                          
+                          
+                            <button type="button" mat-mini-fab color="warn" fxFlex="nogrow"
+                            (click)="removerdisciplina(i)"  style="cursor: pointer;
+                            "> <mat-icon>delete_sweep</mat-icon></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+              
+
+                  </ng-template>
+                  <ng-template #other_contentw> 
+                    <div style="display: flex;justify-content: end;">
+                      <button type="button" mat-mini-fab 
+                      style="background-color: rgb(2, 43, 72); color: white;">
+                      <mat-icon>plus_one</mat-icon>
+                  </button>
+
+                  <!-- (click)="adicionardiciplinas()" -->
+                    </div>
+              
+              </ng-template>
+
+                  </div>
+                 
+              
+              
+              
+                  
+              
+                </ng-container>
+               
+              </mat-tab>
+
+
+
+
+
+            </mat-tab-group>
+
+
+          </mat-tab>
+        
+        </mat-tab-group>
+
+  </mat-card-content>
+
+
+
+
+
+</form>
+</div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions style="display: flex; justify-content: center; align-items: center; background-color:  rgb(240, 240, 240);"> 
+  <!--   
+    <button mat-mini-fab mat-raised-button (click)="submit()" color="primary" 
+    class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right"> 
+  
+    <span class="leg">  {{botaoAccao}}  </span>
+  
+    <span class="icon"> <mat-icon>save</mat-icon> </span>
+     
+  </button>  -->
+  
+
+
+  <button (click)="Cadastrar()" class="btnsalvardados">
+    <mat-icon style="color: rgb(222, 161, 6);">save</mat-icon>
+    Salvar</button>
+  
+  </mat-dialog-actions>
+  
+
+
+
+
+
+
+
+

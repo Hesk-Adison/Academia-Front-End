@@ -1,0 +1,23 @@
+.contacto{
+
+    display:  flex; 
+    justify-content: space-around;
+
+    >mat-form-field {
+        width: 100%;
+         display: flex;
+        justify-content: space-around;
+        padding: .5rem;
+
+        >input{
+            width: 80%;
+        }
+
+        >button {
+            width: 80%;
+
+        }
+    }
+
+
+}

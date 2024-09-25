@@ -1,0 +1,65 @@
+
+.dialogaction{
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+     background-color:  rgb(240, 240, 240);
+  
+  
+  
+     >.Save{
+        width: 6rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+  
+        >mat-icon{
+           color: rgb(186, 138, 4);
+        }
+  
+        >.texto{
+            display: none;
+  
+        }
+  
+     }
+  
+  
+    }
+  
+  
+    mat-card{
+  
+  
+  
+     >form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        padding: 1rem;
+  
+        >mat-form-field{
+           width: 90%;
+  
+        }
+     }
+    }
+  
+  
+  
+    .Veja{
+     padding-left: 1.3rem;
+     margin-top: -2.5rem;
+     border: none;
+      background: none; 
+      display: flex; 
+      align-items: center; 
+      gap: .5rem;
+       width: 100%; 
+       
+    }

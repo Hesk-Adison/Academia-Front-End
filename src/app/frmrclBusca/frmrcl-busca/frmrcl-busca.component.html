@@ -1,0 +1,110 @@
+
+<mat-card class="Header1" style="background-color:  rgb(240, 240, 240);">
+    <div class="head">
+      <div class="btnFechar">
+        <div class="btnteste">
+        <button mat-icon-button class="close-button" (click)="Fechar()" id="fecha">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+        </button>  
+        </div>
+    </div>
+  
+    <h2 mat-dialog-title ><span class="titulo">shoooo</span></h2>
+    </div>
+  
+  
+  
+  </mat-card>
+
+  <mat-dialog-content>
+
+    <form [formGroup]="cadastro"  >
+
+        <mat-card  class="cardsDialog">
+      
+               <mat-card-content >
+                      <div class="contacto">
+                             <mat-form-field  appearance="outline" class="example-full-width" >
+                                    <mat-label>Nome do aluno</mat-label>
+                                    <input type="text" matInput     >
+                            
+                                  </mat-form-field>
+      
+                              
+                              </div>
+      
+      
+      
+                      <div class="contacto">
+                                  <!-- <mat-form-field  appearance="outline" class="example-full-width">
+                                    <mat-label>Nº do Recibo</mat-label>
+                                    <input matInput type="number" formControlName="numero" [readonly]="true">
+                                  </mat-form-field> -->
+      
+      
+                                <mat-form-field  appearance="outline" class="example-full-width">
+                                    <mat-label>N Documento </mat-label>
+                                     <input matInput  formControlName="nome" class="inputpesquisa" [readonly]="true"/>
+                           
+                                  </mat-form-field>
+      
+      
+                                  <mat-form-field  appearance="outline" class="example-full-width">
+                                    <mat-label>Data de emissão</mat-label>
+                                    <input matInput autocomplete="off" formControlName="data"
+                                    [matDatepicker]="datamat"
+                                        readonly>
+                                    <mat-datepicker-toggle matSuffix [for]="datamat">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #datamat></mat-datepicker>
+                                </mat-form-field>
+                      </div>
+                      <div class="contacto">
+                       <mat-form-field   appearance="outline" class="example-full-width">
+                         <mat-label>Centro de Custo</mat-label>
+                         <input matInput type="text" formControlName="ccusto" [readonly]="true">
+                       </mat-form-field>
+                       <mat-form-field  appearance="outline" class="example-full-width">
+                         <mat-label>Morada</mat-label>
+                         <input matInput type="text" formControlName="morada" [readonly]="true">
+                       </mat-form-field>
+      
+                      </div>
+                     <div class="contacto">
+                       <mat-form-field   appearance="outline" class="example-full-width">
+                       <mat-label>Localidade</mat-label>
+                       <input matInput type="text" formControlName="localidade" [readonly]="true">
+                     </mat-form-field>
+      
+                     <mat-form-field   appearance="outline" class="example-full-width">
+                       <mat-label>Valor Pago</mat-label>
+                       <input matInput type="number" formControlName="nuit" [readonly]="true">
+                     </mat-form-field></div>
+               </mat-card-content>
+             </mat-card>
+      
+      
+      
+      
+      
+      
+      
+
+      
+      
+           <div  style="display: flex; width: 100%; justify-content: center; margin-top: 1rem;">
+      
+      
+               </div>
+      
+      </form>
+
+  </mat-dialog-content>
+
+
+  <mat-dialog-actions style="background-color:  rgb(240, 240, 240); width: 100%; display: flex; justify-content: center;">
+  
+
+    <button >
+        Imprimir </button>
+  </mat-dialog-actions>

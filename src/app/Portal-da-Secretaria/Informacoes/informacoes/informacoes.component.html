@@ -1,0 +1,166 @@
+<main>
+    <div class="Cabecalho">
+        <h1 class="title">Administração</h1>
+      </div>
+
+
+
+      <div class="insights">
+
+            <div class="Alunos">
+                <mat-icon>
+                    <span class="material-symbols-outlined">group</span> 
+                </mat-icon>
+                <div class="middle">
+                    <div class="left">
+                        <h3>Alunos</h3>
+                        <h1>   {{totalAluno}}</h1>
+                    </div>
+                    <div class="progress">
+                        <circle-progress [percent]="0" [subtitle]="'Percentagem'"  [space]="-10" [radius]="40" [outerStrokeWidth]="10"
+                        [innerStrokeWidth]="10" [outerStrokeColor]="'rgb(186, 138, 4)'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                        [animationDuration]="1000"></circle-progress>
+                        <!-- <div class="number">
+                            <p>{{percent}}%</p>
+                        </div> -->
+                    </div>
+                </div>
+         
+                <small class="text-muted">Numero total de alunos</small>
+            </div>
+
+
+            <!-- Card Fim  Alunos-->
+
+            <div class="Professor">
+                <mat-icon>
+                    <span class="material-symbols-outlined">
+                        supervisor_account
+                        </span>
+                </mat-icon>
+                <div class="middle">
+                    <div class="left">
+                        <h3>Professores</h3>
+                        <h1>   {{totalProfessor}}</h1>
+                    </div>
+
+                    <div class="progress">
+                        
+                        <circle-progress [percent]="0" [subtitle]="'Percentagem'"  [space]="-10" [radius]="40" [outerStrokeWidth]="10"
+                        [innerStrokeWidth]="10" [outerStrokeColor]="'rgb(186, 138, 4)'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                        [animationDuration]="1000"></circle-progress>
+
+                        <!-- <div class="number">
+                            <p>70%</p>
+                        </div> -->
+                    </div>
+                </div>
+
+                <small class="text-muted">Numero total de Professores</small>
+            </div>
+
+
+            <!-- Card Fim Professor -->
+
+
+            <div class="Funcionaro">
+                <mat-icon>
+                    <span class="material-symbols-outlined">
+                        badge
+                        </span>
+                </mat-icon>
+                <div class="middle">
+                    <div class="left">
+                        <h3>Funcionarios</h3>
+                        <h1>   {{totalRh}}</h1>
+                    </div>
+
+                    <div class="progress">
+                        <circle-progress [percent]="0" [subtitle]="'Percentagem'"  [space]="-10" [radius]="40" [outerStrokeWidth]="10"
+                        [innerStrokeWidth]="10" [outerStrokeColor]="'rgb(186, 138, 4)'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                        [animationDuration]="1000"></circle-progress>
+
+                        <!-- <div class="number">
+                            <p>70%</p>
+                        </div> -->
+                    </div>
+                </div>
+
+                <small class="text-muted">Numero total de Funcionarios</small>
+            </div>
+
+
+            <!-- Card Fim Funcionarios Rh-->
+
+            <div class="Turmas">
+                <mat-icon>
+                    <span class="material-symbols-outlined">
+                        library_books
+                        </span>
+                </mat-icon>
+              
+                <div class="middle">
+                    <div class="left">
+                        <h3>Turmas</h3>
+                        <h1>   {{totalTurma}}</h1>
+                    </div>
+
+                    <div class="progress">
+                        <circle-progress [percent]="0" [subtitle]="'Percentagem'"  [space]="-10" [radius]="40" [outerStrokeWidth]="10"
+                        [innerStrokeWidth]="10" [outerStrokeColor]="'rgb(186, 138, 4)'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                        [animationDuration]="1000"></circle-progress>
+
+                        <!-- <div class="number">
+                            <p>70%</p>
+                        </div> -->
+                    </div>
+                </div>
+
+                <small class="text-muted">Numero total de Turmas</small>
+            </div>
+
+
+            <!-- Card Fim Turmas-->
+
+        
+
+            <div class="Cursos">
+                <mat-icon>
+                    <span class="material-symbols-outlined">
+                        school
+                        </span>
+                </mat-icon>
+                <div class="middle">
+                    <div class="left">
+                        <h3>Cursos</h3>
+                        <h1>   {{totalCursos}}</h1>
+                    </div>
+
+                    <div class="progress">
+                        <circle-progress [percent]="0" [subtitle]="'Percentagem'"  [space]="-10" [radius]="40" [outerStrokeWidth]="10"
+                        [innerStrokeWidth]="10" [outerStrokeColor]="'rgb(186, 138, 4)'" [innerStrokeColor]="'#e7e8ea'" [animation]="true"
+                        [animationDuration]="1000"></circle-progress>
+
+                        <div class="number">
+                            <!-- <p>30%</p> -->
+                        </div>
+                    </div>
+                </div>
+
+                <small class="text-muted">Numero total de Cursos</small>
+            </div>
+
+
+            <!-- Card Fim Cursos-->
+
+      </div>
+
+
+
+
+ </main>
+
+
+ <!-- <mat-card class="grafico">
+        <canvas #Grafico></canvas>
+ </mat-card> -->

@@ -1,0 +1,149 @@
+
+
+<div class="Cabecalho">
+    <h1>Estudantes</h1>
+  </div>
+  
+   
+   <section class="content">
+       <div class="container-fluid">
+           <div class="row">
+               <div class="col-12">
+                   <mat-card >
+                    <h1 class="h1titulo">Adicione ou altere os dados do estudante</h1>
+
+               
+<div id="btnright">
+
+         <form [formGroup]="frmestudantes" (ngSubmit)="getestudante()"  style="width: 30%;">
+                        <mat-form-field appearance="outline" class="example-full-width" >
+                            <mat-label>Pesquisar estudante por Códido ou Nome </mat-label>
+                            <input matInput  formControlName="nimNome" class="inputpesquisa"/>
+                            <button matSuffix mat-raised-button color="accent" style="height: 35px;"
+                             [disabled]="frmestudantes.invalid" type="submit" (keyup.enter)="getestudante()" class="btnpesquisa">
+                                <mat-icon class='search-icon' color="primary" matSuffix>search</mat-icon>                              
+                            </button>
+                            
+                          </mat-form-field>
+                    </form>
+
+                    <div class="btnMod ">
+                        <button matSuffix mat-raised-button color="accent" style="height: 35px;" (click)="novoestudante()" class="Adicionar">
+                            <mat-icon style="color:rgb(178, 110, 14); font-size: 1.3rem; ">add</mat-icon>
+                                                  
+                        </button>
+                        
+                
+                
+                    </div>
+       
+</div>
+              
+             
+                
+                   
+                       <mat-card-content class="dashboard-card-content">
+                   
+                       
+
+                    
+
+                           <div class="mat-elevation-z2">
+                                   <div class="body table-responsive">
+                               <table mat-table [dataSource]="dataListaestudante" >   
+                                
+                                <ng-container matColumnDef="no">
+                                    <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> N/O </th>
+                                    <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+                                  </ng-container>
+                                     <ng-container matColumnDef="nim">
+                                       <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Código </th>
+                                       <td mat-cell *matCellDef="let element"> {{element.no}} </td>
+                                     </ng-container>
+   
+                                     <ng-container matColumnDef="nome">
+                                       <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Nome Completo </th>
+                                       <td mat-cell *matCellDef="let element"> {{element.nome.toUpperCase()}} </td>
+                                     </ng-container>
+   
+                   
+                                     <ng-container matColumnDef="sexo">
+                                           <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Sexo </th>
+                                           <td mat-cell *matCellDef="let element"> {{element.sexo}} </td>
+                                       </ng-container>
+       
+                                       <ng-container matColumnDef="pai">
+                                           <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Província Nasc. </th>
+                                           <td mat-cell *matCellDef="let element"> {{element.provincia.toUpperCase()}} </td>
+                                       </ng-container>
+       
+                                       <ng-container matColumnDef="mae">
+                                           <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Distrito Nasc. </th>
+                                           <td mat-cell *matCellDef="let element"> {{element.distrito.toUpperCase()}} </td>
+                                       </ng-container>
+                       
+                                       <ng-container matColumnDef="accoes">
+                                           <th mat-header-cell *matHeaderCellDef style="width: 80px;background-color: rgb(1, 35, 57);" > Accões </th>
+                                           <td mat-cell *matCellDef="let element">
+                                               <a class="dropdown-toggle" style="cursor: pointer;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" [matMenuTriggerFor]="dropdown">
+                                                   <i class="material-icons" style="color: #0000EE">menu</i>
+                                               </a>
+                                               <mat-menu #dropdown [overlapTrigger]="false" yPosition="below">
+                                                   <button mat-menu-item (click)="editarestudante(element)">
+                                                       <mat-icon color="primary">edit</mat-icon><span>Editar</span>
+                                                   </button>
+
+                                                  
+                                                   <button mat-menu-item (click)="eliminarestudante(element)">
+                                                       <mat-icon color="warn">delete_sweep</mat-icon><span>Apagar</span>
+                                                   </button>
+                                               </mat-menu>
+                                           </td>
+                                       </ng-container>
+                   
+                                     <tr mat-header-row *matHeaderRowDef="colunasTabela"></tr>
+                                     <tr mat-row *matRowDef="let row; columns: colunasTabela;"></tr>
+                   
+                                     <tr class="mat-row" *matNoDataRow>
+                                        <!--
+                                        <td class="mat-cell" colspan="4">Nao ha dados que coinscide com o filtro {{input.value}}</td>-->
+                                      </tr>
+                                 
+                                 </table>   
+                               
+                        
+                                 <mat-paginator 
+                                 [length]="totalRecords"
+                                 [pageSize]="5"
+                                 [pageSizeOptions]="[5, 10, 20,50, 100]" 
+                                 (page)="confirmPageChange($event)"
+                                  showFirstLastButtons> </mat-paginator>
+
+                                  
+   
+                               </div>
+                               
+                           </div>
+                       
+                       </mat-card-content>
+                
+               
+
+                  
+                                              
+              
+                      
+                   </mat-card>
+               </div>
+           </div>
+       </div>
+   </section>
+   
+     
+   
+   <div  class="spinner-wrapper" *ngIf="isSpinnerDisplayed">
+    <mat-spinner></mat-spinner>
+</div> 
+<!-- 
+ -->
+   

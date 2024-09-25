@@ -1,0 +1,146 @@
+<!-- <mat-toolbar class="mat-elevation-z3" id="MenuTopo">
+
+    <button mat-icon-button   (click)="collapsed.set(!collapsed())" >
+       
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <button mat-icon-button class="Leftbtn" (click)="Refresh()" routerLink="/Login">
+     
+        <mat-icon>logout</mat-icon>   
+    </button>
+</mat-toolbar>
+
+<mat-sidenav-container>''
+    <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
+        <app-menu [collapsed]="collapsed()"></app-menu>
+        
+    </mat-sidenav>
+
+
+    <mat-sidenav-content class="Content" [style.margin-left]="sidenavWidth()">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container> -->
+
+
+<mat-toolbar class="mat-elevation-z3 MenuTopo"  (mousemove)="onUserAction()" 
+(click)="onUserAction()"
+(keypress)="onUserAction()">
+    <div class="left" (click)="collapsed.set(!collapsed())">
+            <!-- <img src="assets/foto.jpg" alt="" class="logo"> -->
+            <div class="textando">     <mat-icon  ><span class="material-symbols-outlined">
+                menu
+                </span></mat-icon></div>
+    
+            <h2 style="font-size: 15px; text-transform: uppercase;"  class="logotxt"> 
+                <!-- <span>ISEDEF</span> -->
+                <span >DMZ </span> SOFTWARE
+            
+            </h2>
+    
+    </div>
+    
+        
+    
+    
+    <div class="rigth" >
+       <!-- componentes icones -->
+        <!-- <p class="nomeprof">{{nomeprof}} </p>
+        <button mat-icon-button class="Leftbtn" id="btn" (click)="Refresh()" routerLink="/Login">
+     
+            <mat-icon class="saida">logout</mat-icon>   
+        </button> -->
+    
+        <div class="direita" >
+
+            <ul>
+                <li  routerLink="/Adim/Diario">
+                    <span class="icones">
+                        <mat-icon >
+                            home
+                           </mat-icon>
+                    </span>
+                    <span class="legenda">
+                        Home
+                    </span>
+
+                </li>
+                <li routerLink="/Adim/perfil">
+                    <span class="icones">
+                        <mat-icon >
+                                account_circle
+                                
+                           </mat-icon>
+                    </span>
+                    <span class="legenda">
+                        Perfil
+                    </span>
+                </li>
+
+                <!-- <li routerLink="/Adim/perfil">
+                    <span class="icones">
+                        <mat-icon >
+                       
+                                mail
+                               
+                                
+                           </mat-icon>
+                    </span>
+                    <span class="legenda">
+                        Mensagem
+                    </span>
+                </li> -->
+
+                <li (click)="Back()">
+                    <span class="icones">
+                        <mat-icon >
+                            <span class="material-symbols-outlined">
+                                arrow_back
+                                </span>
+                           </mat-icon>
+                    </span>
+                    <span class="legenda">
+                        Voltar
+                    </span>
+                </li>
+
+                <li (click)="Refresh()" routerLink="/Login">
+                    <span class="icones">
+                        <mat-icon >
+                                output_circle
+                           </mat-icon>
+                    </span>
+                    <span class="legenda">
+                        Sair
+                    </span>
+
+                </li>
+
+
+           
+            </ul>
+          
+        </div>
+    
+    </div>
+      
+    </mat-toolbar>
+    
+    <mat-sidenav-container class="nav-class" (mousemove)="onUserAction()" 
+    (click)="onUserAction()"
+    (keypress)="onUserAction()">
+        <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
+            <app-menu [collapsed]="collapsed()" (mousemove)="onUserAction()" 
+            (click)="onUserAction()"
+            (keypress)="onUserAction()"></app-menu>
+            
+        </mat-sidenav>
+    
+    
+        <mat-sidenav-content class="Content" [style.margin-left]="sidenavWidth()" style=" @media(max-width:768px){margin-left:  0;}">
+            <router-outlet (mousemove)="onUserAction()" 
+            (click)="onUserAction()"
+            (keypress)="onUserAction()"></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>

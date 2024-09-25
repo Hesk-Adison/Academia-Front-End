@@ -1,0 +1,74 @@
+.tttt{
+    height: 3rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.btnclasse{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+.btnPrint{
+    position: relative;
+      width: 100%;
+      height: 2.5rem;
+      box-shadow: 0 4px 9px #8d8d8d;
+    margin-top: .5rem;
+    transition: 1s all ease;
+    overflow: hidden;
+    border-radius: 4px;
+    z-index: 1;
+      >button{
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: #fff;
+     
+        font-weight: 600;
+        display: flex;
+        gap: .3rem;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+       
+
+
+        >span{
+        color: rgb(1, 35, 57);
+        }
+        >mat-icon{
+            color: rgb(248, 17, 0);
+            // background-color:rgb(222, 161, 6) ;
+          }
+      }
+
+
+//   .teste{
+//     z-index: 9999;
+//   }  
+
+}
+
+.btnPrint:hover{
+    transform: translateY(-15%);
+
+    >button:hover{
+        background-color: rgb(1, 35, 57);
+
+        >span{
+            color: #fff;
+            }
+    }
+}
+
+.tdview{
+    width: 15%;
+}

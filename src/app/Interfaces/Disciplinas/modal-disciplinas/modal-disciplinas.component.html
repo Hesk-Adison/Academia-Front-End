@@ -1,0 +1,495 @@
+<mat-card class="Header1" style="background-color:  rgb(240, 240, 240);">
+  <div class="head">
+    <div class="btnFechar">
+      <div class="btnteste">
+        <button mat-icon-button class="close-button" (click)="closeDialog()" id="fecha">
+          <mat-icon class="close-icon" color="warn">close</mat-icon>
+      </button> 
+      </div>
+       
+  </div>
+  <h2 mat-dialog-title ><span class="titulo">{{titloAccao}}</span></h2>
+  </div>
+</mat-card>
+
+<mat-card>
+  <div  class="spinner-wrapper teste"  *ngIf="isSpinnerDisplayed" style="z-index: 9; ">
+    <mat-spinner></mat-spinner>
+  </div>
+
+<mat-dialog-content>
+
+    <form [formGroup]="cadastro"  (ngSubmit)="Cadastrar()">  
+      
+      <mat-card class="cardsDialog">
+
+                     <div class="contacto1">
+                      <div class="agrupados">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Referência</mat-label>
+                          <input matInput type="text" formControlName="referenc">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Status</mat-label>
+                          <input type="text" matInput [formControl]="myControlstatuss"
+                           [matAutocomplete]="autosstatuss">
+                          <mat-autocomplete #autosstatuss="matAutocomplete" #listastatuss
+                           >
+                       
+                            <mat-option  *ngFor="let item of filteredOptionsstatuss | 
+                            async; let index = index" [value]="item.descricao" (onSelectionChange)="Setstatuss(item)">
+                                {{ item.descricao | titlecase}}
+                              </mat-option>
+          
+                          </mat-autocomplete>
+                        </mat-form-field>
+
+                      </div>
+                            
+                          
+
+                               <div class="solo">
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                  <mat-label>Descrição</mat-label>
+                                  <input matInput type="text" formControlName="descricao">
+                                </mat-form-field>
+
+                               </div>  
+                             
+                                 
+                            
+
+                                 
+                     </div>
+                    
+    
+
+          
+          
+          
+    
+          
+      
+                            <div class="contacto">
+                                   <mat-form-field appearance="outline" class="example-full-width">
+                                          <mat-label>Crédito académico</mat-label>
+                                          <input matInput type="number" formControlName="credac">
+                                        </mat-form-field>
+       
+                                        
+                                        <mat-form-field appearance="outline" class="example-full-width">
+                                          <mat-label>Carga horária contacto</mat-label>
+                                          <input matInput type="number" formControlName="cargahteorica">
+                                        </mat-form-field>
+                                        
+                                        <mat-form-field appearance="outline" class="example-full-width">
+                                          <mat-label>Carga horária estudo</mat-label>
+                                          <input matInput type="number" formControlName="cargahpratica">
+                                        </mat-form-field>
+                                        
+                                        <mat-form-field appearance="outline" class="example-full-width">
+                                          <mat-label>Carga horária total</mat-label>
+                                          <input matInput type="number" formControlName="cargahtotal">
+                                        </mat-form-field>
+
+                                       
+                            </div>
+                       <div class="contacto">
+                            <mat-form-field appearance="outline" class="example-full-width">
+                                   <mat-label>Área académica</mat-label>
+                                   <input type="text" matInput [formControl]="myControlAreaacademica"
+                                    [matAutocomplete]="autosstatussAreaacademica">
+                                   <mat-autocomplete #autosstatussAreaacademica="matAutocomplete" 
+                                    >
+                                
+                                     <mat-option  *ngFor="let item of filteredOptionsAreaacademica | 
+                                     async; let index = index" [value]="item.descricao" (onSelectionChange)="Setstatuss(item)">
+                                         {{ item.descricao | titlecase}}
+                                       </mat-option>
+                   
+                                   </mat-autocomplete>
+                                 </mat-form-field> 
+                                 
+                                 <mat-form-field appearance="outline" class="example-full-width">
+                                   <mat-label>Subárea académica</mat-label>
+                                   <input type="text" matInput [formControl]="myControlsubAreaacademica"
+                                    [matAutocomplete]="autosstatusssubAreaacademica">
+                                   <mat-autocomplete #autosstatusssubAreaacademica="matAutocomplete" #listastatuss
+                                    >
+                                
+                                     <mat-option  *ngFor="let item of filteredOptionssubAreaacademica | 
+                                     async; let index = index" [value]="item.descricao" (onSelectionChange)="SetsubAreaacademica(item)">
+                                         {{ item.descricao | titlecase}}
+                                       </mat-option>
+                   
+                                   </mat-autocomplete>
+                                 </mat-form-field>
+
+                                 <div  class="contacto2">
+                                  <div class="toggle1">
+                                    <label for="toggle"> Componente Nuclear</label>
+                                  <mat-slide-toggle  formControlName="tipo1" (change)="toggle1($event)"></mat-slide-toggle>
+                                  </div>
+
+                                  <div class="toggle1">
+                                    <label for="toggle"> Componente complementar</label>
+                                  <mat-slide-toggle  formControlName="tipo2" (change)="toggle2($event)"></mat-slide-toggle>
+                                  </div>
+                           </div>
+                           
+                       </div>
+
+                       <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Notas introdutórias</mat-label>
+                        <input matInput type="text" formControlName="obs">
+                      </mat-form-field>
+
+                    </mat-card>
+<mat-card class="cardsDialog" style="margin-top: 2rem;">
+       <mat-card-content>
+          
+              <mat-tab-group>
+
+                <mat-tab label="Tabela de preços">
+                  <div class="contacto1">
+                         <mat-form-field appearance="outline" class="example-full-width" style="width: 10%; padding-top: 1rem;">
+                                <mat-label>Tabela de IVA</mat-label>
+                                <input type="text" matInput [formControl]="myControlTabIva"
+                                 [matAutocomplete]="autosstatussTabIva">
+                                <mat-autocomplete #autosstatussTabIva="matAutocomplete" 
+                                 >
+                             
+                                  <mat-option  *ngFor="let item of filteredOptionsTabIva | 
+                                  async; let index = index" [value]="item.descricao" (onSelectionChange)="SettabIva(item)">
+                                      {{ item.descricao | titlecase}}
+                                    </mat-option>
+                
+                                </mat-autocomplete>
+                              </mat-form-field> 
+                              
+                             
+                    </div>
+           
+                    <div class="titulo123">
+                      <h4>Adicione tabela de preços </h4>
+                     </div> 
+                  
+                  <div formArrayName="stPrecos" class="agrega">
+                                           
+                                           
+                         <div *ngIf="visibilidadestprecos;then contentwstprecos else other_contentwstprecoser">
+                         </div>
+           
+                         <ng-template #contentwstprecos> 
+                         <table>
+                           <thead>
+                             <tr>
+                               <th>Valor</th>
+                               <th>Unidade Curricular</th>
+                               <th>Moeda</th>
+                               <th>Iva inc.</th>
+                               <th>
+                                   <button type="button" mat-mini-fab (click)="adicionarstpreco()"
+                                   style="background-color: rgb(2, 43, 72); color: white;">
+                                   <mat-icon>plus_one</mat-icon>
+                               </button>
+                                 </th>
+                             </tr>
+                           </thead>
+                   
+                   
+                           <tbody *ngFor="let item of stPrecos.controls; let i = index" [formGroupName]="i">
+                   
+                             <tr>  
+                               
+                                <td>
+                                       <mat-form-field appearance="outline" class="example-full-width"> 
+                                         <mat-label>Valor</mat-label>                                           
+                                         <input type="number" matInput  formControlName="preco" >
+                                         </mat-form-field>
+                                     </td> 
+                                     
+                                     <td> 
+           
+                                       <mat-form-field appearance="outline" class="example-full-width">
+                                         <mat-label>Unidade curricular</mat-label>
+                                         <input type="text" matInput  formControlName="cCusto"
+                                          [matAutocomplete]="autosstatussTabIvamoedaccu">
+                                         <mat-autocomplete #autosstatussTabIvamoedaccu="matAutocomplete" 
+                                          >                           
+                                           <mat-option  *ngFor="let item of filteredOptionsccu | 
+                                           async; let index = index" [value]="item.descricao" (onSelectionChange)="Setccu(item,i)">
+                                               {{ item.descricao | titlecase}}
+                                             </mat-option>
+                         
+                                         </mat-autocomplete>
+                                       </mat-form-field> 
+           
+                                     </td> 
+                                     <td>
+           
+                                       <mat-form-field appearance="outline" class="example-full-width">
+                                         <mat-label>Moeda</mat-label>
+                                         <input type="text" matInput formControlName="moeda"
+                                          [matAutocomplete]="autosstatussTabIvamoeda">
+                                         <mat-autocomplete #autosstatussTabIvamoeda="matAutocomplete" 
+                                          >
+                                      
+                                           <mat-option  *ngFor="let item of filteredOptionsmoeda | 
+                                           async; let index = index" [value]="item.descricao" (onSelectionChange)="Setmoeda(item,i)">
+                                               {{ item.descricao | titlecase}}
+                                             </mat-option>
+                         
+                                         </mat-autocomplete>
+                                       </mat-form-field> 
+           
+                                     </td> 
+           
+                                     
+                                     <td>
+                                       <mat-slide-toggle  formControlName="ivainc"></mat-slide-toggle>
+                                     </td> 
+                               <td>
+                                 <button type="button" mat-mini-fab color="warn" fxFlex="nogrow"
+                                 (click)="removerstpreco(i)"  style="cursor: pointer;
+                                 "> <mat-icon>delete_sweep</mat-icon></button>
+                               </td>
+                             </tr>
+                           </tbody>
+                         </table>
+                   
+           
+                       </ng-template>
+                       <ng-template #other_contentwstprecoser> 
+                         <div style="display: flex;justify-content: end;">
+                           <button type="button" mat-mini-fab (click)="adicionarstpreco()"
+                           style="background-color: rgb(2, 43, 72); color: white;">
+                           <mat-icon>plus_one</mat-icon>
+                       </button>
+                         </div>
+                   
+                   </ng-template>
+           
+                       </div>
+           </mat-tab>
+<mat-tab label="Disciplinas Precedentes">
+
+           
+  <div class="titulo123">
+    <h4>Adicione disciplinas precedentes</h4>
+   </div> 
+      
+        <div class="toggle1" style="display: flex; flex-direction: column;">
+          <label for="toggle" style="color: rgb(1, 35, 57);  width: 40%;"> Tem disciplinas precedentes?</label>
+              <mat-slide-toggle  formControlName="Prec" ></mat-slide-toggle>
+        </div>
+       
+       <div formArrayName="stl" class="agrega">
+                                
+                                
+              <div *ngIf="visibilidadestl;then contentw else other_contentw">
+              </div>
+
+              <ng-template #contentw> 
+              <table>
+                <thead>
+                  <tr>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                    <th>
+                        <button type="button" mat-mini-fab (click)="adicionarStl()"
+                        style="background-color: rgb(2, 43, 72); color: white;">
+                        <mat-icon>plus_one</mat-icon>
+                    </button>
+                      </th>
+                  </tr>
+                </thead>
+        
+        
+                <tbody *ngFor="let item of Stl.controls; let i = index" [formGroupName]="i">
+        
+                  <tr>  
+                      <td>
+                            <mat-form-field appearance="outline" class="example-full-width"> 
+                              <mat-label>Codigo</mat-label>                                           
+                              <input type="text" matInput  formControlName="codigo" >
+                              </mat-form-field>
+                          </td> 
+                          
+                          <td>
+                            <mat-form-field  appearance="outline" class="example-full-width"> 
+                              <mat-label>Descrição</mat-label>                                           
+                              <input type="text" matInput  formControlName="descricao"  
+                              [matAutocomplete]="autosstatussDisciplinaPrece"    >
+
+                              <mat-autocomplete #autosstatussDisciplinaPrece="matAutocomplete" 
+                              >
+                          
+                               <mat-option  *ngFor="let item of filteredOptionsDisciplinaprec | 
+                               async; let index = index" [value]="item.descricao" (onSelectionChange)="SetStl(item, i)">
+                                   {{ item.descricao | titlecase}}
+                                 </mat-option>
+             
+                             </mat-autocomplete>
+                              </mat-form-field>
+
+
+
+
+
+
+<!-- ========================================== -->
+
+
+                        
+
+
+<!-- ================================================= -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          </td> 
+                    <td>
+                      <button type="button" mat-mini-fab color="warn" fxFlex="nogrow"
+                      (click)="removerstl(i)"  style="cursor: pointer;
+                      "> <mat-icon>delete_sweep</mat-icon></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        
+
+            </ng-template>
+            <ng-template #other_contentw> 
+              <div style="display: flex;justify-content: end;">
+                <button type="button" mat-mini-fab (click)="adicionarStl()"
+                style="background-color: rgb(2, 43, 72); color: white;">
+                <mat-icon>plus_one</mat-icon>
+            </button>
+              </div>
+        
+        </ng-template>
+
+            </div>
+</mat-tab>
+<mat-tab label="Bibliografia Recomendada">
+       
+       <div formArrayName="stb" class="agrega">
+                                
+                                
+              <div *ngIf="visibilidadebibliografia;then contentwvisibilidadebibliografia else other_contentwvisibilidadebibliografia">
+              </div>
+
+              <ng-template #contentwvisibilidadebibliografia> 
+              <table>
+                <thead>
+                  <tr>
+                    <th>Descrição</th>
+                    <th>
+                        <button type="button" mat-mini-fab (click)="adicionarStb()"
+                        style="background-color: rgb(2, 43, 72); color: white;">
+                        <mat-icon>plus_one</mat-icon>
+                    </button>
+                      </th>
+                  </tr>
+                </thead>
+        
+        
+                <tbody *ngFor="let item of Stb.controls; let i = index" [formGroupName]="i">
+        
+                  <tr>  
+                          
+                          <td>
+                            <mat-form-field  appearance="outline" class="example-full-width">                                            
+                              <input type="text" matInput  formControlName="descricao" >
+                              </mat-form-field>
+                          </td> 
+                    <td>
+                      <button type="button" mat-mini-fab color="warn" fxFlex="nogrow"
+                      (click)="removerStb(i)"  style="cursor: pointer;
+                      "> <mat-icon>delete_sweep</mat-icon></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        
+
+            </ng-template>
+            <ng-template #other_contentwvisibilidadebibliografia> 
+              <div style="display: flex;justify-content: end;">
+                <button type="button" mat-mini-fab (click)="adicionarStb()"
+                style="background-color: rgb(2, 43, 72); color: white;">
+                <mat-icon>plus_one</mat-icon>
+            </button>
+              </div>
+              
+        
+        </ng-template>
+
+            </div>
+</mat-tab>
+
+
+
+
+
+              </mat-tab-group>
+       </mat-card-content>
+</mat-card>
+                            
+  
+      
+          
+      
+    </form>
+</mat-dialog-content>
+</mat-card>
+
+
+
+
+
+
+<mat-dialog-actions class="dialogaction"> 
+  <button (click)="Cadastrar()" class="Save">
+    <mat-icon>save</mat-icon>
+
+    <span class="texto">
+      {{botaoAccao}}
+    </span>
+
+  </button>
+  
+  </mat-dialog-actions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,451 @@
+<mat-card class="Header1" style="background-color:  rgb(240, 240, 240);">
+  <div class="head">
+    <div class="btnFechar">
+      <div class="btnteste">
+      <button mat-icon-button class="close-button" (click)="closeDialog()" id="fecha">
+          <mat-icon class="close-icon" color="warn">close</mat-icon>
+      </button>  
+      </div>
+  </div>
+
+  <h2 mat-dialog-title ><span class="titulo">{{titloAccao}}</span></h2>
+  </div>
+
+
+
+</mat-card>
+<mat-card>
+  <div  class="spinner-wrapper" *ngIf="isSpinnerDisplayed" style="z-index: 99;">
+    <mat-spinner></mat-spinner> 
+ </div> 
+
+<mat-dialog-content>
+
+    <form [formGroup]="cadastro"  (ngSubmit)="Cadastrar()">           
+    
+       <mat-card  class="cardsDialog">
+    
+
+              <mat-card-content >   
+          
+                     <div class="contacto">
+                            
+                                 <mat-form-field appearance="outline" class="example-full-width">
+                                   <mat-label>Referência</mat-label>
+                                   <input matInput type="text" formControlName="codcurso">
+                                 </mat-form-field>
+
+                                 
+                                 <mat-form-field appearance="outline" class="example-full-width">
+                                   <mat-label>Descrição do curso</mat-label>
+                                   <input matInput type="text" formControlName="desccurso">
+                                 </mat-form-field>
+                                 
+                                
+                            <mat-form-field appearance="outline" class="example-full-width">
+                              <mat-label>Status</mat-label>
+                              <input type="text" matInput [formControl]="myControlstatuss"
+                               [matAutocomplete]="autosstatuss" formControlName="status">
+                              <mat-autocomplete #autosstatuss="matAutocomplete" #listastatuss
+                               >
+                           
+                                <mat-option  *ngFor="let item of filteredOptionsstatuss | 
+                                async; let index = index" [value]="item.descricao" (onSelectionChange)="Setstatuss(item)">
+                                    {{ item.descricao | titlecase}}
+                                  </mat-option>
+              
+                              </mat-autocomplete>
+                            </mat-form-field>
+
+                                 
+                     </div>
+                    
+              </mat-card-content>
+            </mat-card>
+          
+          
+          
+            <mat-card-content class="cardsDialog">
+          
+              <mat-tab-group>
+                     <mat-tab label="Dados gerais">
+
+             
+                      <div class="contacto" style="margin-top: .5rem;" >
+          
+                        <mat-form-field appearance="outline" class="example-full-width" >
+                            <mat-label>Carga Hora</mat-label>
+                            <input matInput type="text" formControlName="cargahora">
+                          </mat-form-field>
+      
+                          <mat-form-field appearance="outline" class="example-full-width" >
+                            <mat-label>Duração</mat-label>
+                            <input matInput type="number" formControlName="duracao" [min]="0">
+                          </mat-form-field>
+
+                          <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Director Pedagógico</mat-label>
+                            <input type="text" matInput [formControl]="myControlDirectorPedagogico"
+                             [matAutocomplete]="autos2ernivelacademicoDirectorPedagogico">
+                            <mat-autocomplete #autos2ernivelacademicoDirectorPedagogico="matAutocomplete" >
+                         
+                              <mat-option  *ngFor="let item of filteredOptionsDirectorPedagogico | 
+                              async; let index = index" [value]="item.descricao" (onSelectionChange)="SetDirectorPedagogico(item)">
+                                  {{ item.descricao | titlecase}}
+                                </mat-option>
+            
+                            </mat-autocomplete>
+                          </mat-form-field>
+      
+                      </div>
+
+                      <div class="contacto">
+          
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Nível académico</mat-label>
+                          <input type="text" matInput [formControl]="myControlnivelacademico"
+                           [matAutocomplete]="autos2ernivelacademico">
+                          <mat-autocomplete #autos2ernivelacademico="matAutocomplete" >
+                       
+                            <mat-option  *ngFor="let item of filteredOptionsnivelacademico | 
+                            async; let index = index" [value]="item.descricao" (onSelectionChange)="Setnivelacademico(item)">
+                                {{ item.descricao | titlecase}}
+                              </mat-option>
+          
+                          </mat-autocomplete>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Unidade de ensino</mat-label>
+                          <input type="text" matInput [formControl]="myControlccu"
+                          [matAutocomplete]="auto45ws">
+                         <mat-autocomplete #auto45ws="matAutocomplete" 
+                          
+                        
+                         >
+                             <mat-option   (click)="onSelectccu(item,index)" *ngFor="let item of filteredOptionsccu | 
+                             async; let index = index" [value]="item.descricao">
+                                 {{ item.descricao | titlecase}}
+                               </mat-option>
+                         </mat-autocomplete>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Departamento</mat-label>
+                        <input type="text" matInput [formControl]="myControlDepartamento"
+                         [matAutocomplete]="autos2erDepartamento">
+                        <mat-autocomplete #autos2erDepartamento="matAutocomplete" #listaDepartamento>
+                     
+                          <mat-option  *ngFor="let item of filteredOptionsDepartamento | 
+                          async; let index = index" [value]="item.descricao" (onSelectionChange)="SetDepartamento(item)">
+                              {{ item.descricao | titlecase}}
+                            </mat-option>
+        
+                        </mat-autocomplete>
+                      </mat-form-field>
+                        <!-- <mat-form-field class="example-full-width">
+                          <mat-label>Faculdade</mat-label>
+                          <input type="text" matInput [formControl]="myControlFaculdade"
+                           [matAutocomplete]="autos2erFaculdade">
+                          <mat-autocomplete #autos2erFaculdade="matAutocomplete" >
+                       
+                            <mat-option  *ngFor="let item of filteredOptionsFaculdade | 
+                            async; let index = index" [value]="item.descricao" (onSelectionChange)="SetFaculdade(item)">
+                                {{ item.descricao | titlecase}}
+                              </mat-option>
+          
+                          </mat-autocomplete>                  
+                        </mat-form-field> -->
+                      </div>
+                  
+                      
+                      
+            
+                      <div  class="contacto">
+                        <mat-slide-toggle id="tipo1" formControlName="tipo1" (change)="toggle1($event)">Curso Normal</mat-slide-toggle>
+                        <mat-slide-toggle  formControlName="tipo2" (change)="toggle2($event)">Curso militar</mat-slide-toggle>                 
+                        <mat-slide-toggle  formControlName="tipo3" (change)="toggle3($event)">Curso Técnico</mat-slide-toggle>
+                        <mat-slide-toggle  formControlName="tipo4" (change)="toggle4($event)">Curso Modular</mat-slide-toggle>
+                 </div>
+       
+                            <div formArrayName="cursodoc" class="agrega">
+                                
+                                
+                               <div *ngIf="visibilidadedoc;then contentwdoc else other_contentwcursodoc">
+                               </div>
+              
+                               <ng-template #contentwdoc> 
+                               <table>
+                                 <thead>
+                                   <tr>
+                                     <th>Descrição do documento</th>
+                                     <th>
+                                         <button type="button" mat-mini-fab (click)="adicionarcursodoc()"
+                                         style="background-color: rgb(2, 43, 72); color: white;">
+                                         <mat-icon>plus_one</mat-icon>
+                                     </button>
+                                       </th>
+                                   </tr>
+                                 </thead>
+                         
+                         
+                                 <tbody *ngFor="let item of cursodoc.controls; let i = index" [formGroupName]="i">
+                         
+                                   <tr>                                             
+                                           <td>
+                                             <mat-form-field appearance="outline" class="example-full-width">
+                                              <mat-label>Documento</mat-label>                                            
+                                               <input type="text" matInput  formControlName="documento" >
+                                               </mat-form-field>
+                                           </td> 
+                                     <td>
+                                       <button type="button" mat-mini-fab color="warn" fxFlex="nogrow"
+                                       (click)="removercursodoc(i)"  style="cursor: pointer;
+                                       "> <mat-icon>delete_sweep</mat-icon></button>
+                                     </td>
+                                   </tr>
+                                 </tbody>
+                               </table>
+                         
+              
+                             </ng-template>
+                             <ng-template #other_contentwcursodoc> 
+                               <div style="display: flex;justify-content: end;">
+                                 <button type="button" mat-mini-fab (click)="adicionarcursodoc()"
+                                 style="background-color: rgb(2, 43, 72); color: white;">
+                                 <mat-icon>plus_one</mat-icon>
+                             </button>
+                               </div>
+                         
+                         </ng-template>
+              
+                             </div>
+                            
+                    </mat-tab>
+
+                   <mat-tab label="Palno Curricular">
+
+                                         
+                                                  <div class="body table-responsive" style="margin-top:1rem ;">
+                                              <table mat-table [dataSource]="dataListaestudante" >   
+                                               
+                                               <ng-container matColumnDef="no">
+                                                   <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> N/O </th>
+                                                   <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+                                                 </ng-container>
+                                                    <ng-container matColumnDef="nim">
+                                                      <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Referência </th>
+                                                      <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+                                                    </ng-container>
+                  
+                                                    <ng-container matColumnDef="nome">
+                                                      <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Descricao </th>
+                                                      <td mat-cell *matCellDef="let element"> {{element.descricao.toUpperCase()}} </td>
+                                                    </ng-container>
+                  
+                                  
+                                                    <ng-container matColumnDef="sexo">
+                                                          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Cod. Curso </th>
+                                                          <td mat-cell *matCellDef="let element"> {{element.desccurso}} </td>
+                                                      </ng-container>
+                      
+                                                      <ng-container matColumnDef="pai">
+                                                          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Curso </th>
+                                                          <td mat-cell *matCellDef="let element"> {{element.desccurso.toUpperCase()}} </td>
+                                                      </ng-container>
+                      
+                                                      <ng-container matColumnDef="mae">
+                                                          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Plano Pagamento </th>
+                                                          <td mat-cell *matCellDef="let element"> {{element.descplano.toUpperCase()}} </td>
+                                                      </ng-container>
+                                      
+                                                      <ng-container matColumnDef="accoes">
+                                                          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Accões </th>
+                                                          <td mat-cell *matCellDef="let element">
+                                                              <a class="dropdown-toggle" style="cursor: pointer;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" [matMenuTriggerFor]="dropdown">
+                                                                  <i class="material-icons" style="color: #0000EE">menu</i>
+                                                              </a>
+                                                              <mat-menu #dropdown [overlapTrigger]="false" yPosition="below">
+                                                                  <button mat-menu-item (click)="editarestudante(element)">
+                                                                      <mat-icon color="primary">edit</mat-icon><span>Editar</span>
+                                                                  </button>
+               
+                                                                 
+                                                              </mat-menu>
+                                                          </td>
+                                                      </ng-container>
+                                  
+                                                    <tr mat-header-row *matHeaderRowDef="colunasTabela"></tr>
+                                                    <tr mat-row *matRowDef="let row; columns: colunasTabela;"></tr>
+                                  
+                                                    <tr class="mat-row" *matNoDataRow>
+                                                         </tr>
+                                                
+                                                </table>   
+                                              
+                                       
+                                                <mat-paginator 
+                                                [length]="totalRecords"
+                                                [pageSize]="25"
+                                                [pageSizeOptions]="[ 25,50, 100]" 
+                                                (page)="confirmPageChange($event)"
+                                                 showFirstLastButtons> </mat-paginator>
+               
+                                                 
+                  
+                                              </div>
+                                              
+                                
+                                      
+
+                    
+                  
+                  <div  class="spinner-wrapper" *ngIf="isSpinnerDisplayed">
+                   <mat-spinner></mat-spinner> 
+               </div> 
+
+
+
+
+                    
+                   </mat-tab>
+                    <mat-tab label="Autorizações">
+                      
+           
+                     <div formArrayName="cursoacto" class="agrega">
+                         
+                         
+                        <div *ngIf="visibilidadecursoacto;then contentwdgdg else other_contentwxvxvxvx">
+                        </div>
+       
+                        <ng-template #contentwdgdg> 
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Data</th>
+                              <th>Título</th>
+                              <th>Anosem início</th>
+                              <th>
+                                  <button type="button" mat-mini-fab (click)="adicionarcursoacto()"
+                                  style="background-color: rgb(2, 43, 72); color: white;">
+                                  <mat-icon>plus_one</mat-icon>
+                              </button>
+                                </th>
+                            </tr>
+                          </thead>
+                  
+                  
+                          <tbody *ngFor="let item of cursoacto.controls; let i = index" [formGroupName]="i">
+                  
+                            <tr>  
+                              <td>
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                  <input matInput [matDatepicker]="picker1" formControlName="data">                                
+                                  <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>
+                              </td>
+                                <td>
+                                      <mat-form-field appearance="outline" class="example-full-width">  
+                                        <mat-label>Titulo</mat-label>                                         
+                                        <input type="text" matInput  formControlName="titulo" >
+                                        </mat-form-field>
+                                    </td> 
+                                    
+                                    <td>
+                                      <mat-form-field  appearance="outline" class="example-full-width">    
+                                        <mat-label>Ano/sem</mat-label>                                        
+                                        <input type="number" matInput  formControlName="anosem" [min]="2000">
+                                        </mat-form-field>
+                                    </td> 
+                              <td>
+                                <button type="button" mat-mini-fab color="warn" fxFlex="nogrow"
+                                (click)="removercursoacto(i)"  style="cursor: pointer;
+                                "> <mat-icon>delete_sweep</mat-icon></button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                  
+       
+                      </ng-template>
+                      <ng-template #other_contentwxvxvxvx> 
+                        <div style="display: flex;justify-content: end;">
+                          <button type="button" mat-mini-fab (click)="adicionarcursoacto()"
+                          style="background-color: rgb(2, 43, 72); color: white;">
+                          <mat-icon>plus_one</mat-icon>
+                      </button>
+                        </div>
+                  
+                  </ng-template>
+       
+                      </div>
+                     
+                      <br>
+                      <br>
+          
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Notas Introdutórias</mat-label>
+                        <!-- <input matInput type="text" formControlName="obs"> -->
+                        <textarea
+                        matInput
+                        
+                        formControlName="obs"
+                    ></textarea>
+                      </mat-form-field>
+                     
+                    </mat-tab>
+
+             <mat-tab label="Outros Dados">
+              
+             <div  class="contacto">
+              <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Curso equivalente</mat-label>
+                <input matInput type="text" formControlName="cursoeq">
+              </mat-form-field>
+             </div>
+             </mat-tab>
+              </mat-tab-group>
+            </mat-card-content>
+        
+      
+      
+          
+      
+    </form>
+</mat-dialog-content>
+</mat-card>
+
+
+
+ <mat-dialog-actions class="dialogaction"> 
+  <button (click)="Cadastrar()" class="Save">
+    <mat-icon>save</mat-icon>
+
+    <span class="texto">
+      {{botaoAccao}}
+    </span>
+
+  </button>
+  
+  </mat-dialog-actions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

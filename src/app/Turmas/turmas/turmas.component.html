@@ -1,0 +1,185 @@
+
+
+
+<mat-card>
+
+  
+<form [formGroup]="carregardaos"  >
+
+ 
+  
+
+</form>
+
+</mat-card>
+
+
+
+
+
+
+
+<mat-card>
+
+<form [formGroup]="Formulario" (ngSubmit)="Enviar()" formDit="ngform">
+
+  <!-- <div class="Busca">
+    <mat-form-field class="example-full-width">
+      <mat-label>Busca</mat-label>
+      <input type="text" matInput placeholder="Nome do aluno"  name="Pesquisa" (input)="busca($event)" > 
+    </mat-form-field>
+  
+    <button (click)="carrega()" mat-raised-button style="color: rgb(255, 255, 255); background-color: rgb(2, 43, 72);">Carregar Dados</button>
+  
+  </div> -->
+
+    <!--------------------------------------Topo---------------------------------------------------------->
+<div class="corpo"  >
+
+    <div class="Container">
+        <div class="Busca">
+            <div class="busca" >
+                <!-- <mat-form-field class="example-full-width">
+                    <mat-label>Busca</mat-label>
+                    <input type="text" matInput placeholder="Nome do aluno"  name="Pesquisa" (input)="busca($event)" > 
+                  </mat-form-field> -->
+
+               
+                  <!-- Trabalhando na escolha do teste -->
+<!-- 
+                   <mat-form-field>
+                      <mat-label>Tipo de teste</mat-label>
+                      <select mat-select matNativeControl required  (change)="Teste($event)">
+                 
+                         <option [value]= 0>
+                         </option>
+                        <option [value]= 1>
+                         Testes
+                        </option>
+                        <option [value]= 2   >
+                          Exames
+                         </option>
+                      </select>
+                    </mat-form-field>  -->
+
+  
+
+                  
+               </div> 
+          
+           
+                 
+        </div>
+
+      
+    <!--------------------------------------------------------------------------------------------------------------------------------------->
+       
+    <!-----------------------------------------------------------------Tabela----------------------------------------------------------------->
+    <div class="corpo1"   >
+        
+   
+            <!-- <table mat-table [dataSource]="TurmanotaLista" class="mat-elevation-z8" >
+                  
+                <ng-container matColumnDef="no">
+                  <th mat-header-cell *matHeaderCellDef> Numero </th>
+                  <td mat-cell *matCellDef="let TurmanotaLista" >
+                     {{TurmanotaLista.no}} -->
+                 <!-- </td>
+                </ng-container> -->
+
+                <!-- <ng-container matColumnDef="nome">
+                  <th mat-header-cell *matHeaderCellDef>Nome Completo </th>
+                  <td mat-cell *matCellDef="let TurmanotaLista">  <input type="text"  id="Nota" formControlName="alunonome">  </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="n1">
+                  <th mat-header-cell *matHeaderCellDef> N1 </th>
+                  <td mat-cell *matCellDef="let TurmanotaLista"> 
+                    <input type="number"  id="Nota" formControlName="n1"> 
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="n2">
+                    <th mat-header-cell *matHeaderCellDef> N2 </th>
+                    <td mat-cell *matCellDef="let TurmanotaLista"> 
+                      
+                      <input type="number"  id="Nota" formControlName="n2">
+                    
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="n3">
+                    <th mat-header-cell *matHeaderCellDef> N3 </th>
+                    <td mat-cell *matCellDef="let TurmanotaLista">
+                      <input type="number"  id="Nota" formControlName="n3">
+                    </td> 
+                  </ng-container>
+
+                  
+                <ng-container matColumnDef="media">
+                  <th mat-header-cell *matHeaderCellDef> Media </th>
+                   <td mat-cell *matCellDef="let TurmanotaLista"> {{TurmanotaLista.media}} </td> 
+                </ng-container>
+
+                <ng-container matColumnDef="obs">
+                  <th mat-header-cell *matHeaderCellDef> Observacao </th>
+                  <td mat-cell *matCellDef="let TurmanotaLista"> 
+                     <input type="number"  formControlName="obs">  -->
+                    <!-- <input type="text"  id="Nota" formControlName="obs">
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="resultado">
+                    <th mat-header-cell *matHeaderCellDef> Resultado </th>
+                    <td mat-cell *matCellDef="let TurmanotaLista"> {{TurmanotaLista.resultado}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="e1">
+                    <th mat-header-cell *matHeaderCellDef> Exame </th>
+                    <td mat-cell *matCellDef="let TurmanotaLista"> 
+                      <input type="number"  id="Nota" formControlName="e1"> 
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="e2">
+                    <th mat-header-cell *matHeaderCellDef> Recorrencia </th>
+                    <td mat-cell *matCellDef="let TurmanotaLista"> 
+                        
+                        <input type="number"  id="Nota" formControlName="e2"> 
+                    
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="es">
+                    <th mat-header-cell *matHeaderCellDef> Exame Especial </th>
+                    <td mat-cell *matCellDef="let TurmanotaLista"> 
+                      <input type="number"  id="Nota" formControlName="es"> </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="mediafinal">
+                    <th mat-header-cell *matHeaderCellDef> Media Final </th>
+                    <td mat-cell *matCellDef="let TurmanotaLista"> {{TurmanotaLista.mediafinal}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="resultadofinal">
+                    <th mat-header-cell *matHeaderCellDef> Resultado Final </th>
+                    <td mat-cell *matCellDef="let TurmanotaLista"> {{TurmanotaLista.resultadofinal}} </td>
+                  </ng-container>
+              
+                 <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+                <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+              </table>       -->
+        </div> 
+
+    <!------------------------------------------------------------------------------------------------------------------------------------------->    
+    </div>
+    </div>
+    
+    <div class="erros">
+        {{Erro}}
+    </div>
+    
+
+</form>
+</mat-card>
+

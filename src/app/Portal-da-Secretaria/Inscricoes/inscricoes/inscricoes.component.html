@@ -1,0 +1,193 @@
+
+
+
+<div class="Cabecalho">
+    <h1>Inscrições</h1>
+  </div>
+  
+   
+   <section class="content">
+       <div class="container-fluid">
+           <div class="row">
+               <div class="col-12">
+                   <mat-card >
+                    <h1 class="h1titulo" style="font-size: 1rem;">
+                     
+                        Faça a sua inscrição
+  
+                    </h1>
+
+                       
+<div id="btnright">
+    <!-- <mat-form-field appearance="outline" class="example-full-width" style="width: 15%;">
+        <mat-label>Ano</mat-label>
+        <input type="text" matInput [formControl]="myControlAnolect" [matAutocomplete]="autos2ernivelanolect">
+        <mat-autocomplete #autos2ernivelanolect="matAutocomplete">
+          <mat-option *ngFor="let item of filteredOptionsAnolect | async" [value]="item.descricao" (onSelectionChange)="SetAnoSem(item)">
+            {{ item.descricao | titlecase }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>   -->
+
+    <mat-form-field appearance="outline" class="example-full-width" style="width: 15%;">
+        <mat-label>Ano/Semestre</mat-label>
+        <input type="text" matInput [formControl]="myControlAnoSem" [matAutocomplete]="autos2ernivelanoSem">
+        <mat-autocomplete #autos2ernivelanoSem="matAutocomplete">
+          <mat-option *ngFor="let item of filteredOptionsAnoSem | async" [value]="item.descricao" (onSelectionChange)="SetAnoSem(item)">
+            {{ item.descricao | titlecase }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>   
+
+ <form [formGroup]="frmestudantes" (ngSubmit)="getestudante()"  style="width: 30%;">
+     <mat-form-field class="example-full-width" appearance="outline" >
+         <mat-label>Pesquisar  </mat-label>
+         <input matInput  formControlName="nimNome" class="inputpesquisa"/>
+         <button matSuffix mat-raised-button  style="height: 35px;"
+          [disabled]="frmestudantes.invalid" type="submit" (keyup.enter)="getestudante()" class="btnpesquisa">
+             <mat-icon class='search-icon' color="primary" matSuffix>search</mat-icon>                              
+         </button>
+         
+       </mat-form-field>
+ </form>
+
+    
+    <div class="btnMod " style="margin-left: .5rem;">
+        <button matSuffix mat-raised-button  style="height: 35px;" (click)="novoestudante()" class="Adicionar">
+            <mat-icon style="color:rgb(178, 110, 14); font-size: 1.3rem; ">add</mat-icon>
+                                      
+        </button>
+        
+
+
+    </div>
+
+
+       
+
+       
+</div>
+              
+             
+                
+                   
+                       <mat-card-content class="dashboard-card-content">
+                   
+                       
+                   
+
+
+
+                           <div class="mat-elevation-z2">
+                                   <div class="body table-responsive">
+                                    <table mat-table [dataSource]="dataListaestudante" >   
+                                
+                                        <ng-container matColumnDef="no">
+                                            <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> N/O </th>
+                                            <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+                                          </ng-container>
+                                             <ng-container matColumnDef="codigo">
+                                               <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Código </th>
+                                               <td mat-cell *matCellDef="let element"> {{element.no}} </td>
+                                             </ng-container>
+                                             <ng-container matColumnDef="descricao">
+                                               <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Nome Completo </th>
+                                               <td mat-cell *matCellDef="let element"> {{element.nome.toUpperCase()}} </td>
+                                             </ng-container>
+           
+                                             <ng-container matColumnDef="descurso">
+                                               <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Curso </th>
+                                               <td mat-cell *matCellDef="let element"> {{element.curso.toUpperCase()}} </td>
+                                             </ng-container>
+           
+                           
+                                             <ng-container matColumnDef="etapa">
+                                                   <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Etapa </th>
+                                                   <td mat-cell *matCellDef="let element"> {{element.etapa.toUpperCase()}} </td>
+                                               </ng-container>
+                                               <ng-container matColumnDef="descanoaem">
+                                                     <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Ano/Sem </th>
+                                                     <td mat-cell *matCellDef="let element"> {{element.anoSem.toUpperCase()}} </td>
+                                                 </ng-container>
+               
+                               
+                                               <ng-container matColumnDef="accoes">
+                                                   <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Accões </th>
+                                                   <td mat-cell *matCellDef="let element">
+                                                       <a class="dropdown-toggle" style="cursor: pointer;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" [matMenuTriggerFor]="dropdown">
+                                                           <i class="material-icons" style="color: #0000EE">menu</i>
+                                                       </a>
+                                                       <mat-menu #dropdown [overlapTrigger]="false" yPosition="below">
+                                                           <button mat-menu-item (click)="editarestudante(element)">
+                                                               <mat-icon color="primary">edit</mat-icon><span>Editar</span>
+                                                           </button>
+        
+                                                          
+                                                           <!-- <button mat-menu-item (click)="eliminarestudante(element)">
+                                                               <mat-icon color="warn">delete_sweep</mat-icon><span>Apagar</span>
+                                                           </button> -->
+                                                       </mat-menu>
+                                                   </td>
+                                               </ng-container>
+                           
+                                             <tr mat-header-row *matHeaderRowDef="colunasTabela"></tr>
+                                             <tr mat-row *matRowDef="let row; columns: colunasTabela;"></tr>
+                           
+                                             <tr class="mat-row" *matNoDataRow>
+                                                <!--
+                                                <td class="mat-cell" colspan="4">Nao ha dados que coinscide com o filtro {{input.value}}</td>-->
+                                              </tr>
+                                         
+                                         </table>   
+                                       
+                                
+                                         <mat-paginator 
+                                         [length]="totalRecords"
+                                         [pageSize]="5"
+                                         [pageSizeOptions]="[5, 10, 20,50, 100]" 
+                                         (page)="confirmPageChange($event)"
+                                          showFirstLastButtons> </mat-paginator>
+        
+                                          
+   
+                               </div>
+                               
+                           </div>
+                       
+                       </mat-card-content>
+                
+               
+
+                  
+                                              
+              
+                      
+                   </mat-card>
+               </div>
+           </div>
+       </div>
+   </section>
+   
+     
+   
+   <div  class="spinner-wrapper" *ngIf="isSpinnerDisplayed">
+    <mat-spinner></mat-spinner>
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   

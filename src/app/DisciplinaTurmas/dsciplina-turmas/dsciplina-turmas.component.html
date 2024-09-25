@@ -1,0 +1,90 @@
+<div class="Container">
+  <div class="Cabecalho">
+      <h1> Turmas e Disciplinas!</h1>
+  </div>
+
+
+  <div class="Corpo">
+      <div class="Identificacao">
+          <mat-card>
+            <!-- <h2 class="h1titulo" style="font-size: 1rem;">Minhas Turmas</h2> -->
+              <mat-card-content>
+                
+
+                  <table mat-table [dataSource]=" turma" class="mat-elevation-z8">
+
+     
+                    
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="curso">
+                        <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Curso </th>
+                        <td mat-cell *matCellDef="let element"> {{element.curso}} </td>
+                      </ng-container>
+                    
+                      <!-- Weight Column -->
+                      <ng-container matColumnDef="turma">
+                        <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Turma </th>
+                        <td mat-cell *matCellDef="let element"> {{element.turma}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="ano">
+                          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Ano </th>
+                          <td mat-cell *matCellDef="let element"> {{element.anolect
+                          }} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="sala">
+                          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Sala </th>
+                          <td mat-cell *matCellDef="let element"> {{element.sala
+                          }} </td>
+                        </ng-container>
+                    
+                    
+                      <tr mat-header-row *matHeaderRowDef="colunas1"></tr>
+                      <tr mat-row *matRowDef="let row; columns: colunas1;"></tr>
+                    </table>
+                    
+              </mat-card-content>
+            </mat-card>
+      </div>
+
+
+
+      <div class="Identificacao">
+          <mat-card>
+            <!-- <h2 class="h1titulo" style="font-size: 1rem;">Minhas Disciplinas</h2> -->
+              <mat-card-content>
+                 
+
+                  <table mat-table [dataSource]="disciplina" class="mat-elevation-z8">
+
+                      <!--- Note that these columns can be defined in any order.
+                            The actual rendered columns are set as a property on the row definition" -->
+                    
+                      <!-- Position Column -->
+                      <ng-container matColumnDef="sigla">
+                        <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Sigla. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.sigla}} </td>
+                      </ng-container>
+                    
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="disciplina">
+                        <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Disciplina </th>
+                        <td mat-cell *matCellDef="let element"> {{element.disciplina}} </td>
+                      </ng-container>
+                    
+                   
+                    
+                    
+                      <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+                      <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+                    </table>
+                    
+              </mat-card-content>
+            </mat-card>
+      </div>
+
+
+
+  </div>
+</div>

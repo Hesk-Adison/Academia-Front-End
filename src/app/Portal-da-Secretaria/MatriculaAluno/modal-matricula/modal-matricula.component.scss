@@ -1,0 +1,428 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+h1{
+    text-align: center;
+    font-size: 2rem;
+    color: rgb(99, 99, 99);
+    text-transform: uppercase;
+    font-family: "Work Sans", sans-serif;
+}
+.example-second-footer-row td {
+    color: #900000; 
+    padding-right: 1rem;
+    font-size: large;
+    text-transform: uppercase;
+    text-align: end;
+  }
+  
+
+form{
+
+
+    >mat-card{
+
+        >.btn{
+            width: 100%;
+             height: 2rem; 
+             background-color: rgb(0, 34, 66); 
+             text-align: center;
+             font-size: 15px;
+              color: white;
+        }
+
+        >mat-card-content{
+        
+        >.nomes{
+            display: flex;
+            
+            >mat-form-field{
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                padding: .5rem;
+
+                > input{
+                   display: flex; 
+                   justify-content: space-between;
+                   width: 100%;
+                }
+            }
+        }
+
+
+    }}
+
+    #btnright{
+
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        //justify-content: space-between;
+         justify-content: right;
+         align-items: flex-end;
+        // flex-direction: column;
+        // padding-right: 1rem;
+    
+        
+      }
+      
+  .btnMod{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    height: 2rem;
+   
+
+    >button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family:  "Inconsolata", monospace;
+        background-color: rgb(255, 255, 255);
+        color: rgb(1, 35, 57);
+        font-size: 1.1rem;
+        font-weight: 400;
+        transition: 1s all ease;
+        margin-bottom: 1rem;
+        width: 50%;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px #8d8d8d;
+        cursor: pointer;
+
+
+      }
+
+
+
+      >button:hover{
+        background-color: rgb(1, 35, 57);
+        color: rgb(254, 254, 254);
+      }
+  }
+
+    >mat-card{
+
+        >h1{
+            width: 100%;
+             height: 2rem; 
+             background-color: rgb(0, 34, 66); 
+             text-align: center;
+             font-size: 15px;
+              color: white;
+        }
+
+        >mat-card-content{
+            > .imagem{
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+
+                >.custom-file{
+                    display: flex;
+                    align-items: flex-end;
+                }
+
+                >.texte{
+                    width: 6.25rem;
+                     height: 6.25rem;
+                }
+            }
+
+
+            >mat-tab-group{
+                
+
+
+                >mat-tab{
+                    >.nomes{
+                        display: flex;
+                        
+                        >mat-form-field{
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-around;
+                            padding: .5rem;
+            
+                            > input{
+                               display: flex; 
+                               justify-content: space-between;
+                               width: 100%;
+                            }
+                        }
+                    }
+            
+            
+                    >.passwords{
+                        display: flex;
+            
+            
+                        >mat-form-field{
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-around;
+                            padding: 1rem;
+            
+                            > input{
+                               display: flex; 
+                               justify-content: space-between;
+                               width: 80%;
+                            }
+                        }
+                    }
+        
+        
+                }   
+        
+            }
+
+     
+        
+    }}
+
+}
+
+
+
+.cont1{
+    display:  flex; 
+    justify-content: space-around;
+
+    >mat-form-field {
+        width: 100%;
+         display: flex;
+        justify-content: space-around;
+        padding: .5rem;
+
+        >input{
+            width: 80%;
+        }
+    }
+}
+
+.contacto{
+
+    display:  flex; 
+    justify-content: space-around;
+
+    >mat-form-field {
+        width: 100%;
+         display: flex;
+        justify-content: space-around;
+        padding: .5rem;
+
+        >input{
+            width: 80%;
+        }
+
+        >button {
+            width: 80%;
+
+        }
+    }
+
+
+}
+.example-full-width{
+    width: 100%;
+}
+
+.cardsDialog{
+    box-shadow: 0 4px 8px #8d8d8d;
+    z-index: 0;
+   
+
+}
+
+.dialogaction{
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+     background-color:  rgb(240, 240, 240);
+     gap: 2rem;
+     z-index: 111;
+
+
+
+     >.Save{
+        width: 6rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+        >mat-icon{
+           color: rgb(186, 138, 4);
+        }
+
+        >.texto{
+            display: none;
+
+        }
+
+     }
+
+
+
+     >.Save:hover{
+        width: 8rem;
+
+        >mat-icon{
+           display: none;
+         }
+
+         >.texto{
+            display: block;
+
+        }
+     }
+}
+
+
+// .agrega{
+// padding-top: .5rem;
+//     width: 100%;
+//     >.fam{
+//         width: 100%;
+
+//         >button{
+//             width: 100%;
+//             background-color: rgb(43, 36, 26);
+
+            
+//         };
+//         >.btnaddd{
+//             align-content: end;
+//         }
+//     } 
+//     >.btnaddd{
+//         align-content: end;
+//     }
+// }
+
+// ng-container{
+//     width: 100%;
+//     >.Add{
+//         width: 100%;
+//     }
+// }
+
+// .titulo{   
+//     color:#0188ff;
+//  }
+
+
+//  .divider {
+// 	width:100%;
+// 	text-align:center;    
+// }
+
+
+
+
+// 	.close-button{
+// 		float: right;
+// 		/*top:-34px;*/
+// 		margin-top: -70px;
+// 		right:-15px;
+// 	  }
+//       .close-buttons{
+// 		float: right;
+// 		/*top:-34px;*/
+// 		margin-top: -70px;
+// 		right:-15px;
+// 	  }
+// 	  .close-icon {
+// 		transition: 1s ease-in-out;
+// 	  }
+	  
+// 	  .close-icon:hover {
+// 		transform: rotate(180deg);
+// 	  }
+	  
+// 	  ::ng-deep .icon-outside .close-button{
+// 		float: right;
+// 		/*top:-52px;
+// 		right:-52px;*/
+// 	  }
+	  
+// 	  ::ng-deep .icon-outside .mat-dialog-container {
+// 	   overflow: unset
+// 	  }
+
+      .spinner-wrapper{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.10);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+       
+ 
+
+
+
+        
+      
+    //   mat-toolbar{
+    //       position: relative;
+    //       z-index: 5;
+    //   }
+      
+    //   mat-sidenav-content{
+    //       height: calc(100vh - 64px);
+    //   }
+      
+    //   .Content{
+    //       padding: 24px;
+    //   }
+    //   .column-container { 
+    //     display: flex; 
+    //   } 
+       
+    //   .column { 
+    //     flex: 1; 
+    //     padding: 10px; 
+    //   } 
+    //   section {
+    //     display: table;
+    //   }
+      
+    //   .example-label {
+    //     display: table-cell;
+    //     // font-size: 14px;
+    //     margin-left: 8px;
+    //     min-width: 120px;
+    //   }
+      
+    //   .example-button-row {
+    //     display: table-cell;
+    //     max-width: 600px;
+    //   }
+      
+    //   .example-button-row .mat-mdc-button-base {
+    //     margin: 8px 8px 8px 0;
+    //   }
+      
+    //   .example-flex-container {
+    //     display: flex;
+    //     justify-content: space-between;
+    //     flex-wrap: wrap;
+    //   }
+      
+    //   .example-button-container {
+    //     display: flex;
+    //     justify-content: center;
+    //     width: 120px;
+    //   }
+    //   .mat-tab-label-active {
+    //     background-color: #000;
+    //     color: #fff;
+    //     opacity: 1;
+    // }

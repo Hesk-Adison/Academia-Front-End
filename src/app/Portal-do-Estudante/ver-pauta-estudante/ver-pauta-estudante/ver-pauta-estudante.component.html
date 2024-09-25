@@ -1,0 +1,163 @@
+<mat-card class="Header1" style="background-color:  rgb(240, 240, 240);">
+    <div class="head">
+      <div class="btnFechar">
+        <div class="btnteste">
+        <button mat-icon-button class="close-button" (click)="onCancel()" id="fecha">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+        </button>
+        </div>
+    </div>
+  
+    <h2 mat-dialog-title ><span class="titulo">{{titloAccao}}</span></h2>
+    </div>
+  
+  
+    <div class="Cabecalho111">
+      <div class="input-lab">
+  
+  
+        <label>Etapa</label>
+          <p>{{dadosestudantes.turma}}</p>
+  
+      </div>
+        <div class="input-lab">
+  
+            <label>Curso</label>
+            <p>{{dadosestudantes.curso}}</p>
+  
+        </div>
+  
+  
+        <div class="input-lab">
+            <label>Ano/Sem</label>
+            <p>{{dadosestudantes.anosem}}</p>
+        </div>
+  
+        <div class="input-lab">
+            <label>Disciplina</label>
+  
+            <p>{{dadosestudantes.disciplina}}</p>
+  
+        </div>
+  
+  
+        </div>
+  
+  </mat-card>
+  <mat-dialog-content>
+  
+       <mat-card  class="cardsDialog">
+         <mat-card-content >
+                <div class="mat-elevation-z2">
+                  <div class="body table-responsive">
+                       <table mat-table [dataSource]="dataListaturma">
+  
+                         <ng-container matColumnDef="n1">
+                           <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Nota1 </th>
+                           <td mat-cell *matCellDef="let element"> {{element.n1}} </td>
+                         </ng-container>
+  
+                         <ng-container matColumnDef="n2">
+                           <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Nota2 </th>
+                           <td mat-cell *matCellDef="let element"> {{element.n2}} </td>
+                         </ng-container>
+  
+                         <!-- <ng-container matColumnDef="n3">
+                          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Nota3 </th>
+                          <td mat-cell *matCellDef="let element"> {{element.n3}} </td>
+                        </ng-container> -->
+  
+                         <ng-container matColumnDef="media">
+                          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> MD. Freq </th>
+                          <td mat-cell *matCellDef="let element"> {{element.media}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="resultado">
+                          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Res. Freq </th>
+                          <td mat-cell *matCellDef="let element"> {{element.resultado}} </td>
+                        </ng-container>
+  
+                        <ng-container matColumnDef="e1">
+                          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Ex. Normal </th>
+                          <td mat-cell *matCellDef="let element"> {{element.e1}} </td>
+                        </ng-container>
+  
+                        <ng-container matColumnDef="e2">
+                          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Ex. Recorr. </th>
+                          <td mat-cell *matCellDef="let element"> {{element.e2}} </td>
+                        </ng-container>
+  
+  
+                        <ng-container matColumnDef="mediafinal">
+                          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Md. Final </th>
+                          <td mat-cell *matCellDef="let element"> {{element.mediafinal}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="resultadoFinal">
+                          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Res. Final </th>
+                          <td mat-cell *matCellDef="let element"> {{element.resultadoFinal}} </td>
+                        </ng-container>
+                         <!-- <ng-container matColumnDef="marcar">
+                              <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Accões </th>
+                              <td mat-cell *matCellDef="let element">
+                                  <a class="dropdown-toggle" style="cursor: pointer;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" [matMenuTriggerFor]="dropdown">
+                                      <i class="material-icons" style="color: #0000EE">menu</i>
+                                  </a>
+                                  <mat-menu #dropdown [overlapTrigger]="false" yPosition="below">
+  
+  
+  
+  
+                                  </mat-menu>
+                              </td>
+                          </ng-container> -->
+  
+  
+                          | date:'dd-MM-yyyy
+                         <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+                         <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+                       </table>
+  
+                       <mat-paginator
+                       [length]="totalRecords"
+                       [pageSize]="5"
+                       [pageSizeOptions]="[5, 10, 20,50, 100]"
+                       (page)="confirmPageChange($event)"
+                        showFirstLastButtons> </mat-paginator>
+                      </div>
+                     </div>
+  
+  
+  
+         </mat-card-content>
+       </mat-card>
+  </mat-dialog-content>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

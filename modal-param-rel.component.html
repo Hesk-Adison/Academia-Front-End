@@ -1,0 +1,219 @@
+
+
+
+
+<h2 mat-dialog-title><span class="titulo">{{titloAccao}}</span></h2>
+
+<button mat-icon-button class="close-button" (click)="closeDialog()">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button>  
+<mat-dialog-content>
+    <form [formGroup]="rltForm">
+        
+        <mat-tab-group style='min-height:450px;'>
+            <mat-tab label="Início">
+                <div style="margin-top: 1%;">
+                
+                    <mat-grid-list cols="1" rowHeight="85px">
+
+                        <mat-grid-tile>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Título do Relatório</mat-label>
+                                <input matInput autocomplete="off" formControlName="descricao" readonly>
+                                <mat-icon matSuffix>account-box</mat-icon>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+
+
+                    <div *ngIf="DadosView.mostraturma">
+                        <mat-grid-list cols="1" rowHeight="85px">   
+                            <mat-grid-tile>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Turmas</mat-label>
+                                    <mat-select  formControlName="turmachave" #listaturmas>
+                                        <mat-option *ngFor="let item of listaturm" [value]="item.chave.trim()">
+                                            {{item.descricao}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </div>
+                    <div *ngIf="!DadosView.naomostram">
+                        <mat-grid-list cols="1" rowHeight="85px">
+                            <mat-grid-tile>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Moedas</mat-label>
+                                    <mat-select 
+                                    formControlName="moedas" #listamoedas>
+                                        <mat-option *ngFor="let item of listamoedass" [value]="item.descricao.trim()">
+                                            {{item.descricao}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </div>
+
+
+                    <div  *ngIf="DadosView.mostracfe==1">
+                        <mat-grid-list cols="1" rowHeight="85px">
+                            <mat-grid-tile>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Alunos</mat-label>
+                                    <mat-select  formControlName="alunochave" #listaalunos
+                                        >
+                                        <mat-option *ngFor="let item of listaalun" [value]="item.chave.trim()">
+                                            {{item.descricao}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </div>
+
+<div  *ngIf="DadosView.mostracurso" >
+    <mat-grid-list cols="1" rowHeight="85px">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Cursos</mat-label>
+                <mat-select  formControlName="cursochave" #listacursos
+                    >
+                    <mat-option *ngFor="let item of listacursosssss" [value]="item.chave.trim()">
+                        {{item.descricao}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+
+<div  *ngIf="DadosView.mostradisciplina" >
+    <mat-grid-list cols="1" rowHeight="85px">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Disciplinas</mat-label>
+                <mat-select  formControlName="tbdisciplinastamp" #listadisciplinas
+                    >
+                    <mat-option *ngFor="let item of listadisc" [value]="item.chave.trim()">
+                        {{item.descricao}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+
+<div  *ngIf="DadosView.mostraplanocur" >
+    <mat-grid-list cols="1" rowHeight="85px">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Plano Curricular</mat-label>
+                <mat-select  formControlName="tbplanostamp" #listaplanos
+                    >
+                    <mat-option *ngFor="let item of listaplanossss" [value]="item.chave.trim()">
+                        {{item.descricao}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div  *ngIf="DadosView.mostraetapasem" >
+    <mat-grid-list cols="1" rowHeight="85px">
+        <mat-grid-tile>
+            <mat-form-field appearance="fill">
+                <mat-label>Etapa ou Semestre</mat-label>
+
+                
+
+                <mat-select  formControlName="tbetapastamp" #listaanosemestre>
+                    <mat-option *ngFor="let item of listaanosem" [value]="item.chave.trim()">
+                        {{item.descricao}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div *ngIf="DadosView.tipofilter==2" >
+
+
+    <mat-grid-tile [colspan]="3">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Data de Início</mat-label>
+            <input matInput autocomplete="off" formControlName="dmzentredatas1nume" 
+            [matDatepicker]="picker1"
+                readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1 startView="multi-year"></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Data de Fim</mat-label>
+            <input matInput autocomplete="off" formControlName="dmzentredatas2nume"
+             [matDatepicker]="picker2"
+                readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 startView="multi-year"></mat-datepicker>
+        </mat-form-field>
+        <mat-slide-toggle style="margin-top: -1%;margin-left: 2px;" formControlName="dmzentredatas1">Entre Datas</mat-slide-toggle>
+
+
+    </mat-grid-tile>
+
+</div>
+
+<!-- <div *ngIf="DadosView.mostradisciplina; else templateName">
+    If isValid is true
+</div>
+
+<ng-template #templateName>
+    If isValid is false
+</ng-template> -->
+
+
+                    
+                    
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </form>
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-actions align="end">
+   <!-- <button mat-raised-button mat-dialog-close color="warm"> Voltar </button> -->
+    <button mat-raised-button (click)="closeDialog()" color="warn"> Voltar </button>
+    <button mat-raised-button color="primary"  (click)="guardarEditarMancebo()">
+        {{botaoAccao}} </button>
+</mat-dialog-actions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

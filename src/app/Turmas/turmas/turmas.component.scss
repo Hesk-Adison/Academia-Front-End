@@ -1,0 +1,192 @@
+
+#Nota{
+    width: 2rem;
+
+}
+
+.btn{
+    width: 100%;
+}
+
+.busca{
+    padding-right: 1rem;
+    justify-content: space-between;
+    display: flex;
+}
+
+// .example-full-width{
+//     width: 33.5rem;
+  
+// }
+
+#Nota{
+    width: 3rem;
+    height: 2rem;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: 0;
+}
+
+.btnaluno{
+    width: 95%;
+   
+}
+
+//-------------------------------------------------------
+
+mat-form-field{
+    width: 100%;
+    margin: 10px 10px;
+}
+/*form{
+    width: 850px;
+}*/
+
+.titulo{   
+    color:#0188ff;
+ }
+
+
+ .divider {
+	width:100%;
+	text-align:center;    
+}
+
+.divider hr {
+	margin-left:auto;
+	margin-right:auto;
+	border: 1px solid;
+	width: 41%;
+	  
+
+}
+
+.left {
+	float:left;
+    color:#0188ff;
+}
+
+.right {
+	float:right;
+    color:#0188ff;
+}
+
+.mancdoccss{
+	margin-top: 1%;
+	height: 280px; 
+	width: 99%;
+	border: 2px dashed; 
+	display: flex; 
+	float:top; 
+	display:block;
+	overflow-y: auto;
+}
+
+.formacCss{
+	height: 220px; 
+	width: 1380px;
+	border: 2px dashed; 
+	display: flex; 
+	float:top; 
+	display:block;
+	overflow-y: auto;
+	margin-top: 1%;
+}
+
+.manclinguacss{
+	margin-top: 1%;
+	height: 280px; 
+	width: 1180px;
+	border: 2px dashed; 
+	display: flex; 
+	float:top; 
+	display:block;
+	overflow-y: auto;
+}
+
+.mancafamcss{
+	margin-top: 1%;
+	height: 280px; 
+	width: 1880px;
+	border: 2px dashed; 
+	display: flex; 
+	float:top; 
+	display:block;
+	overflow-y: auto;
+}
+
+
+/** No CSS for this example */
+::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-active{
+	min-width: 10% !important;
+	padding: 3px!important;
+	margin: 3px!important;
+   }
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+	color:white;
+	background-color:rgb(117, 115, 115);
+	}
+	
+	::ng-deep .mat-tab-list .mat-tab-labels {
+	color:blue;
+	/*background-color: yellow;*/
+	}
+
+	.close-button{
+		float: right;
+		/*top:-34px;*/
+		margin-top: -70px;
+		right:-15px;
+	  }
+	  
+	  .close-icon {
+		transition: 1s ease-in-out;
+	  }
+	  
+	  .close-icon:hover {
+		transform: rotate(180deg);
+	  }
+	  
+	  ::ng-deep .icon-outside .close-button{
+		float: right;
+		/*top:-52px;
+		right:-52px;*/
+	  }
+	  
+	  ::ng-deep .icon-outside .mat-dialog-container {
+	   overflow: unset
+	  }
+
+	  .btnaluno{
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+	  }
+
+
+	   .Cabecalho{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+
+        > h1{
+            font-size: 2rem;
+            text-transform: uppercase;
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(94, 94, 94);
+        }
+    }
+
+	mat-card{
+        >h1{
+            font-size: 15px;
+            text-transform: uppercase;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: rgb(255, 255, 255);
+            width: 100%;
+            background-color: rgb(4, 57, 86);
+            text-align: center;
+            border-radius: 4px;
+        }
+   
+}

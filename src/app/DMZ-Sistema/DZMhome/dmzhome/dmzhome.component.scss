@@ -1,0 +1,71 @@
+.Cabecalho{
+    display: flex;
+    justify-content: space-around;
+
+    > .Contactos{
+        display: flex;
+        justify-content: space-around;
+       
+        > .email{
+            display: flex;
+        }
+
+        > .telefone{
+            display: flex;
+        }
+    }
+}
+
+.menu{
+    display: flex;
+   // justify-content: space-around;
+    justify-content: space-evenly;
+    padding: 1rem;
+
+    >.logo{
+        
+            >h1{
+                // display: flex;
+
+                color: rgb(3, 8, 36);
+
+            }
+    }
+
+    >.Lista{
+        display: flex;
+        > ul{
+            display: flex;
+           
+           > li{
+            justify-content: space-around;
+            display: flex;
+            padding-left: 1rem;
+            list-style: none;
+            > a{
+                text-decoration: none;
+                font-size: 16px;
+                color: rgb(129, 129, 129);
+            }
+            > a:hover{
+                color: rgb(1, 91, 118);
+            }
+           }
+        }
+    }
+}
+
+
+
+.Container{
+    width: 100%;
+
+    >.imagem{
+        width: 100%;
+
+        >img{
+            width: 100%;
+            height: 70vh;
+        }
+    }
+}

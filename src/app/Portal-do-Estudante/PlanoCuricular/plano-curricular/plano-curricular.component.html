@@ -1,0 +1,76 @@
+<div class="Container">
+  <div class="Cabecalho">
+      <h1>Plano Curricular</h1>
+  </div>
+
+
+</div>   
+
+
+<div class="Corpo">
+
+  <mat-card>
+    <h2 style="height: 3rem; text-align: center; display: flex; align-items: center; justify-content: center; text-transform: uppercase;"> O meu plano Curricular </h2>
+
+    <div class="Pesquisa" >
+      
+      
+      <mat-form-field class="example-full-width" style="width: 30%;" appearance="outline" >
+     <mat-label>Busca</mat-label>
+     <input type="text" matInput placeholder="Disciplina"  name="Pesquisa" (input)="busca($event)" > 
+   </mat-form-field> 
+      </div>
+
+      <mat-card-content>
+          
+            
+     
+
+        <div class="mat-elevation-z8">
+          <div class="body table-responsive">
+          <table mat-table [dataSource]="Dados" class="mat-elevation-z8">
+        
+              
+            <ng-container matColumnDef="codetapa">
+              <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> # </th>
+              <td mat-cell *matCellDef="let element"> {{element.
+                codetapa
+                }} </td>
+            </ng-container>
+              <!-- Name Column -->
+              <ng-container matColumnDef="etapa">
+                <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Etapa/Sem </th>
+                <td mat-cell *matCellDef="let element"> {{element.etapa}} </td>
+              </ng-container>
+            
+              <!-- Weight Column -->
+              <ng-container matColumnDef="coddisciplina">
+                <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Cod.Disciplina </th>
+                <td mat-cell *matCellDef="let element"> {{element.
+                  coddisc
+                  }} </td>
+              </ng-container>
+            
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="disciplina">
+                <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Disciplina </th>
+                <td mat-cell *matCellDef="let element"> {{element.displina}} </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+              <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+            </table>
+            
+        
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                         showFirstLastButtons
+                         aria-label="Select page of periodic elements">
+          </mat-paginator>
+        </div>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+</div>
+
+

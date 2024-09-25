@@ -1,0 +1,113 @@
+
+
+<div class="Cabecalho">
+  <h1 class="title">Diario de Classe</h1>
+</div>
+
+<mat-card>
+
+  <!-- <h1 class="h1titulo">Selecione a disciplina</h1> -->
+
+  <div class="body table-responsive">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 telamax" >
+
+    
+  
+    <ng-container matColumnDef="descurso" class="descurso">
+      <th mat-header-cell *matHeaderCellDef style=" background-color: rgb(1, 35, 57)"> Curso </th>
+      <td mat-cell *matCellDef="let Diaro" > {{Diaro.descurso}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="etapa" class="etapa">
+      <th mat-header-cell *matHeaderCellDef style=" background-color: rgb(1, 35, 57)"> Semestre </th>
+      <td mat-cell *matCellDef="let Diaro"> {{Diaro.etapa}} </td>
+    </ng-container>
+  
+ 
+    <ng-container matColumnDef="codigo" class="codigo">
+      <th mat-header-cell *matHeaderCellDef style=" background-color: rgb(1, 35, 57)"> Turma </th>
+      <td mat-cell *matCellDef="let Diaro"> {{Diaro.codigo}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="disciplina">
+      <th mat-header-cell *matHeaderCellDef style=" background-color: rgb(1, 35, 57)"> Disciplina </th>
+      <td mat-cell *matCellDef="let Diaro"> {{Diaro.disciplina}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="accoes">
+        <th mat-header-cell *matHeaderCellDef style=" background-color: rgb(1, 35, 57)"> Acções </th>
+        <td mat-cell *matCellDef="let Diaro" style="padding: .5rem; display: flex; justify-content: space-between;" class="test">
+  
+          <!-- <button mat-raised-button type="button" [matMenuTriggerFor]="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+           
+            <mat-icon ><span class="material-symbols-outlined">
+              menu_open
+              </span></mat-icon>
+        
+          </button> -->
+
+          <!-- <mat-menu #dropdown [overlapTrigger]="false" yPosition="below" style="gap: .5rem;" > -->
+            <!-- Menu container -->
+            <!-- <button mat-raised-button type="button" [matMenuTriggerFor]="dropUPdown" data-toggle="dropUPdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+              <mat-icon >print</mat-icon>
+         
+            </button> -->
+<!-- 
+            <button mat-raised-button routerLink='Admin/media'  >
+            
+              <mat-icon style="color:rgb(178, 110, 14); font-size: 1.3rem; ">
+                
+                <span class="material-symbols-outlined">
+                  calculate
+                  </span>
+               
+            </mat-icon>
+            
+            </button> -->
+
+
+            <!-- <mat-menu #dropdown [overlapTrigger]="false" yPosition="below"  >
+              <button mat-menu-item (click)="Imprimir('frequencia')" >
+                <mat-icon style="color: rgb(1, 15, 36);">print</mat-icon>
+                Pauta Frequência</button>
+        
+              <button  (click)="Imprimir('exmnormal')" mat-menu-item >
+                <mat-icon style="color: rgb(187, 144, 2);">print</mat-icon>
+                 Pauta Exame normal </button>
+        
+        
+              <button  (click)="Imprimir('exmrecorrencia')" mat-menu-item >
+                <mat-icon style="color: rgb(7, 63, 2);">print</mat-icon>
+                Pauta Exame de Recorrência  </button>
+        
+                <button    (click)=" Imprimir('exmespecial')" mat-menu-item >
+                  <mat-icon style="color: rgb(222, 6, 6);">print</mat-icon>
+        
+                    Exame especial </button>
+             </mat-menu>  -->
+
+
+
+          <!-- </mat-menu> -->
+     
+
+          <button mat-raised-button (click)="Dadostemp(Diaro)"    >
+            
+            <mat-icon style="color:rgb(178, 110, 14); font-size: 1.3rem; ">
+              forward
+          </mat-icon>
+          
+          </button>
+        
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+  <div  class="spinner-wrapper teste"   *ngIf="isSpinnerDisplayed">
+    <mat-spinner></mat-spinner>
+  </div>

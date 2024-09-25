@@ -1,0 +1,247 @@
+
+<mat-card class="Header1"  style="background-color:  rgb(240, 240, 240);">
+  <div class="head">
+    <div class="btnFechar">
+      <div class="btnteste">
+      <button mat-icon-button class="close-button" (click)="closeDialog()" id="fecha">
+          <mat-icon class="close-icon" color="warn">close</mat-icon>
+      </button>  
+      </div>
+  </div>
+
+  <h2 mat-dialog-title ><span class="titulo">{{titloAccao}}</span></h2>
+  </div>
+
+
+  <div class="Cabecalho111">
+    <div class="input-lab">
+
+
+      <label>Turma</label>
+        <p>{{dadosMancebo.turma}}</p>
+
+    </div>
+      <div class="input-lab">
+          
+          <label>Curso</label>
+          <p>{{dadosMancebo.curso}}</p>
+
+      </div> 
+
+
+      <div class="input-lab">
+          <label>Ano/Sem</label>
+          <p>{{dadosMancebo.anosem}}</p>
+      </div>           
+             
+      <div class="input-lab">
+          <label>Disciplina</label>
+
+          <p>{{dadosMancebo.disciplina}}</p>
+         
+      </div>           
+                           
+
+      </div>
+
+</mat-card>
+
+
+
+
+
+<mat-dialog-content>
+
+
+
+<div class="mat-elevation-z8">
+   
+
+
+       
+    <mat-card-title>   
+    </mat-card-title>
+
+    <mat-card-content class="dashboard-card-content">
+
+
+
+      <form [formGroup]="formularioMancebo">
+ 
+        <!-- <mat-divider style="margin-top: -15px;"></mat-divider> -->
+
+ 
+
+        <mat-tab-group style='min-height:450px;'>
+
+          
+            <mat-tab>
+              <div  class="spinner-wrapper teste"  *ngIf="isSpinnerDisplayed">
+                <mat-spinner></mat-spinner>
+              </div>
+
+
+
+
+                
+
+              <div class="posright">
+                <mat-form-field appearance="outline" style="width: 30%;">
+                    <mat-label>Busca</mat-label>
+                    <input matInput placeholder="Nome do Aluno"  (keyup)="busca($event)"/>        
+                  </mat-form-field>
+                  </div>
+
+
+                  <div class="mancdoccss">
+                    
+                    <ng-container formArrayName="mancdoc" style="margin-top: 25px;">
+
+                      <mat-paginator [pageSizeOptions]="[5, 10, 20,50]"
+                      showFirstLastButtons
+                      aria-label="Select page of periodic elements">
+       </mat-paginator>
+                <table mat-table [dataSource]="dataListaCurso"  matSort matSortStart="desc">  
+                  <ng-container matColumnDef="no">
+                    <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Código </th>
+                    <td mat-cell *matCellDef="let element"> {{element.no}} </td>
+                  </ng-container>
+              
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="alunoNome">
+                    <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Nome completo </th>
+                    <td mat-cell *matCellDef="let element"> {{element.alunoNome}} </td>
+                  </ng-container>
+              
+                 <div style="width: 10%;">
+                     <ng-container matColumnDef="media" >
+                            <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> M. Frequência </th>
+                            <td mat-cell *matCellDef="let element; let i = index" style="width: 10%;">          
+                                
+                                <mat-form-field appearance="outline">
+                                    <input matInput autocomplete="off"  (input)="onKeyPress($event,element,i)"
+                                     class="form-control" type="number"  min="0"  max="20"
+                                      id="media-{{i}}" value="{{element.media}}" readonly>                
+                                </mat-form-field>
+                            
+                            
+                            </td>
+                          </ng-container>
+                 </div>
+
+                  <div *ngIf="!Habilita1" style="width: 10%;">
+                  <ng-container matColumnDef="e1">
+                    <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Normal </th>
+                    <td mat-cell *matCellDef="let element; let i = index" style="width: 10%;">          
+                        
+                        <mat-form-field appearance="outline">
+                            <input matInput autocomplete="off" 
+                             (input)="onKeyPress($event,element,i)"
+                             class="form-control" type="number"  min="0"  max="20"
+                              id="e1-{{i}}" value="{{element.e1}}" readonly="{{Habilita1}}">                
+                        </mat-form-field>
+                    
+                    
+                    </td>
+                  </ng-container>
+                 </div>
+                 
+            <div *ngIf="!Habilita2" style="width: 10%;">
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="e2">
+                    <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Recorrência </th>
+                    <td mat-cell *matCellDef="let element; let i = index" style="width: 10%;"> 
+                        <mat-form-field appearance="outline">
+                            <input matInput autocomplete="off"  (input)="onKeyPress($event,element,i)"
+                             class="form-control" type="number"  min="0"  max="20" id="e2-{{i}}" 
+                             value="{{element.e2}}"  readonly="{{Habilita2}}">
+                            
+                        </mat-form-field>
+                        </td>
+                  </ng-container>
+              </div>
+
+              <div *ngIf="!Habilita3" style="width: 10%;">
+                     <!-- Symbol Column -->
+                     <ng-container matColumnDef="es">
+                       <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Especial </th>
+                       <td mat-cell *matCellDef="let element; let i = index" style="width: 10%;"> 
+                           <mat-form-field appearance="outline">
+                               <input matInput autocomplete="off"  (input)="onKeyPress($event,element,i)"
+                                class="form-control" type="number"  min="0"  max="20" id="es-{{i}}" 
+                                value="{{element.es}}"  readonly="{{!Habilita2}}">
+                               
+                           </mat-form-field>
+                           </td>
+                     </ng-container>
+                 </div>
+                  
+                  
+                  
+                 <ng-container matColumnDef="mediafinal"  style="width: 10%;">
+                     <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> M. Final </th>
+                     <td mat-cell *matCellDef="let element; let i = index" style="width: 10%;">          
+                         
+                         <mat-form-field appearance="outline">
+                             <input matInput autocomplete="off"  (input)="onKeyPress($event,element,i)"
+                              class="form-control" type="number"  min="0"  max="20" id="mediafinal-{{i}}"
+                               value="{{element.mediafinal}}" readonly="true">   
+                               
+                               
+                         </mat-form-field>
+                     
+                     
+                     </td>
+
+
+                   </ng-container>
+
+                   <ng-container matColumnDef="resultadoFinal">
+                    <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Res. Final</th>
+                    <td mat-cell *matCellDef="let element"> {{element.resultadoFinal}} </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedturma"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedturma;"></tr>
+                </table>
+              
+
+              </ng-container>
+
+            </div>
+
+
+            </mat-tab>
+
+       
+
+        </mat-tab-group>
+    </form>
+
+
+
+
+    
+  </mat-card-content>
+
+</div>
+  
+
+</mat-dialog-content>
+
+
+<mat-dialog-actions  style="background-color:  rgb(240, 240, 240);"> 
+  
+  <button mat-mini-fab mat-raised-button (click)="submit()" color="primary" 
+  class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" [disabled]="isSpinnerDisplayed"> 
+
+  <span class="leg">  {{botaoAccao}}  </span>
+
+  <span class="icon"> <mat-icon>save</mat-icon> </span>
+   
+</button> 
+</mat-dialog-actions>
+
+
+   
+   

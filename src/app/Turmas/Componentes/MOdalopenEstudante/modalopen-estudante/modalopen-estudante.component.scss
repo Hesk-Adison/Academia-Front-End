@@ -1,0 +1,53 @@
+.contacto{
+    width: 100%;
+    gap: 1rem;
+    display: flex;
+
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+.dialogaction{
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+     background-color:  rgb(240, 240, 240);
+
+
+
+     >.Save{
+        width: 6rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+        >mat-icon{
+           color: rgb(186, 138, 4);
+        }
+
+        >.texto{
+            display: none;
+
+        }
+
+     }
+
+
+
+     >.Save:hover{
+        width: 8rem;
+
+        >mat-icon{
+           display: none;
+         }
+
+         >.texto{
+            display: block;
+
+        }
+     }
+}

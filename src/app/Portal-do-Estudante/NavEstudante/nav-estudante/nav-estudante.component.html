@@ -1,0 +1,317 @@
+
+<!-- 
+<main>
+    <div class="header">
+        <img src="assets/1.png" alt=""   [height]="FotoPerfil()" [width]="FotoPerfil()">
+    
+        <div class="texto" [class.Transparente]="sidenavCollapsed()">
+            <h2 style="font-size: 15px; color:  rgb(255, 255, 255);" >{{nome}} </h2>
+            <p style="color:  rgb(255, 255, 255); padding-bottom: .2rem;">Estudante</p>
+        </div>  
+    </div>
+
+    <div class="cor">
+
+    </div>
+    
+    <mat-nav-list >
+
+        <div class="item">
+            <a routerLink="home">
+                <mat-icon>
+                    <span class="material-symbols-outlined">
+                        dashboard
+                        </span>
+                </mat-icon>
+                Perfil
+            </a>
+        </div>
+
+        <div class="item ">
+            <a (click)="  dropdowns.set(!dropdowns())">
+                <mat-icon><span class="material-symbols-outlined">
+                    add_circle
+                    </span></mat-icon>
+    
+                    Gestão
+    
+                    <mat-icon class="submenu-back"><span class="material-symbols-outlined">
+                        arrow_forward_ios
+                        </span></mat-icon>
+            </a>
+        
+    
+            <div class="sub-menu" [style.display]="submenu()">
+               
+                <a routerLink="Plano" class="submenu-item">Plano Curricular</a>
+                <a routerLink="SituaPedag" class="submenu-item">Situação pedagogica</a>
+            </div>
+    
+          
+        </div>
+
+    
+        
+    </mat-nav-list>
+    
+        <div class="cor">
+        
+    </div>
+    
+    <div class="item-foot">
+      
+        <div class="roda">
+         
+        </div>
+        
+    </div>
+   
+</main> -->
+
+
+
+
+<main >
+    <div class="header">
+        <img src="assets/1.png" alt=""   [height]="FotoPerfil()" [width]="FotoPerfil()" class="foto">
+    
+        <div class="texto" [class.Transparente]="sidenavCollapsed()">
+            <h2 style="font-size: 15px; color:  rgb(255, 255, 255);" >{{nome}} </h2>
+            <p  class="adminleg"><span>Estudante</span></p>
+        </div>  
+    </div>
+
+    <div class="cor">
+
+    </div>
+    
+    <mat-nav-list >
+
+        <div class="item" [style.padding-left]="paddingColapsed()">
+            <a routerLink="home"   >
+                <mat-icon matListItemIcon>
+                    <span class="material-symbols-outlined">
+                        person
+                        </span>
+                </mat-icon>
+                Perfil
+            </a>
+        </div>
+
+        <div class="item " [style.padding-left]="paddingColapsed()" >
+            <a (click)="  dropdowns.set(!dropdowns())" >
+
+                <!-- [style.font-size]="fontsizeSig() -->
+                <mat-icon matListItemIcon><span class="material-symbols-outlined">
+                    add_circle
+                    </span></mat-icon>
+    
+                    Académico
+                    <!-- <mat-icon class="submenu-back"><span class="material-symbols-outlined">
+                        arrow_forward_ios
+                        </span></mat-icon> -->
+
+                        <div class="caret" [style.transform]="factura()"></div>
+            </a>
+        
+    
+            <div class="sub-menu" [style.display]="submenu()">
+                <a routerLink="Plano"class="submenu-item">
+                    <mat-icon matListItemIcon>
+                        <span class="material-symbols-outlined">
+                            school
+                            </span>
+                    </mat-icon>
+                    Plano Curricular
+                    </a>
+                 <a routerLink="listasitau" class="submenu-item">
+
+                    <mat-icon matListItemIcon>
+                        <span class="material-symbols-outlined">
+                           person
+                            </span>
+                    </mat-icon>
+                    
+                    Situação pedagogica
+                
+                </a>
+               
+            </div>
+    
+          
+        </div>
+
+
+        
+        <!-- <a mat-list-item *ngFor="let i of menuItems()" class="menu-item" [routerLink]="i.route" routerLinkActive="menu-selecionado"  #active="routerLinkActive"  [activated]="active.isActive">
+    
+            <mat-icon [fontSet]="active.isActive? 'material-icons': 'material-icons-outlined'"matListItemIcon>{{i.icon}}</mat-icon>
+            <span matListItemTitle class="legenda">{{i.label}}</span>
+        </a> -->
+        <!-- <div class="item" [style.padding-left]="paddingColapsed()">
+            <a routerLink="info">
+                <mat-icon matListItemIcon>
+                    <span class="material-symbols-outlined">
+                        dashboard
+                        </span>
+                </mat-icon>
+                Dashboard
+            </a>
+        </div>
+        <div class="item" [style.padding-left]="paddingColapsed()">
+            <a routerLink="Estudantes">
+                <mat-icon matListItemIcon>
+                    <span class="material-symbols-outlined">
+                        school
+                        </span>
+                </mat-icon>
+                Estudante
+            </a>
+        </div>
+        <div class="item" [style.padding-left]="paddingColapsed()">
+            <a routerLink="Professores">
+                <mat-icon matListItemIcon>
+                    <span class="material-symbols-outlined">
+                        supervisor_account
+                        </span>
+                </mat-icon>
+                Professor
+            </a>
+        </div>
+        <div class="item {{muda}}" [style.padding-left]="paddingColapsed()" [style.display]="ocultar()">
+            <a (click)="  dropdowns.set(!dropdowns())">
+                <mat-icon matListItemIcon><span class="material-symbols-outlined">
+                    history_edu
+                    </span></mat-icon>
+    
+                    Academico
+                    <div class="caret"></div>
+               
+            </a>
+        
+    
+            <div class="sub-menu" [style.display]="submenu()">
+
+                <a routerLink="listaPlanoCurricular" class="submenu-item textesubmenu">
+                    <span class="icones"> <mat-icon>auto_stories </mat-icon> </span>
+                        <span class="legendatexto"> Plano Curricular</span>
+                </a>
+
+                <a routerLink="listaAnoLect" class="submenu-item textesubmenu">
+                    <span class="icones"> <mat-icon>auto_stories </mat-icon> </span>
+                        <span class="legendatexto"> Ano Lectivo</span>
+                </a>
+
+                <a routerLink="listaDisciplinas"class="submenu-item textesubmenu"> 
+                    <span class="icones"> <mat-icon>auto_stories </mat-icon> </span>
+                        <span class="legendatexto"> Disciplina</span>
+                </a>
+         
+                <a routerLink="listahorario" class="submenu-item textesubmenu">
+
+                    <span class="icones"> <mat-icon>auto_stories </mat-icon> </span>
+                    <span class="legendatexto">Horario</span>
+                    
+                  
+                </a>
+        
+                <a routerLink="listaTurma" class="submenu-item textesubmenu">
+                    
+                    <span class="icones"> <mat-icon>auto_stories </mat-icon> </span>
+                    <span class="legendatexto">  Turmas</span>
+                   
+                
+                </a>
+             
+                <a routerLink="listaCurso" class="submenu-item textesubmenu">
+
+                    <span class="icones"> <mat-icon>auto_stories </mat-icon> </span>
+                    <span class="legendatexto">Curso</span>
+                    
+                    
+                </a>
+
+            </div>
+        </div> -->
+
+              <!-- --------------------------------------------------------------------------------- -->
+    
+              <!-- <div class="item  {{muda}}" [style.padding-left]="paddingColapsed1()" [style.display]="ocultar()">
+                <a (click)="dropdowns1.set(!dropdowns1())">
+                    <mat-icon matListItemIcon><span class="material-symbols-outlined">
+                        list_alt_add
+                        </span></mat-icon>
+                        Facturação
+        
+                        <div class="caret" [style.transform]="factura()"></div>
+                        
+                </a>
+            
+        
+                <div class="sub-menu" [style.display]="submenu1()">
+     -->
+                    <!-- <a routerLink="#" class="submenu-item textesubmenu">
+                       
+                            <span class="legendatexto"> Pagamento</span>
+                    </a>
+    
+                    <a routerLink="#" class="submenu-item textesubmenu">
+                        <span class="icones"> <mat-icon>auto_stories </mat-icon> </span>
+                            <span class="legendatexto">Compras</span>
+                    </a>
+    
+                    <a routerLink="salateste"class="submenu-item textesubmenu"> 
+                        <span class="icones"> <mat-icon>auto_stories </mat-icon> </span>
+                            <span class="legendatexto"> Vendas</span>
+                    </a> -->
+             
+                    <!-- <a routerLink="FrmRcl" class="submenu-item textesubmenu">
+    
+                        <span class="icones"> <mat-icon>auto_stories </mat-icon> </span>
+                        <span class="legendatexto">Recibo</span>
+                        
+                      
+                    </a>
+            
+                 
+    
+                </div>
+            </div> -->
+              <!-- --------------------------------------------------------------------------------- -->
+            
+
+        <!-- <div class="item" [style.padding-left]="paddingColapsed()">
+            <a routerLink="listaMatricula">
+                <mat-icon matListItemIcon>
+                   
+                        edit_square
+                       
+                    </mat-icon>
+              Matricula
+            </a>
+        </div>
+
+        <div class="item" [style.padding-left]="paddingColapsed()">
+            <a routerLink="GeradorRpt">
+                <mat-icon matListItemIcon>print_error</mat-icon>
+                Relatorios
+            </a>
+        </div> -->
+
+  
+        
+    </mat-nav-list>
+    
+        <div class="cor">
+        
+    </div>
+    
+    <div class="item-foot">
+      
+        <div class="roda">
+          
+        </div>
+        
+    </div>
+   
+</main>

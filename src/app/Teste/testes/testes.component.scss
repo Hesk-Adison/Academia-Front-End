@@ -1,0 +1,89 @@
+
+
+.Info{
+   background-color: black;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+}
+
+
+.titulo{
+   margin: 0 auto;
+   display: flex;
+   justify-content: center;
+   text-align: center;
+   font-size:28px;
+  text-transform: uppercase;
+  color: rgb(2, 35, 82);
+
+
+}
+
+.titulo1{
+  
+   display: flex;
+   justify-content: center;
+   text-align: center;
+   font-size:20px;
+   font-family:Arial, Helvetica, sans-serif;
+
+  color: rgb(2, 35, 82);
+}
+
+.btnFechar{
+
+   display: flex;
+   align-items: flex-end;
+   justify-content:flex-end;
+
+   // > #fecha{}
+}
+
+.Cabecalho{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+         >.input-lab{
+                  text-align: center;
+
+                  > label{
+                     color: rgb(85, 85, 85);
+                  }
+                 
+
+                  >input{
+                     border: none;
+                     color: rgb(2, 35, 82);                    
+                  }
+
+                  >p{
+                     color: rgb(2, 35, 82);
+                     border-bottom: 1px solid  rgb(2, 35, 82);
+                  }
+               }
+}
+
+
+.row{
+   display: flex;
+   justify-content: space-between;
+   margin: 1rem;
+  
+
+   > mat-form-field{
+      padding-right: .5rem;
+   }
+}
+
+
+.Seleciona{
+   padding: 1rem;
+
+
+   > mat-form-field{
+      margin-right: 1rem;
+   }
+}
+

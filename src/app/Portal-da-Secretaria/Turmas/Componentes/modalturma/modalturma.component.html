@@ -1,0 +1,672 @@
+
+
+<mat-card class="Header1" style="background-color:  rgb(240, 240, 240);">
+  <div class="head">
+    <div class="btnFechar">
+      <div class="btnteste">
+      <button mat-icon-button class="close-button" (click)="closeDialog()" id="fecha">
+          <mat-icon class="close-icon" color="warn">close</mat-icon>
+      </button>  
+      </div>
+  </div>
+
+  <h2 mat-dialog-title ><span class="titulo">{{titloAccao}}</span></h2>
+  </div>
+
+
+
+</mat-card>
+
+
+
+
+
+<mat-card> 
+  <div  class="spinner-wrapper teste" id="" *ngIf="isSpinnerDisplayed" style="z-index: 9; ">
+    <mat-spinner></mat-spinner>
+  </div>
+
+
+<mat-dialog-content>
+
+    <form [formGroup]="cadastro"  (ngSubmit)="Cadastrar()">           
+    
+       <mat-card class="cardsDialog" style="margin-top: 2rem;width: 100%;">
+    
+
+              <mat-card-content >   
+                
+                     <div class="contacto">
+                            
+                                 <mat-form-field appearance="outline" class="example-full-width">
+                                   <mat-label>Referência</mat-label>
+                                   <input matInput type="text" formControlName="codigo">
+                                 </mat-form-field>
+
+                                 
+                                 <mat-form-field appearance="outline" class="example-full-width">
+                                   <mat-label>Descrição do curso</mat-label>
+                                   <input matInput type="text" formControlName="descricao">
+                                 </mat-form-field>
+                                 
+                                
+                            <mat-form-field appearance="outline" class="example-full-width">
+                              <mat-label>Situação</mat-label>
+                              <input type="text" matInput [formControl]="myControlstatuss"
+                               [matAutocomplete]="autosstatuss">
+                              <mat-autocomplete #autosstatuss="matAutocomplete" #listastatuss
+                               >
+                           
+                                <mat-option  *ngFor="let item of filteredOptionsstatuss | 
+                                async; let index = index" [value]="item.descricao" (onSelectionChange)="Setstatuss(item)">
+                                    {{ item.descricao | titlecase}}
+                                  </mat-option>
+              
+                              </mat-autocomplete>
+                            </mat-form-field>
+
+                                 
+                     </div>
+                    
+              </mat-card-content>
+            </mat-card>
+          
+          
+          
+            <mat-card-content class="cardsDialog" style="margin-top: 2rem;">
+          
+              <mat-tab-group >
+                     <mat-tab label="Dados gerais">
+
+                
+                      <div class="contacto" style="margin-top: 1rem;">
+          
+                        <mat-form-field appearance="outline" class="example-full-width" >
+                            <mat-label>Nº Min alunos</mat-label>
+                            <input matInput type="number" [min]="0" formControlName="vagasmin">
+                          </mat-form-field>
+      
+                          <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Nº Máx. alunos</mat-label>
+                            <input matInput type="number" [min]="0" formControlName="vagasmax">
+                          </mat-form-field>
+
+      
+                      </div>
+
+
+                      <div class="contacto">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Curso</mat-label>
+                          <input type="text" matInput [formControl]="myControlCurso"
+                           [matAutocomplete]="autos2erCurso">
+                          <mat-autocomplete #autos2erCurso="matAutocomplete">
+                       
+                            <mat-option  *ngFor="let item of filteredOptionsCurso | 
+                            async; let index = index" [value]="item.descricao" (onSelectionChange)="SetCurso(item)">
+                                {{ item.descricao | titlecase}}
+                              </mat-option>
+                      
+                          </mat-autocomplete>
+                        </mat-form-field>
+                      
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Plano Curricular</mat-label>
+                          <input type="text" matInput [formControl]="myControlplanocurricular"
+                           [matAutocomplete]="autos2erplanocurricular">
+                          <mat-autocomplete #autos2erplanocurricular="matAutocomplete">
+                       
+                            <mat-option  *ngFor="let item of filteredOptionsplanocurricular | 
+                            async; let index = index" [value]="item.descricao" (onSelectionChange)="Setplanocurricular(item)">
+                                {{ item.descricao | titlecase}}
+                              </mat-option>
+                      
+                          </mat-autocomplete>
+                        </mat-form-field>
+                      </div>
+                    
+
+
+
+
+                      <div class="contacto">
+
+
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Ano/Sem</mat-label>
+                          <input type="text" matInput [formControl]="myControlAnoSem"
+                           [matAutocomplete]="autos2erturnoAnoSem" >
+                          <mat-autocomplete #autos2erturnoAnoSem="matAutocomplete" >
+                       
+                            <mat-option  *ngFor="let item of filteredOptionsAnoSem | 
+                            async; let index = index" [value]="item.descricao" (onSelectionChange)="SetAnoSem(item)">
+                                {{ item.descricao | titlecase}}
+                              </mat-option>
+          
+                          </mat-autocomplete>
+                        </mat-form-field>
+
+
+
+          
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Turno</mat-label>
+                          <input type="text" matInput [formControl]="myControlturno"
+                           [matAutocomplete]="autos2erturno">
+                          <mat-autocomplete #autos2erturno="matAutocomplete" >
+                       
+                            <mat-option  *ngFor="let item of filteredOptionsturno | 
+                            async; let index = index" [value]="item.descricao" (onSelectionChange)="Setturno(item)">
+                                {{ item.descricao | titlecase}}
+                              </mat-option>
+          
+                          </mat-autocomplete>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Sala</mat-label>
+                          <input type="text" matInput [formControl]="myControlccu"
+                          [matAutocomplete]="auto45ws">
+                         <mat-autocomplete #auto45ws="matAutocomplete" 
+                          
+                        
+                         >
+                             <mat-option   (click)="onSelectccu(item,index)" *ngFor="let item of filteredOptionsccu | 
+                             async; let index = index" [value]="item.descricao">
+                                 {{ item.descricao | titlecase}}
+                               </mat-option>
+                         </mat-autocomplete>
+                      </mat-form-field>
+                      </div>
+                      <div class="contacto">
+                        
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Supervisor(a) pedagógico(a)</mat-label>
+                          <input type="text" matInput [formControl]="myControlsupervisPedagogico"
+                           [matAutocomplete]="autos2ersupervisPedagogico">
+                          <mat-autocomplete #autos2ersupervisPedagogico="matAutocomplete" #listasupervisPedagogico>
+                       
+                            <mat-option  *ngFor="let item of filteredOptionssupervisPedagogico | 
+                            async; let index = index" [value]="item.descricao" (onSelectionChange)="SetsupervisPedagogico(item)">
+                                {{ item.descricao | titlecase}}
+                              </mat-option>
+          
+                          </mat-autocomplete>
+                        </mat-form-field>                        
+          
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Forma de avaliação</mat-label>
+                          <input type="text" matInput [formControl]="myControlFaculdade"
+                           [matAutocomplete]="autos2erFaculdade">
+                          <mat-autocomplete #autos2erFaculdade="matAutocomplete" >
+                       
+                            <mat-option  *ngFor="let item of filteredOptionsFaculdade | 
+                            async; let index = index" [value]="item.descricao" (onSelectionChange)="SetFaculdade(item)">
+                                {{ item.descricao | titlecase}}
+                              </mat-option>
+          
+                          </mat-autocomplete>                  
+                        </mat-form-field> 
+                        
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Etapa/Sem</mat-label>
+                          <input type="text" matInput [formControl]="myControlEtapaSemestre"
+                           [matAutocomplete]="autos2erEtapaSemestre">
+                          <mat-autocomplete #autos2erEtapaSemestre="matAutocomplete" >
+                       
+                            <mat-option  *ngFor="let item of filteredOptionsEtapaSemestre | 
+                            async; let index = index" [value]="item.descricao" (onSelectionChange)="onSetEtapaSemestre(item)">
+                                {{ item.descricao | titlecase}}
+                              </mat-option>
+          
+                          </mat-autocomplete>                  
+                        </mat-form-field>
+                      </div>
+                      
+                      
+                      <div class="contacto">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Data Início</mat-label>
+                          <input matInput autocomplete="off" formControlName="datain" 
+                          [matDatepicker]="picker11"
+                              readonly [min]="minDate" [max]="medioDate">
+                          <mat-datepicker-toggle matSuffix [for]="picker11">
+                          </mat-datepicker-toggle>
+                          <mat-datepicker #picker11></mat-datepicker>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Data fim</mat-label>
+                        <input matInput autocomplete="off" formControlName="datafim"
+                         [matDatepicker]="pickerdatafim"
+                            readonly [min]="minDate" [max]="maxDate">
+                        <mat-datepicker-toggle matSuffix [for]="pickerdatafim"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerdatafim ></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-label>Hora Início</mat-label>
+                      <input matInput autocomplete="off" formControlName="horain" [matDatepicker]="horain"
+                          readonly>
+                      <mat-datepicker-toggle matSuffix [for]="horain"></mat-datepicker-toggle>
+                      <mat-datepicker #horain ></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" class="example-full-width">
+                    <mat-label>Hora Fim</mat-label>
+                    <input matInput autocomplete="off" formControlName="horafim" [matDatepicker]="horafim"
+                        readonly>
+                    <mat-datepicker-toggle matSuffix [for]="horafim"></mat-datepicker-toggle>
+                    <mat-datepicker #horafim ></mat-datepicker>
+                </mat-form-field>
+      
+                      </div>
+          
+                      <div  class="contacto">
+                        <mat-slide-toggle formControlName="tipo1" (change)="toggle1($event)">Exame especial</mat-slide-toggle>
+                        <!-- <mat-slide-toggle  formControlName="tipo2" (change)="toggle2($event)" hidden="true">Curso militar</mat-slide-toggle>                 
+                        <mat-slide-toggle  formControlName="tipo3" (change)="toggle3($event)" hidden="true">Curso Técnico</mat-slide-toggle>
+                        <mat-slide-toggle  formControlName="tipo4" (change)="toggle4($event)" hidden="true">Curso Modular</mat-slide-toggle> -->
+                 </div>
+
+<mat-tab-group>
+
+  <mat-tab label="Horários Configurados">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <mat-card style="margin:0px 40px 40px 0px">
+           
+                        <mat-card-title>   
+                        </mat-card-title>
+                    
+                        <mat-card-content class="dashboard-card-content">               
+                            <div class="mat-elevation-z2">
+                                    <div class="body table-responsive">
+                                <table mat-table [dataSource]="dataListaestudante">
+
+                                    <ng-container matColumnDef="no">
+                                     <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);">N/O</th>
+                                     <td mat-cell *matCellDef="let element; let i = index">{{i+1}}</td>
+                                   </ng-container>
+                                      <ng-container matColumnDef="codigo">
+                                        <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Código</th>
+                                        <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+                                      </ng-container>                  
+                                      <ng-container matColumnDef="descricao">
+                                        <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Descricao </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.descricao.toUpperCase()}} </td>
+                                      </ng-container>
+                                        <ng-container matColumnDef="accoes">
+                                            <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Accões </th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <a class="dropdown-toggle" style="cursor: pointer;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" [matMenuTriggerFor]="dropdown">
+                                                    <i class="material-icons" style="color: #0000EE">menu</i>
+                                                </a>
+                                                <mat-menu #dropdown [overlapTrigger]="false" yPosition="below">
+                                                    <button mat-menu-item (click)="editarestudante(element)">
+                                                        <mat-icon color="primary">edit</mat-icon><span>Editar</span>
+                                                    </button>
+ 
+                                                   
+                                                </mat-menu>
+                                            </td>
+                                        </ng-container>
+                    
+                                      <tr mat-header-row *matHeaderRowDef="colunasTabela"></tr>
+                                      <tr mat-row *matRowDef="let row; columns: colunasTabela;"></tr>
+                    
+                                      <tr class="mat-row" *matNoDataRow>
+                                           </tr>
+                                  
+                                  </table>   
+                                
+                         
+                                  <mat-paginator 
+                                  [length]="totalRecords"
+                                  [pageSize]="25"
+                                  [pageSizeOptions]="[ 25,50, 100]" 
+                                  (page)="confirmPageChange($event)"
+                                   showFirstLastButtons> </mat-paginator>
+ 
+                                   
+    
+                                </div>
+                                
+                            </div>
+                        
+                        </mat-card-content>                                   
+                       
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+      
+    
+    <!-- <div  class="spinner-wrapper" *ngIf="isSpinnerDisplayed">
+     <mat-spinner></mat-spinner> 
+ </div>  -->
+
+
+
+
+      
+     </mat-tab>
+<mat-tab label="Disciplinas">
+  <div formArrayName="turmadisc" class="agrega">
+  
+    <div *ngIf="visibilidadeturmadisc; else loggedOut">
+      <table>
+        <thead>
+          <tr>
+            <th>Referência</th>
+            <th>Disciplina</th>
+            <th>
+                 <button type="button" (click)="adicionarturmadisc()"
+                style="background-color: rgb(2, 43, 72); color: white;">
+                <mat-icon>plus_one</mat-icon>
+            </button> 
+            
+              </th>
+          </tr>
+        </thead>
+  
+  
+        <tbody *ngFor="let item of turmadisc.controls; let i = index" [formGroupName]="i">
+  
+          <tr>         
+            <td>
+              <mat-form-field appearance="outline" class="example-full-width">    
+                <mat-label>Referencia</mat-label>                                        
+                <input type="text" matInput  formControlName="referenc"  >
+                
+                <!-- <mat-autocomplete #autosgrauparen="matAutocomplete" 
+                >                   
+                 <mat-option  *ngFor="let item of filteredOptionsst | 
+                 async; let index = index" [value]="item.ordem" (onSelectionChange)="Setgrauparen(item,i)">
+                     {{ item.ordem| titlecase}}
+                   </mat-option>
+
+               </mat-autocomplete> -->
+                </mat-form-field>
+            </td>    
+                     <td>
+                      <mat-form-field  appearance="outline" class="example-full-width">
+                        <mat-label>Disciplina</mat-label>
+                        <input type="text" matInput 
+                         [matAutocomplete]="autosgrauparen" formControlName="disciplina">
+                        <mat-autocomplete #autosgrauparen="matAutocomplete" 
+                         >                   
+                          <mat-option  *ngFor="let item of filteredOptionsst | 
+                          async; let index = index" [value]="item.descricao" (onSelectionChange)="Setgrauparen(item,i)">
+                              {{ item.descricao | titlecase}}
+                            </mat-option>
+        
+                        </mat-autocomplete>
+                      </mat-form-field>
+                     </td>                        
+                  
+            <td style="display: flex; gap: 1rem; align-items: center; justify-content: center;">
+              <button type="button" mat-mini-fab 
+              (click)="removerturmadisc(i)"  style="cursor: pointer; background-color: rgb(231, 10, 10); color: white; 
+              "> <mat-icon>delete_sweep</mat-icon></button>
+
+
+
+<button type="button" mat-mini-fab (click)="getRowData(i)" style="background-color: rgb(0, 24, 47); color: white;">
+  <mat-icon> person_add</mat-icon>
+</button>
+<p>{{Dados}}</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+    </div>
+    
+
+
+    <ng-template #loggedOut>
+      <div style="display: flex;justify-content: end;">
+        <button type="button" mat-mini-fab (click)="adicionarturmadisc()"
+        style="background-color: rgb(2, 43, 72); color: white;">
+        <mat-icon>plus_one</mat-icon>
+    </button>
+      </div>
+    </ng-template>
+  </div>
+  
+</mat-tab>
+</mat-tab-group>
+
+
+                            
+                    </mat-tab>
+
+
+<mat-tab label="Alunos">
+  <mat-card-content class="dashboard-card-content">               
+ <div class="mat-elevation-z2">
+            <div class="body table-responsive">
+        <table mat-table [dataSource]="dataSourcegradl">
+            <ng-container matColumnDef="no">
+             <th mat-header-cell *matHeaderCellDef  style="background-color: rgb(1, 35, 57);">N/O</th>
+             <td mat-cell *matCellDef="let element; let i = index">{{i+1}}</td>
+           </ng-container>
+              <ng-container matColumnDef="codigo">
+                <th mat-header-cell *matHeaderCellDef  style="background-color: rgb(1, 35, 57);"> codigo</th>
+                <td mat-cell *matCellDef="let element"> {{element.no.toUpperCase()}} </td>
+              </ng-container>                  
+              <ng-container matColumnDef="descricao">
+                <th mat-header-cell *matHeaderCellDef  style="background-color: rgb(1, 35, 57);"> Nome </th>
+                <td mat-cell *matCellDef="let element"> {{element.nome.toUpperCase()}} </td>
+              </ng-container>
+                <ng-container matColumnDef="accoes">
+                    <th mat-header-cell *matHeaderCellDef  style="background-color: rgb(1, 35, 57);"> Accões </th>
+                    <td mat-cell *matCellDef="let element">
+                        <a class="dropdown-toggle" style="cursor: pointer;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" [matMenuTriggerFor]="dropdown">
+                            <i class="material-icons" style="color: #0000EE">menu</i>
+                        </a>
+                        <mat-menu #dropdown [overlapTrigger]="false" yPosition="below">
+                            <button mat-menu-item (click)="initialLoadprofess(element)">
+                                <mat-icon color="primary">eye</mat-icon><span>alunos</span>
+                            </button>
+
+                           
+                        </mat-menu>
+                    </td>
+                </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="  colunasAlunos "></tr>
+              <tr mat-row *matRowDef="let row; columns:   colunasAlunos ;"></tr>
+
+              <tr class="mat-row" *matNoDataRow>
+                   </tr>
+          
+          </table>   
+          <mat-paginator 
+          [length]="totalrecordplam"
+          [pageSize]="pageSize11"
+          [pageSizeOptions]="[5, 8, 10,20, 50]" 
+           showFirstLastButtons> </mat-paginator>
+     
+
+           
+
+        </div>
+        
+    </div> 
+<!-- ------------------------------------------------------------------------- -->
+
+<!-- <div class="mat-elevation-z8">
+  <table mat-table [dataSource]="Dados11">
+
+
+    <ng-container matColumnDef="no">
+      <th mat-header-cell *matHeaderCellDef> N/O </th>
+      <td mat-cell *matCellDef="let element let i = index" > {{i+1}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="codigo">
+      <th mat-header-cell *matHeaderCellDef> Codigo </th>
+      <td mat-cell *matCellDef="let element"> {{element.no}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+    </ng-container>
+
+ 
+    <ng-container matColumnDef="accoes">
+      <th mat-header-cell *matHeaderCellDef> accoes </th>
+      <td mat-cell *matCellDef="let element"> 
+        <a class="dropdown-toggle" style="cursor: pointer;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" [matMenuTriggerFor]="dropdown">
+          <i class="material-icons" style="color: #0000EE">menu</i>
+      </a>
+      <mat-menu #dropdown [overlapTrigger]="false" yPosition="below">
+          <button mat-menu-item (click)="initialLoadprofess(element)">
+              <mat-icon color="primary">eye</mat-icon><span>alunos</span>
+          </button>
+
+         
+      </mat-menu>
+        
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="colunasAlunos"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunasAlunos;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+  -->
+
+</mat-card-content>            
+</mat-tab>
+
+
+
+             <mat-tab label="Professores" >
+              
+                      <!-- <mat-card-content class="dashboard-card-content">               
+                          <div class="mat-elevation-z2">
+                                  <div class="body table-responsive">
+                              <table mat-table [dataSource]="dataListaestudanteprofessturma">
+                                  <ng-container matColumnDef="no">
+                                   <th mat-header-cell *matHeaderCellDef  style="background-color: rgb(1, 35, 57);">N/O</th>
+                                   <td mat-cell *matCellDef="let element; let i = index">{{i+1}}</td>
+                                 </ng-container>
+                                    <ng-container matColumnDef="codigo">
+                                      <th mat-header-cell *matHeaderCellDef  style="background-color: rgb(1, 35, 57);"> Professor</th>
+                                      <td mat-cell *matCellDef="let element"> {{element.col1.toUpperCase()}} </td>
+                                    </ng-container>                  
+                                    <ng-container matColumnDef="descricao">
+                                      <th mat-header-cell *matHeaderCellDef  style="background-color: rgb(1, 35, 57);"> Disciplina </th>
+                                      <td mat-cell *matCellDef="let element"> {{element.col2.toUpperCase()}} </td>
+                                    </ng-container>
+                                      <ng-container matColumnDef="accoes">
+                                          <th mat-header-cell *matHeaderCellDef  style="background-color: rgb(1, 35, 57);"> Accões </th>
+                                          <td mat-cell *matCellDef="let element">
+                                              <a class="dropdown-toggle" style="cursor: pointer;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" [matMenuTriggerFor]="dropdown">
+                                                  <i class="material-icons" style="color: #0000EE">menu</i>
+                                              </a>
+                                              <mat-menu #dropdown [overlapTrigger]="false" yPosition="below">
+                                                  <button mat-menu-item (click)="initialLoadprofess(element)">
+                                                      <mat-icon color="primary">eye</mat-icon><span>Professor</span>
+                                                  </button>
+
+                                                 
+                                              </mat-menu>
+                                          </td>
+                                      </ng-container>
+                  
+                                    <tr mat-header-row *matHeaderRowDef="colunasTabelaprofes"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: colunasTabelaprofes;"></tr>
+                  
+                                    <tr class="mat-row" *matNoDataRow>
+                                         </tr>
+                                
+                                </table>   
+                              
+                       
+                                <mat-paginator 
+                                [length]="totalRecordsprofess"
+                                [pageSize]="5"
+                                [pageSizeOptions]="[ 5,10,50, 100]" 
+                                (page)="confirmPageChangeprofesor($event)"
+                                 showFirstLastButtons> </mat-paginator>
+
+                                 
+  
+                              </div>
+                              
+                          </div>
+                      
+                      </mat-card-content>                                    -->
+                     
+
+    
+  
+  <div  class="spinner-wrapper" *ngIf="isSpinnerDisplayedprofess">
+   <mat-spinner></mat-spinner> 
+</div> 
+             </mat-tab>
+              </mat-tab-group>
+            </mat-card-content>
+        
+      
+      
+          
+      
+    </form>
+</mat-dialog-content>
+
+
+
+
+
+
+</mat-card>
+
+
+
+
+
+<mat-dialog-actions class="dialogaction"> 
+  <button (click)="Cadastrar()" class="Save">
+    <mat-icon>save</mat-icon>
+
+    <span class="texto">
+      {{botaoAccao}}
+    </span>
+
+  </button>
+  
+  </mat-dialog-actions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

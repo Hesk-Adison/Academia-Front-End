@@ -1,0 +1,147 @@
+
+<div class="Cabecalho">
+    <h1 class="title">Aproveitamento</h1>
+  </div>
+  
+
+
+<mat-card style="margin-bottom: 1rem;" class="tttt">
+    <span>{{Curso}}</span>  <span>{{Turma}}</span> <span>{{anosem}}</span> <span>{{disciplina}}</span> 
+ 
+  </mat-card>
+
+  <mat-card style="margin-bottom: 1rem;">
+    <div  class="spinner-wrapper teste" style="z-index: 9999;"  *ngIf="isSpinnerDisplayed">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="btnclasse">
+      <div class="btnPrint">
+        <button mat-menu-item (click)="Imprimir('frequencia')" >
+          <mat-icon style="color: rgb(1, 15, 36);">print</mat-icon>
+          Pauta Frequência</button>
+      </div>
+      
+      <div class="btnPrint">
+        <button  (click)="Imprimir('exmnormal')" mat-menu-item >
+          <mat-icon style="color: rgb(187, 144, 2);">print</mat-icon>
+           Pauta Exame normal </button>
+      </div>
+      
+      
+      <div class="btnPrint">
+        <button  (click)="Imprimir('exmrecorrencia')" mat-menu-item >
+          <mat-icon style="color: rgb(7, 63, 2);">print</mat-icon>
+          Pauta Exame de Recorrência  </button>
+      </div>
+      
+      
+      <div class="btnPrint">
+        <button    (click)=" Imprimir('exmespecial')" mat-menu-item >
+          <mat-icon style="color: rgb(222, 6, 6);">print</mat-icon>
+      
+            Exame especial </button>
+      </div>
+          
+    </div>
+
+
+   
+
+
+      
+
+     
+  
+  </mat-card>
+
+
+<mat-card style="margin-top: 2ren;">
+
+    <div class="body table-responsive">
+    <table mat-table [dataSource]="Dados"  matSort matSortStart="desc">
+       
+    
+        <ng-container matColumnDef="alunoNome">
+          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Nome completo </th>
+          <td mat-cell *matCellDef="let element" class="tdview"> {{element.alunoNome}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="n1">
+          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> N1 </th>
+          <td mat-cell *matCellDef="let element; let i = index" style="width: 6%;">
+
+          {{element.n1}}
+
+
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="n2">
+          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> N2 </th>
+          <td mat-cell *matCellDef="let element; let i = index" style="width: 6%;">
+            {{element.n2}}
+
+              </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="n3">
+            <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Tb 1 </th>
+            <td mat-cell *matCellDef="let element" style="width: 6%;"> {{element.n3}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="n4">
+            <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Tb 2 </th>
+            <td mat-cell *matCellDef="let element" style="width: 6%;"> {{element.n4}} </td>
+          </ng-container>
+
+        <ng-container matColumnDef="media" >
+          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Média </th>
+          <td mat-cell *matCellDef="let element ; let i = index" style="width: 5%;">
+            {{element.media}}
+
+              </td>
+        </ng-container>
+
+        <ng-container matColumnDef="resultado">
+          <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Res.Freq</th>
+          <td mat-cell *matCellDef="let element" style="width: 10%;"> {{element.resultado}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="e1">
+            <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Ex.norm </th>
+            <td mat-cell *matCellDef="let element" style="width: 5%;"> {{element.e1}} </td>
+          </ng-container>
+      
+  
+          <ng-container matColumnDef="e2">
+            <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Ex.Rec </th>
+            <td mat-cell *matCellDef="let element" style="width: 5%;"> {{element.e2}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="es">
+            <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Ex.Esp </th>
+            <td mat-cell *matCellDef="let element" style="width: 5%;"> {{element.es}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="mediafinal">
+            <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Med.Final </th>
+            <td mat-cell *matCellDef="let element" style="width: 5%;"> {{element.mediafinal}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="resultadofinal">
+            <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Res.Final </th>
+            <td mat-cell *matCellDef="let element" style="width: 10%;"> {{element.resultadofinal}}</td>
+          </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedturma"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedturma;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20,50]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements">
+</mat-paginator>
+</div>
+
+</mat-card>

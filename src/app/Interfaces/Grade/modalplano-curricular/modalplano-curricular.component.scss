@@ -1,0 +1,155 @@
+
+
+.Header1{
+ 
+    z-index: 999;
+  }
+  
+  
+       .titulo{
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-size:28px;
+       text-transform: uppercase;
+       color: rgb(1, 35, 57);
+       margin-top: -5%;
+      
+      
+      }
+     
+
+
+      .contacto{
+        display: flex;
+    
+       gap: 1rem;
+       width: 100%;
+
+   
+      }
+      .toggle1{
+        color:rgb(1, 35, 57) ;
+      }
+
+  
+
+
+
+
+
+      mat-dialog-actions {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      
+        >button{
+          border: none;
+          width: 10%;
+          height: 4vh;
+          background-color: rgb(255, 255, 255);
+          border-radius: 4px;
+          color: rgb(1, 35, 57);
+          box-shadow: 0 4px 9px #8d8d8d;
+          cursor: pointer;
+          transition: 1s all ease;
+      
+      
+      
+          >.leg{
+            display: none;
+          }
+        }
+      }
+      
+      
+      mat-dialog-actions{
+      
+      
+        >button:hover{
+          background-color: rgb(1, 35, 57);
+          width: 20%;
+          color: white;
+      
+          >.icon{
+            display: none;
+          }
+      
+          >.leg{
+            color: white;
+            display: block;
+          }
+        }
+      
+      }
+
+      .Gerais{
+  
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+    
+      }
+
+
+      .dialogaction{
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
+         background-color:  rgb(240, 240, 240);
+    
+    
+    
+         >.Save{
+            width: 6rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+    
+    
+            >mat-icon{
+               color: rgb(186, 138, 4);
+            }
+    
+            >.texto{
+                display: none;
+    
+            }
+    
+         }
+    
+    
+    
+         >.Save:hover{
+            width: 8rem;
+    
+            >mat-icon{
+               display: none;
+             }
+    
+             >.texto{
+                display: block;
+    
+            }
+         }
+    }
+ 
+
+    .titulo123{
+      padding-top: 1rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: rgb(1, 35, 57);
+      font-size: 1rem;
+      text-transform: uppercase;
+  
+      >h4{
+          border-bottom: 1px solid rgb(1, 35, 57);
+      }
+     
+  
+  }

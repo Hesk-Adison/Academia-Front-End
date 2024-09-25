@@ -1,0 +1,140 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+
+
+
+
+.contacto{
+
+    display:  flex; 
+    justify-content: space-around;
+    gap: 1rem;
+
+    >mat-form-field {
+        width: 100%;
+
+    }
+
+
+}
+.example-full-width{
+    width: 100%;
+}
+
+
+
+
+
+
+
+	  
+	  ::ng-deep .icon-outside .mat-dialog-container {
+	   overflow: unset
+	  }
+
+      .spinner-wrapper{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.10);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+       
+
+        .cardsDialog{
+            box-shadow: 0 4px 8px #8d8d8d;
+        
+        }
+
+        .agrega{
+            margin-top: 1rem;
+        }
+
+        .addturmdisc{
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px #8d8d8d;
+        }
+
+        .dialogaction{
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+             background-color:  rgb(240, 240, 240);
+        
+        
+        
+             >.Save{
+                width: 6rem;
+                height: 2.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+        
+        
+                >mat-icon{
+                   color: rgb(186, 138, 4);
+                }
+        
+                >.texto{
+                    display: none;
+        
+                }
+        
+             }
+        
+        
+        
+             >.Save:hover{
+                width: 8rem;
+        
+                >mat-icon{
+                   display: none;
+                 }
+        
+                 >.texto{
+                    display: block;
+        
+                }
+             }
+        }
+        .Tabelaaluno {
+            width: 100%;
+            border-collapse: collapse; /* Para juntar as bordas das células */
+          }
+          
+          .Tabelaaluno thead {
+            background-color: #021a2f; /* Fundo azul */
+            color: #fff; /* Texto branco */
+            text-transform: uppercase;
+            height: 2rem;
+          }
+          
+          .Tabelaaluno th, .Tabelaaluno td {
+            border: 1px solid #ededed; /* Bordas separando as células */
+            padding: 8px; /* Espaçamento interno das células */
+          }
+          
+          .Tabelaaluno th {
+         
+            text-align: left; /* Alinhar texto à esquerda nos cabeçalhos */
+          }
+          
+          .Tabelaaluno tbody tr:nth-child(even) {
+            background-color: #f2f2f2; /* Fundo cinza claro para linhas pares */
+          }
+          
+          .Tabelaaluno tbody tr:hover {
+            background-color: #e2e2e2; /* Efeito hover em linhas da tabela */
+          }
+          

@@ -1,0 +1,215 @@
+<div class="Cabecalho">
+    <h1>Plano de Pagamento</h1>
+  </div>
+  
+  <form [formGroup]="cadastro" (ngSubmit)="Cadastrar()">
+   <mat-card class="cardsDialog">
+      <mat-card-content>
+        <div class="contacto">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Código</mat-label>
+            <input matInput type="text" formControlName="codigo" [readonly]="false">
+          </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Descrição</mat-label>
+            <input matInput type="text" formControlName="descricao">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>N Parcelas</mat-label>
+            <input matInput type="number" [min]="0" formControlName="parcelas">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Valor da Parcela Zero</mat-label>
+            <input matInput type="number" [min]="0" formControlName="valorparzero">
+          </mat-form-field>
+          <div class="btnPrint" style="cursor: pointer;">
+            <button [disabled]="cadastro.invalid">
+              <mat-icon style="color: rgb(222, 161, 6); cursor: pointer;">save</mat-icon>
+              <span>{{botaoAccao}}</span>
+            </button>
+          </div>
+        </div>
+  
+       <div class="contacto">
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Nível Acadêmico</mat-label>
+            <input type="text" matInput [formControl]="myControlnivelacademico" [matAutocomplete]="autos2ernivelacademico">
+            <mat-autocomplete #autos2ernivelacademico="matAutocomplete">
+              <mat-option *ngFor="let item of filteredOptionsnivelacademico | async" [value]="item.descricao" (onSelectionChange)="Setnivelacademico(item)">
+                {{ item.descricao | titlecase }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field> 
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Curso</mat-label>
+            <input type="text" matInput [formControl]="myControlCurso" [matAutocomplete]="autos2ernivelCurso">
+            <mat-autocomplete #autos2ernivelCurso="matAutocomplete">
+              <mat-option *ngFor="let item of filteredOptionsCurso | async" [value]="item.descricao" (onSelectionChange)="SetCurso(item)">
+                {{ item.descricao | titlecase }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field> 
+           <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Ano/Semestre</mat-label>
+            <input type="text" matInput [formControl]="myControlAnoSem" [matAutocomplete]="autos2ernivelanoSem">
+            <mat-autocomplete #autos2ernivelanoSem="matAutocomplete">
+              <mat-option *ngFor="let item of filteredOptionsAnoSem | async" [value]="item.descricao" (onSelectionChange)="SetAnoSem(item)">
+                {{ item.descricao | titlecase }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field> 
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Data de Início</mat-label>
+            <input matInput autocomplete="off" formControlName="datapartida" [matDatepicker]="datamatini" readonly>
+            <mat-datepicker-toggle matSuffix [for]="datamatini"></mat-datepicker-toggle>
+            <mat-datepicker #datamatini></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Data de Término</mat-label>
+            <input matInput autocomplete="off" formControlName="datafim" [matDatepicker]="datamat" readonly>
+            <mat-datepicker-toggle matSuffix [for]="datamat"></mat-datepicker-toggle>
+            <mat-datepicker #datamat></mat-datepicker>
+          </mat-form-field>
+        </div> 
+  
+       <div class="contacto">
+          <div class="check" style="width: 30%; margin-right: .5rem;">
+            <h4>Tipo de Plano</h4>
+            <section class="example-section mudarr">
+              <div class="toggle1">
+                <label for="toggle"> Valor Fixo:</label>
+              <mat-slide-toggle  formControlName="tipo1" (change)="toggle111($event)"></mat-slide-toggle>
+              </div>
+
+              <div class="toggle1">
+                <label for="toggle"> Por crédito: </label>
+              <mat-slide-toggle  formControlName="tipo2" (change)="toggle2222($event)"></mat-slide-toggle>
+              </div>
+            </section>
+          </div>
+          <div class="check" style="width: 100%;">
+            <section class="example-section" style="width: 100%; display: flex; justify-content: space-between;">
+              <mat-checkbox class="example-margin" formControlName="pularsabados">Pular sábado</mat-checkbox>
+              <mat-checkbox class="example-margin" formControlName="pularferiados">Pular feriados</mat-checkbox>
+              <mat-form-field appearance="outline" class="example-full-width" style="width: 70%; margin-left: .5rem;">
+                <mat-label>Valor da Propina</mat-label>
+                <input matInput type="number" [min]="0" formControlName="valor">
+              </mat-form-field>
+            </section>
+            <section class="example-section" style="width: 100%; display: flex; justify-content: space-between;">
+              <mat-checkbox class="example-margin" formControlName="diauteis">Dias úteis</mat-checkbox>
+              <mat-checkbox class="example-margin" formControlName="pulardomingos">Pular domingo</mat-checkbox>
+              <mat-form-field appearance="outline" class="example-full-width" style="width: 70%; opacity: 0;">
+                <mat-label></mat-label>
+                <input matInput type="text" readonly>
+              </mat-form-field>
+            </section>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card> 
+  
+   <mat-card class="cardsDialog" style="margin-top: 2rem;">
+      <mat-tab-group>
+        <mat-tab label="Propriedades do Plano">
+          <div formArrayName="planopagp" class="agrega">
+            <div *ngIf="visibilidadeagregado; else loggedOut">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Data</th>
+                    <th>Parcela</th>
+                    <th>Valor Parcela</th>
+                    <th>Tipo Movimento</th>
+                    <th>Descrição</th>
+                    <th>...</th>
+                    <th>
+                      <button type="button" style="background-color: rgb(2, 43, 72); color: white;" (click)="adicionarFp()">
+                        <mat-icon>plus_one</mat-icon>
+                      </button>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let item of itemsFp.controls; let i = index" [formGroupName]="i">
+                  <tr>
+                    <td>
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Data</mat-label>
+                        <input matInput [matDatepicker]="picker1" formControlName="data">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Parcela</mat-label>
+                        <input matInput type="number" [min]="0" formControlName="parecela">
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Valor Parcela</mat-label>
+                        <input matInput type="number" min="0" formControlName="valorbruto">
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Tipo de Movimento</mat-label>
+                        <input type="text" matInput formControlName="titulo" [matAutocomplete]="autobi" [formControl]="myControlturno">
+                        <mat-autocomplete #autobi="matAutocomplete">
+                          <mat-option *ngFor="let item of filteredOptionsturno | async" [value]="item.descricao" (click)="onSelectbi(item, i)">
+                            {{ item.descricao | titlecase }}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field> 
+                    </td>
+                    <td>
+                      <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Descrição</mat-label>
+                        <input matInput formControlName="descricao">
+                      </mat-form-field>
+                    </td>
+                    <td>...</td>
+                    <td>
+                      <button type="button" mat-mini-fab color="warn" fxFlex="nogrow" (click)="removerFormasp(i)" style="cursor: pointer;">
+                        <mat-icon>delete_sweep</mat-icon>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ng-template #loggedOut>
+              <div style="display: flex; justify-content: end;">
+                <button type="button" mat-mini-fab (click)="adicionarFp()" style="background-color: rgb(2, 43, 72); color: white;">
+                  <mat-icon>plus_one</mat-icon>
+                </button>
+              </div>
+            </ng-template>
+          </div>
+        </mat-tab>
+        <mat-tab label="Distrato">
+          <div class="contacto">
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label>Valor Cobrança</mat-label>
+              <input matInput type="number" [min]="0" formControlName="valordistrato">
+            </mat-form-field>
+       
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label>Dias Vencimento</mat-label>
+              <input matInput type="number" [min]="0" formControlName="diasvenc">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-full-width">
+              <mat-label>Valor Desconto Vencimento</mat-label>
+              <input matInput type="number" [min]="0" formControlName="desconto">
+            </mat-form-field>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card> 
+  </form>
+  
+  <div class="spinner-wrapper" *ngIf="isSpinnerDisplayed">
+    <mat-spinner></mat-spinner>
+  </div>
+  

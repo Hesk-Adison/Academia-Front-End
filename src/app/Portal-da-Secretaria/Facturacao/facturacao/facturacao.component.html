@@ -1,0 +1,711 @@
+
+<div class="Cabecalho">
+  <h1>Facturação</h1>
+</div>
+<form [formGroup]="cadastro"  (ngSubmit)="Cadastrar(false)">
+  <mat-card  class="cardsDialog">
+
+
+
+
+    <div class="contacto">
+      <mat-form-field appearance="outline" class="example-full-width" >
+
+        <mat-label>Tipo de Documento </mat-label>
+        <input matInput class="inputpesquisa" [readonly]="true" formControlName="nomedoc"/>
+        <button matSuffix mat-raised-button style="background-color: rgb(2, 43, 72); color: white;" type="button"  class="btnpesquisa" (click)="GetDocumentos()"  [disabled]="valido1">
+          <mat-icon >menu</mat-icon> </button>
+
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width"  style="width: 30%;">
+
+        <mat-label>Nº documento </mat-label>
+        <input matInput class="inputpesquisa" [readonly]="true" formControlName="numero"/>
+        <button matSuffix mat-raised-button style="background-color: rgb(2, 43, 72); color: white;" type="button"  class="btnpesquisa" (click)="getFact('numero')"  [disabled]="valido1">
+          <mat-icon >search</mat-icon> </button>
+
+      </mat-form-field>
+
+ 
+
+        <!-- <mat-form-field  appearance="outline" class="middle-input">
+          <mat-label>Nº documento </mat-label>
+      <input matInput formControlName="numero" class="inputpesquisa" >
+      <button mat-button mat-raised-button  class="btnpesquisa"  type="button" style="background-color: rgb(2, 43, 72); color: white;" (click)="getFact('numero')" [disabled]="valido1">
+        <mat-icon >search</mat-icon></button>
+    </mat-form-field> -->
+
+  
+
+
+
+           <div class="group" >
+             <div class="btnPrint">
+              <button type="button"   (click)="Imprimir()" [disabled]="!valido">
+                <mat-icon >print</mat-icon>
+                <span>Imprimir</span></button>
+             </div>
+
+              <div class="btnPrint">
+              <button   [disabled]="!valido"  >
+                <mat-icon style="color: rgb(222, 161, 6);">save</mat-icon>
+                <span> {{botaoAccao}} </span>
+                </button>
+             </div>
+
+           </div>
+
+       </div>
+
+
+
+       <div class="contacto">
+        <div class="teste3" style="margin-left: .5rem;">
+          <button mat-button mat-raised-button  class="start-button" type="button" (click)="getestudante()"
+          [disabled]="!valido" style="background-color: rgb(2, 43, 72); color: white;width: 10%;">
+            <mat-icon >menu</mat-icon></button>
+        </div>
+
+        <mat-form-field appearance="outline" class="example-full-width"  style="width: 100%; position: relative;">
+        
+          <mat-label>Nome do cliente</mat-label>
+      
+          <input matInput class="inputpesquisa" [readonly]="true" formControlName="nome"/>
+          <!-- <button matSuffix mat-raised-button style="background-color: rgb(2, 43, 72); color: white;" type="button"  class="btnpesquisa" (click)="getFact('nome')"  [disabled]="valido1">
+            <mat-icon >search</mat-icon> </button>
+
+            <button mat-button mat-raised-button  class="start-button" type="button" (click)="getestudante()"
+            [disabled]="!valido" style="background-color: rgb(2, 43, 72); color: white;margin-bottom: 5rem; position: absolute;">
+              <mat-icon >menu</mat-icon></button> -->
+  
+        </mat-form-field>
+
+        <div class="teste3" style="width: 30%; display: flex; gap: .5rem;">
+    
+          <button matSuffix mat-raised-button style="background-color: rgb(2, 43, 72); color: white; width: 10%;" type="button"  class="btnpesquisa" (click)="getFact('nome')"  [disabled]="valido1">
+            <mat-icon >search</mat-icon> </button>
+
+ 
+        </div>
+
+        <!-- <div class="ddddddd" >
+  
+            <mat-form-field  appearance="outline" class="middle-input" style="width: 100%;">
+              <mat-label>Nome do cliente </mat-label>
+          <input matInput [readonly]="true" formControlName="nome" class="inputpesquisa" >
+
+        </mat-form-field>
+        
+        <button mat-button mat-raised-button  class="end-button"
+        type="button" style="background-color: rgb(2, 43, 72); color: white;" (click)="getFact('nome')" [disabled]="valido1">
+          <mat-icon >search</mat-icon></button>
+        </div> -->
+    
+        <mat-form-field  appearance="outline" class="example-full-width"   style="width: 100%; ">
+          <mat-label>Centro de Custo</mat-label>
+          <input type="text" matInput
+           [matAutocomplete]="filteredOptionsCcusd" [formControl]="myControlCcu" formControlName="ccusto">
+          <mat-autocomplete #filteredOptionsCcusd="matAutocomplete"
+           >
+            <mat-option  *ngFor="let item of filteredOptionsCcu |
+            async; let index = index" [value]="item.descricao" (onSelectionChange)="Setccu(item)">
+                {{ item.descricao | titlecase}}
+              </mat-option>
+      
+          </mat-autocomplete>
+        </mat-form-field>
+
+         </div>
+
+
+      <div >
+
+
+
+
+
+
+    
+      </div>
+
+
+       <div class="contacto">
+
+        <mat-form-field  appearance="outline" class="example-full-width">
+          <mat-label>Data de emissão</mat-label>
+          <input matInput autocomplete="off" formControlName="data"
+          [matDatepicker]="datamate"
+              readonly>
+          <mat-datepicker-toggle matSuffix [for]="datamate">
+          </mat-datepicker-toggle>
+          <mat-datepicker #datamate></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field  appearance="outline" class="example-full-width">
+        <mat-label>Data de Validade</mat-label>
+        <input matInput autocomplete="off" formControlName="dataven"
+        [matDatepicker]="datamat5"
+            readonly>
+        <mat-datepicker-toggle matSuffix [for]="datamat5">
+        </mat-datepicker-toggle>
+        <mat-datepicker #datamat5></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width" >
+      <mat-label>Moeda de venda</mat-label>
+      <input type="text" matInput
+       [matAutocomplete]="filteredOptionsCcusds" [formControl]="myControlMoedas" formControlName="moeda">
+      <mat-autocomplete #filteredOptionsCcusds="matAutocomplete"
+       >
+        <mat-option  *ngFor="let item of filteredOptionsMoedas |
+        async; let index = index" [value]="item.descricao" (onSelectionChange)="onSelectMoedas(item,index)">
+            {{ item.descricao | titlecase}}
+          </mat-option>
+  
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline" class="example-full-width" >
+      <mat-label>Moeda de câmbio</mat-label>
+      <input type="text" matInput
+       [matAutocomplete]="filteredOptionsCcusdsca" [formControl]="myControlMoedascambio" formControlName="moeda2">
+      <mat-autocomplete #filteredOptionsCcusdsca="matAutocomplete"
+       >
+        <mat-option  *ngFor="let item of filteredOptionsMoedascambio |
+        async; let index = index" [value]="item.descricao" (onSelectionChange)="onSelectMoedacambio(item)">
+            {{ item.descricao | titlecase}}
+          </mat-option>
+  
+      </mat-autocomplete>
+    </mat-form-field>
+  
+  
+  
+    <mat-form-field  appearance="outline" class="example-full-width">
+      <mat-label>Taxa de câmbio</mat-label>
+      <input matInput type="text" formControlName="cambiousd" [readonly]="true">
+    </mat-form-field>
+  
+
+
+
+</div>
+<div class="contacto21">
+
+  <button matSuffix mat-raised-button 
+  type="button"  class="btnpesquisa1 bt1" (click)="disableForm()">
+  <mat-icon>{{icon}}</mat-icon> {{descricao}}</button>
+
+  <button matSuffix mat-raised-button 
+  type="button"  class="btnpesquisa1 bt2" (click)="handleAction()">
+  <mat-icon>{{icon1}}</mat-icon> Anular</button>
+
+ </div>
+    </mat-card>
+
+    <mat-card style="margin-top: 2rem;">
+
+    </mat-card>
+
+          <mat-card style="margin-bottom: 2rem;">
+            <mat-tab-group>
+              <mat-tab label="Dados Gerais">
+
+
+                 <div formArrayName="factl" class="agrega">
+                   <div >
+                     <table class="fact">
+                       <thead>
+                         <tr>
+                           <!-- <th>Ref.Interna</th> -->
+                              <th>Referência</th>
+                           <th>Descrição</th>
+                           <th>Quant</th>
+                           <th>Preço</th>
+                           <th>Sub Total</th>
+                           <!-- <th>Cod.Arm</th>
+                           <th>Armazem</th> -->
+                           <!-- <th>%Desc</th>
+                           <th>Desconto</th> -->
+                           <!-- <th>...</th> -->
+                           <!-- <th>Tab.IVA</th>
+                           <th>Taxa IVA</th>
+                           <th>IVA. incl</th>
+                           <th>Valor IVA</th> -->
+                           <!-- <th>M Valival</th> -->
+                           <th>Total</th>
+                           <!-- <th>M Total</th> -->
+                           <!-- <th>Unidade</th>
+                           <th>Ordem</th>
+                           <th>Cpoc</th> -->
+                           <th>Serviço</th>
+                           <th>
+                             <button type="button" style="background-color: rgb(2, 43, 72); color: white;"
+                              (click)="adicionarfacttl()">
+                               <mat-icon>plus_one</mat-icon>
+                             </button>
+                           </th>
+                         </tr>
+                       </thead>
+                       <tbody *ngFor="let item of itemsFactl.controls; let i = index" [formGroupName]="i">
+
+
+                        <tr>
+                           <td>
+
+                            <mat-form-field  appearance="outline" class="example-full-width">
+                               <input matInput  class="inputpesquisa"  matInput
+                               formControlName="ref" id="ref-{{i}}"  (input)="onKeyPressdesref($event,i)"/>
+                              <button matSuffix mat-raised-button  style="display: flex; margin-right: 1rem; box-shadow: 0 4px 8px #8d8d8d;"
+                              (click)="getprodu('ref',i)" class="btnpesquisa" type="button" [disabled]="isQuantityZero(i)">
+                                  <mat-icon class='search-icon' matSuffix>search</mat-icon>
+                              </button>
+                            </mat-form-field>
+
+                           </td>
+                           <td>
+
+
+                            <mat-form-field  appearance="outline" class="example-full-width">
+                               <input matInput  class="inputpesquisa"  matInput
+                               formControlName="descricao" id="descricao-{{i}}" (input)="onKeyPressdesref($event,i)"/>
+                              <button matSuffix mat-raised-button  style="display: flex; margin-right: 1rem; box-shadow: 0 4px 8px #8d8d8d;"
+                              (click)="getprodu('descricao',i)" class="btnpesquisa" type="button"  [disabled]="isQuantityZero(i)">
+                              <mat-icon class='search-icon' matSuffix>search</mat-icon>
+                              </button>
+                            </mat-form-field>
+
+
+                           </td>
+                           <td>
+                             <mat-form-field appearance="outline">
+                               <mat-label>Quant</mat-label>
+                               <input matInput type="number" formControlName="quant" id="quant-{{i}}" (input)="onKeyPress($event,i)">
+                             </mat-form-field>
+                           </td>
+                           <td>
+                             <mat-form-field appearance="outline">
+                               <mat-label>Preço</mat-label>
+                               <input matInput type="number" formControlName="preco" id="preco-{{i}}" (input)="onKeyPress($event,i)">
+                             </mat-form-field>
+                             <mat-form-field *ngIf="false">
+                              <mat-label>Ordem</mat-label>
+                               <input matInput type="number" formControlName="ordem" id="ordem-{{i}}" (input)="onKeyPress($event,i)">
+                            </mat-form-field>
+                           </td>
+                           <td>
+                             <mat-form-field appearance="outline">
+                               <mat-label>Sub Total</mat-label>
+                               <input matInput type="number" formControlName="subtotall" [readonly]="true">
+                             </mat-form-field>
+                           </td>
+
+                           <td>
+                             <mat-form-field appearance="outline">
+                               <mat-label>Total</mat-label>
+                               <input matInput type="number" formControlName="totall" [readonly]="true">
+                             </mat-form-field>
+                           </td>
+                           <td>
+
+                            <mat-checkbox   formControlName="servico"  id="servico-{{i}}">
+                            </mat-checkbox>
+
+                           </td>
+                           <td>
+                             <button type="button" mat-mini-fab color="warn" fxFlex="nogrow"
+                             (click)="removerFactl(i)" style="cursor: pointer;" [disabled]="isQuantityZero(i)">
+                               <mat-icon>delete_sweep</mat-icon>
+                             </button>
+                           </td>
+                         </tr>
+                       </tbody>
+
+                     </table>
+                   </div>
+                 </div>
+
+
+           </mat-tab>
+
+           <mat-tab label="Dados de tesouraria">
+            <div formArrayName="formasp" class="agrega">
+
+              <div *ngIf="visibilidadeFormasp; else loggedOut111">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Tipo Movimento</th>
+                      <th>Nº de cheque</th>
+                      <th>Conta</th>
+                      <th>Data</th>
+                      <th>Valor</th>
+                      <th>
+                           <button type="button"
+                          style="background-color: rgb(2, 43, 72); color: white;" (click)="adicionarFp()">
+                          <mat-icon>plus_one</mat-icon>
+                      </button>
+
+                        </th>
+
+                    </tr>
+                  </thead>
+
+
+                  <tbody *ngFor="let item of itemsFpag.controls; let i = index" [formGroupName]="i">
+                    <tr>
+                      <td>
+                        <mat-form-field  appearance="outline" class="example-full-width">
+                          <mat-label>Tipo de Movimento</mat-label>
+                          <input type="text" matInput
+                          formControlName="titulo"
+                          [matAutocomplete]="autobi"  [formControl]="myControlturno">
+                         <mat-autocomplete #autobi="matAutocomplete"
+                         >
+                             <mat-option (click)="onSelectbi(item,i)" *ngFor="let item of filteredOptionsturno |
+                             async; let index = index" [value]="item.descricao">
+                                 {{ item.descricao | titlecase}}
+                               </mat-option>
+                         </mat-autocomplete>
+                      </mat-form-field>
+
+                      </td>
+                      <td >
+                        <mat-form-field  appearance="outline" class="example-full-width">
+                          <mat-label>Nº de cheque</mat-label>
+                               <input matInput type="text" formControlName="numtitulo">
+                             </mat-form-field>
+                           </td>
+
+                           <td>
+                            <mat-form-field  appearance="outline" class="example-full-width">
+                              <mat-label>Conta</mat-label>
+                              <input type="text" matInput
+                              formControlName="contatesoura"
+                              [matAutocomplete]="autobissssssssss">
+                             <mat-autocomplete #autobissssssssss="matAutocomplete" >
+                                 <mat-option (click)="onSetEtapaSemestre(item,i)" *ngFor="let item of
+                                 filteredOptionsEtapaSemestre |
+                                 async; let index = index" [value]="item.contas">
+                                     {{ item.contas | titlecase}}
+                                   </mat-option>
+                             </mat-autocomplete>
+                          </mat-form-field>
+                          </td>
+                          <td>
+                            <mat-form-field  appearance="outline" class="example-full-width">
+                              <mat-label>Data</mat-label>
+                              <input matInput [matDatepicker]="picker12" formControlName="dcheque">
+                              <mat-datepicker-toggle matIconSuffix [for]="picker12"></mat-datepicker-toggle>
+                              <mat-datepicker #picker12></mat-datepicker>
+                            </mat-form-field>
+                          </td>
+                        <td>
+                          <mat-form-field  appearance="outline" class="example-full-width">
+                            <mat-label>Valor</mat-label>
+                            <input matInput type="number"  formControlName="valor">
+                          </mat-form-field>
+                        </td>
+                      <td>
+
+                        <button type="button" mat-mini-fab color="warn" fxFlex="nogrow" (click)="removerFp(i)" style="cursor: pointer;">
+                          <mat-icon>delete_sweep</mat-icon>
+                        </button>
+                      </td>
+
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+
+              <ng-template #loggedOut111>
+                <div style="display: flex; justify-content: end;">
+                  <button type="button" mat-mini-fab (click)="adicionarFp()" style="background-color: rgb(2, 43, 72); color: white;">
+                    <mat-icon>plus_one</mat-icon>
+                  </button>
+                </div>
+              </ng-template>
+            </div>
+           </mat-tab>
+           <mat-tab label="Entregas">
+
+            <div class="contacto">
+              <mat-form-field  appearance="outline" class="example-full-width">
+                <mat-label>Data de Partida</mat-label>
+                <input matInput autocomplete="off" formControlName="datapartida"
+                [matDatepicker]="datamat13"
+                    readonly>
+                <mat-datepicker-toggle matSuffix [for]="datamat13">
+                </mat-datepicker-toggle>
+                <mat-datepicker #datamat13></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field  appearance="outline" class="example-full-width">
+              <mat-label>Data de entrega</mat-label>
+              <input matInput autocomplete="off" formControlName="dataentrega"
+              [matDatepicker]="datamat"
+                  readonly>
+              <mat-datepicker-toggle matSuffix [for]="datamat">
+              </mat-datepicker-toggle>
+              <mat-datepicker #datamat></mat-datepicker>
+          </mat-form-field>
+
+            </div>
+
+
+              <div class="contacto">
+               <mat-form-field  appearance="outline" class="example-full-width">
+                 <mat-label>Local de partida</mat-label>
+                 <input matInput type="text" formControlName="localpartida" [readonly]="true">
+               </mat-form-field>
+
+               <mat-form-field  appearance="outline" class="example-full-width">
+                <mat-label>Local de entrega</mat-label>
+                <input matInput type="text" formControlName="localentrega" [readonly]="true">
+              </mat-form-field>
+
+              <mat-form-field  appearance="outline" class="example-full-width">
+                <mat-label>Pessoa de contacto</mat-label>
+                <input matInput type="text" formControlName="pcontacto" [readonly]="true">
+              </mat-form-field>
+
+              <mat-form-field  appearance="outline" class="example-full-width">
+               <mat-label>Telefone</mat-label>
+               <input matInput type="text" formControlName="cell" [readonly]="true">
+             </mat-form-field>
+              </div>
+
+              <div class="contacto">
+                <mat-form-field  appearance="outline" class="example-full-width">
+                  <mat-label>Matricula do produto</mat-label>
+                  <input matInput type="text" formControlName="matricula" [readonly]="true">
+                </mat-form-field>
+
+                <mat-form-field  appearance="outline" class="example-full-width">
+                 <mat-label>Email</mat-label>
+                 <input matInput type="text"  [readonly]="true">
+               </mat-form-field>
+
+               <mat-form-field  appearance="outline" class="example-full-width">
+                 <mat-label>Departamento</mat-label>
+                 <input matInput type="text"  [readonly]="true">
+               </mat-form-field>
+
+               <mat-form-field  appearance="outline" class="example-full-width">
+                <mat-label>Motorista</mat-label>
+                <input matInput type="text" formControlName="motorista" [readonly]="true">
+              </mat-form-field>
+              <mat-form-field  appearance="outline" class="example-full-width">
+                <mat-label>Pais</mat-label>
+                <input matInput type="text" formControlName="pais" [readonly]="true">
+              </mat-form-field>
+               </div>
+
+           </mat-tab>
+           <!-- <mat-tab label="Anexos">
+
+            <div formArrayName="factanexo">
+                      <table>
+
+              <thead>
+                <tr>
+                  <th>
+                    descricao
+                  </th>
+                  <th>
+                    Ficheiro
+                  </th>
+
+                  <th>
+                    <button type="button" mat-mini-fab (click)="adicionarAnexos()"
+                    style="background-color: rgb(2, 43, 72); color: white;">
+                    <mat-icon>plus_one</mat-icon>
+                </button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of itemsFp.controls; let i = index" [formGroupName]="i">
+                <tr>
+                  <td>
+                    <mat-form-field  appearance="outline" class="example-full-width">
+                      <mat-label>Descrição</mat-label>
+                      <input matInput type="text" formControlName="descricao" [readonly]="true">
+                    </mat-form-field>
+                  </td>
+
+                  <td>
+                    <mat-form-field  appearance="outline" class="example-full-width">
+                      <mat-label>Ficheiro</mat-label>
+                      <input  type="file" formControlName="anexo" [readonly]="true">
+                    </mat-form-field>
+                  </td>
+                </tr>
+
+
+                </tbody>
+            </table>
+
+
+            </div>
+            <ng-template #loggedOut>
+              <div style="display: flex;justify-content: end;">
+                <button type="button" mat-mini-fab (click)=" adicionarAnexos()"
+                style="background-color: rgb(2, 43, 72); color: white;">
+                <mat-icon>plus_one</mat-icon>
+            </button>
+              </div>
+            </ng-template>
+
+           </mat-tab> -->
+                     </mat-tab-group>
+          </mat-card>
+
+
+
+
+
+
+                    <mat-card>
+                      <mat-tab-group>
+
+
+                        <mat-tab label="Opcções Gerais">
+
+                          <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="anulado">Documento anulado</mat-checkbox>
+                          </section>
+
+                          <mat-form-field  appearance="outline" class="example-full-width" style="width: 30%; margin-left: .5rem;">
+                            <mat-label>Nº. do contrato</mat-label>
+                            <input matInput type="text" formControlName="codInterno" [readonly]="true">
+                          </mat-form-field>
+                        </mat-tab>
+                          <mat-tab label="Requisição">
+                            <div class="contacto">
+                              <mat-form-field  appearance="outline" class="example-full-width">
+                                <mat-label>Nº. de Requisição</mat-label>
+                                <input matInput type="text" formControlName="requisicao" [readonly]="true">
+                              </mat-form-field>
+                              <mat-form-field  appearance="outline" class="example-full-width">
+                                <mat-label>Nº. de primeira/segunda via</mat-label>
+                                <input matInput type="text" formControlName="nrFactura" [readonly]="true">
+                              </mat-form-field>
+                            </div>
+                          </mat-tab>
+
+
+                          <mat-tab label="Cliente">
+                            <div class="contacto">
+                              <mat-form-field  appearance="outline" class="example-full-width">
+                                <mat-label>Morada</mat-label>
+                                <input matInput type="text" formControlName="morada" [readonly]="true">
+                              </mat-form-field>
+                              <mat-form-field  appearance="outline" class="example-full-width">
+                                <mat-label>localidade</mat-label>
+                                <input matInput type="text" formControlName="localidade2" [readonly]="true">
+                              </mat-form-field>
+                              <mat-form-field  appearance="outline" class="example-full-width">
+                                <mat-label>NUIT</mat-label>
+                                <input matInput type="text" formControlName="nuit" [readonly]="true">
+                              </mat-form-field>
+                            </div>
+                            <div class="contacto">
+                              <mat-form-field  appearance="outline" class="example-full-width">
+                                <mat-label>Celular</mat-label>
+                                <input matInput type="text" formControlName="telefone" [readonly]="true">
+                              </mat-form-field>
+                              <mat-form-field  appearance="outline" class="example-full-width">
+                                <mat-label>Email</mat-label>
+                                <input matInput type="text" formControlName="mail" [readonly]="true">
+                              </mat-form-field>
+                              <div class="example-button-container">
+                                <button mat-mini-fab disabled aria-label="Example icon button with a home icon">
+                                  <mat-icon>person</mat-icon>
+                                </button>
+                              </div>
+                            </div>
+                          </mat-tab>
+                          <mat-tab label="Projecto">
+                            <mat-form-field  appearance="outline" class="example-full-width">
+                              <mat-label>projecto</mat-label>
+                              <input matInput type="text" formControlName="pjnome" [readonly]="true">
+                            </mat-form-field>
+                          </mat-tab>
+                          <mat-tab label="Movimento de stock">
+                            <section class="example-section" style="display: flex; flex-direction: column;">
+                              <mat-checkbox class="example-margin" formControlName="movstk" >Este documento movimenta stock</mat-checkbox>
+                              <mat-checkbox class="example-margin"  formControlName="vendido" >Venda sem saida de produto</mat-checkbox>
+                            </section>
+                          </mat-tab>
+
+                          <mat-tab label="Academia">
+
+                            <div class="contacto">
+                              <mat-form-field  appearance="outline" class="example-full-width">
+                                <mat-label>Curso</mat-label>
+                                <input matInput type="text" formControlName="desccurso" [readonly]="true">
+                              </mat-form-field>
+                              <mat-form-field  appearance="outline" class="example-full-width">
+                                <mat-label>Entidade</mat-label>
+                                <input matInput type="text" formControlName="entidadebanc" [readonly]="true">
+                              </mat-form-field>
+                              <mat-form-field  appearance="outline" class="example-full-width">
+                                <mat-label>Turma</mat-label>
+                                <input matInput type="text" formControlName="descturma" [readonly]="true">
+                              </mat-form-field>
+                            </div>
+                            <div class="contacto">
+                              <mat-form-field  appearance="outline" class="example-full-width">
+                                <mat-label>Ano/Sem</mat-label>
+                                <input matInput type="text" formControlName="anosem" [readonly]="true">
+                              </mat-form-field>
+                              <mat-form-field  appearance="outline" class="example-full-width">
+                                <mat-label>Referencia</mat-label>
+                                <input matInput type="text" formControlName="referencia" [readonly]="true">
+                              </mat-form-field>
+                              <mat-form-field  appearance="outline" class="example-full-width">
+                                <mat-label>Etapa/Semestre</mat-label>
+                                <input matInput type="text" formControlName="etapa" [readonly]="true">
+                              </mat-form-field>
+                            </div>
+                             <section class="example-section" style="display: flex; flex-direction: column;">
+                               <mat-checkbox class="example-margin" formControlName="inscricao" >Inscrição semestral</mat-checkbox>
+                              <mat-checkbox class="example-margin" formControlName="multa">É multa?</mat-checkbox>
+
+                            </section>
+                          </mat-tab>
+
+                        </mat-tab-group>
+                    </mat-card>
+
+
+</form>
+<!-- <div  class="spinner-wrapper" *ngIf="isSpinnerDisplayed">
+ <mat-spinner></mat-spinner>
+</div>  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

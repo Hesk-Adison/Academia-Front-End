@@ -1,0 +1,67 @@
+
+
+
+<h1>Lancamento de Notas</h1>
+
+<form  [formGroup]="Lancamento" formDit="ngform">
+
+    <div class="input-box">
+        <label for="" >Nome:</label>
+        <input type="text" formControlName="alunoNome" placeholder="Insira o nome" required>
+    </div>
+
+    <div class="input-box">
+        <label for="" >Codigo:</label>
+        <input type="text" formControlName="alunostamp" placeholder="Insira o Codigo" required>
+    </div>
+
+    <div class="input-box">
+        <label for="" class="Turma">Turma:</label>
+        <select name="" id="Turma" formControlName="turmastamp" required>
+            <option value="Turma 1">Turma 1</option>
+            <option value="Turma 2">Turma 2</option>
+            <option value="Turma 2">Turma 2</option>
+            <option value="Turma 3">Turma 3</option>
+        </select>
+    </div>
+
+    <div class="input-box">
+        <label for="">Nota 1:</label>
+        <input type="text" formControlName="n1" placeholder="Insira a nota 1" >
+    </div>
+
+    <div class="input-box">
+        <label for="" >Nota 2:</label>
+        <input type="text" formControlName="n2" placeholder="Insira a nota 2" >
+    </div>
+
+    <div class="input-box">
+        <label for="" >Nota 3:</label>
+        <input type="text" formControlName="n3" placeholder="Insira a nota 3" >
+    </div>
+
+    <div class="input-box">
+        <label for="">Nota 4:</label>
+        <input type="text" formControlName="n4" placeholder="Insira a nota 4" >
+    </div>
+
+    <div class="input-box">
+        <label for="">Exame:</label>
+        <input type="text" formControlName="e1" placeholder="Insira a nota do exame" >
+    </div>
+
+    <div class="input-box">
+        <label for="">Recorrencia:</label>
+        <input type="text" formControlName="e2" placeholder="Insira a nota da Recorrencia" >
+    </div>
+
+    <div class="input-box">
+        <label for="">Exame Expecial:</label>
+        <input type="text" formControlName="es" placeholder="Insira a nota do exame especial" >
+    </div>
+
+    <div class="btn-box">
+        <button type="submit">Lancar</button>
+        <button>Voltar</button>
+    </div>
+</form>

@@ -1,0 +1,193 @@
+
+
+
+
+.Header1{
+ 
+  z-index: 999;
+}
+
+
+     .titulo{
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      font-size:28px;
+     text-transform: uppercase;
+     color: rgb(1, 35, 57);
+     margin-top: -5%;
+    
+    
+    }
+     
+
+     .example-button-row {
+       display: flex;
+       align-items: center;
+       justify-content: space-around;
+     }
+     
+     .btnFechar{
+
+      display: flex;
+      align-items: flex-end;
+      justify-content:flex-end;
+      padding: 1rem;
+      padding: .5rem;
+      transition: 1s ;
+    
+    
+      >.btnteste{
+    
+        position: relative;
+    
+        >button{
+          height: 40px;
+          width: 40px;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: .3rem;
+          background-color: white;
+          border-radius: 50%;
+          box-shadow: 0 2px 7px  #8d8d8d;
+          cursor: pointer;
+          transition: 1s;
+       
+      
+          >mat-icon{
+             display: flex;
+                justify-content: center;
+                align-items: center;
+            font-size: 1.8rem;
+            color: red;
+            transition: 1s;
+          }
+        }
+      }
+    }
+    
+    .btnFechar:hover{
+    
+      >.btnteste{
+    
+        >button{
+          // height: 30px;
+          // width: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      
+          >mat-icon{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            
+          }
+        }
+    
+      }
+      
+    
+    }
+     
+    .Cabecalho111{
+      display: flex;
+      justify-content:space-around;
+      align-items: center;
+            >.input-lab{
+                     text-align: center;
+    
+                     > label{
+                        color: rgb(186, 138, 4);
+                       
+                     }
+                    
+    
+                     >p{
+                        color: rgb(1, 35, 57);
+                        //border-bottom: 1px solid  rgb(2, 35, 82);
+                     }
+                  }
+    }
+    
+     
+     
+     .row{
+       display: flex;
+       justify-content: space-between;
+       margin: 1rem;
+      
+     
+       > mat-form-field{
+          padding-right: .5rem;
+       }
+     }
+     
+     
+     .Seleciona{
+       padding: 1rem;
+     
+     
+       > mat-form-field{
+          margin-right: 1rem;
+       }
+     }
+     
+     //-------------------------------------------------------------------------Tabela--------------------------------------------------
+
+//------------------------------------------------------------Rodape(btnLancar)-----------------------------------------------------
+
+mat-dialog-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  >button{
+    border: none;
+    width: 10%;
+    height: 4vh;
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+    color: rgb(1, 35, 57);
+    box-shadow: 0 4px 9px #8d8d8d;
+    cursor: pointer;
+    transition: 1s all ease;
+
+
+
+    >.leg{
+      display: none;
+    }
+  }
+}
+
+
+mat-dialog-actions{
+
+
+  >button:hover{
+    background-color: rgb(1, 35, 57);
+    width: 20%;
+
+    >.icon{
+      display: none;
+    }
+
+    >.leg{
+      color: white;
+      display: block;
+    }
+  }
+
+}
+
+.posright{
+  padding-top: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}

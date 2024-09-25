@@ -1,0 +1,150 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
+
+
+
+.dialogaction{
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+   background-color:  rgb(240, 240, 240);
+
+
+
+   >.Save{
+      width: 6rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+
+      >mat-icon{
+         color: rgb(186, 138, 4);
+      }
+
+      >.texto{
+          display: none;
+
+      }
+
+   }
+
+
+
+   >.Save:hover{
+      width: 8rem;
+
+      >mat-icon{
+         display: none;
+       }
+
+       >.texto{
+          display: block;
+
+      }
+   }
+}
+
+
+.Busca{
+    width: 50%;
+    margin-top: 1rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+
+
+    >button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family:  "Inconsolata", monospace;
+        background-color: rgb(255, 255, 255);
+        color: rgb(1, 35, 57);
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: 1s all ease;
+      }
+
+
+
+      >button:hover{
+        background-color: rgb(1, 35, 57);
+        color: rgb(254, 254, 254);
+      }
+}
+
+.Cabecalho{
+    display: flex;
+   width: 30%;
+
+
+
+
+    > h1{
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        font-family: "Oswald", sans-serif;
+        font-weight: 100;      
+        color: rgb(1, 35, 57);
+        // font-family: "Work Sans", sans-serif;
+        border-bottom: 1px solid rgb(1, 35, 57);
+
+        
+    }
+}
+
+mat-card{
+    >button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family:  "Inconsolata", monospace;
+        background-color: rgb(255, 255, 255);
+        color: rgb(1, 35, 57);
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: 1s all ease;
+      }
+
+
+
+      >button:hover{
+        background-color: rgb(1, 35, 57);
+        color: rgb(254, 254, 254);
+      }
+
+ 
+  
+}
+
+th{
+    border: 1px solid #8d8d8d;
+    text-transform: uppercase;
+    color: rgb(186, 138, 4);
+  
+  }
+  
+  td{
+    border: .3px solid #ededed;
+    color:rgb(1, 35, 57);
+    text-transform: uppercase;
+    font-size: .8rem;
+    >mat-form-field{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 1rem;
+     
+    }
+  }
+
+
+  .spinner-wrapper{
+    z-index: 99;
+  }

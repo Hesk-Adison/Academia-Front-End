@@ -1,0 +1,395 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --teste-cor:rgb(1, 35, 57);
+}
+
+
+main{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.Container{
+    width: 768px;
+    height: 480px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px  #A0A0A0;
+    overflow: hidden;
+    position: relative;
+}
+
+.form-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+     
+}
+
+.form{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 55px 0;
+    background-color: white;
+    transition: 2s all ease ;
+    
+}
+
+
+
+.form-esqueceu{
+    transform: translateX(-100%);
+    z-index: -1;
+    opacity: 0;
+
+}
+
+.form-title{
+    font-size: 2rem;
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
+    letter-spacing:5px;
+    color:rgb(1, 35, 57) ;
+   
+}
+
+.form-icons{
+    box-shadow: 0 5px 14px  #A0A0A0;
+    transition: 2s ;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.form-icons:hover{
+    transform: translateY(-15%);
+    cursor: pointer;
+}
+
+
+
+.form-input-container{
+    display: flex; 
+    flex-direction: column;
+    gap: 10px;
+
+
+
+    >.form-input{
+       width: 18.75rem;
+       height: 2.3rem;
+       border-radius: 4px;
+       padding: 10px 20px;
+       border-style: none;
+       background-color: #e9e9e9;
+       outline: none;
+       border-bottom: 1px solid rgb(1, 35, 57);
+       box-shadow: 0 2px 4px  #a2a2a2;
+       transition: 2s all ease ;
+    }
+
+
+    >.form-input:hover{
+        transform: translateY(-8%);
+        border: none;
+        box-shadow: none;
+        // border-bottom: 1px solid rgb(1, 35, 57);
+        // box-shadow: 0 2px 4px  #a2a2a2;
+    }
+}
+
+
+button.toggle-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button.toggle-button:focus {
+    outline: none;
+  }
+
+
+.form-btn{
+    width: 8rem;
+    height: 2.3rem;
+    border: none;
+    border-radius: 4px;
+    transition: 2s all ease;
+    font-size: .9rem;
+    font-family: "Oswald", sans-serif;
+    font-weight: 100;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid rgb(186, 138, 4);
+    color: rgb(186, 138, 4);
+  
+    
+}
+
+.form-btn:hover{
+    width: 18.75rem;
+    border: none;
+    background-color: rgb(1, 35, 57);
+    color: white;
+}
+
+
+.Overlay-container{
+    width: 50%;
+    height: 100%;
+    background-color:  rgb(1, 35, 57);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(100%);
+    text-align: center;
+    transition: 2s all ease;
+    z-index: 10;
+
+    >.overlay{
+        width: 100%;
+        height: 100%;
+        background-color: rgb(186, 138, 4);
+        color: white;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 4rem;
+        transition: 2s all ease;
+        
+
+
+
+        >button{
+            border:1px solid white;
+            color: white;
+            transition: .5s all ease-in;
+        }
+
+        >button:hover{
+            border:1px solid rgb(255, 255, 255);
+            color: rgb(255, 255, 255);
+            background-color: transparent;
+            width: 13rem;
+        }
+
+        >.form-title{
+            letter-spacing: normal;
+        }
+
+        >h2{
+            color: white;
+        }
+    }
+}
+
+.form-link{
+    display: none;
+}
+
+
+
+//-----------------------------------------------------------animacao------------------------------------------------------------------------
+
+.Container.toggle .Overlay-container{
+    transform: translateX(0%);
+
+}
+
+.Container.toggle .overlay:nth-child(2){
+    opacity: 0;
+    z-index: -1;
+}
+
+.Container.toggle .form-login{
+    transform: translateX(100%);
+    z-index: -1;
+    opacity: 0;
+
+}
+
+
+.Container.toggle .form-esqueceu{
+    transform: translateX(0%);
+    z-index: 1;
+    opacity: 1;
+
+} 
+
+// .opacit{
+ 
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: 100%;
+//     height: 100%;
+//     background-color: #ffffff;
+//     opacity: .1;
+
+//  >mat-icon{
+//         opacity: 3;
+//         z-index: 1;
+//         position: absolute;
+//         color: rgb(0, 29, 37);
+    
+
+//     }
+// }
+
+
+.Mensagem{
+
+    width: 768px;
+    height: 480px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 0;
+    
+    align-items: center;
+    border-radius: 12px;
+  opacity: 0;
+  display: none;
+
+
+    >H1{
+        margin-top: 1rem;
+        color:  rgb(1, 35, 57);
+        >span{
+            color: rgb(153, 100, 2);
+        }
+    }
+   
+}
+
+
+@media (max-width:768px){
+
+    .Overlay-container{
+        display: none;
+    }
+
+    .Container{
+        width: 100vw;
+        height: 100vh;
+        box-shadow: none;
+        border-radius: 0px;
+    }
+    .form{
+        width: 100%;
+        justify-content: space-evenly;
+   
+    
+    }
+
+    .form-esqueceu{
+        position: absolute;
+        transform: translateX(100%);
+    }
+
+
+    .Container.toggle .form-esqueceu{
+        transform: translateX(0%);
+        background-color: rgb(1, 35, 57);
+        color: white;
+
+
+        >h2{
+            color: white;
+        }
+
+
+        >button{
+            border: 1px solid #fff;
+            color: white;
+        }
+    }
+
+
+    .logar{
+        color: white;
+        text-transform: uppercase;
+    }
+
+    .senha{
+        color: rgb(186, 138, 4);
+    }
+
+    .form-link{
+        text-transform: uppercase;
+        text-decoration: none;
+        display: block;
+    }
+
+ 
+
+}
+
+
+@media(max-width:668px){
+    .Mensagem{
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+
+        >p{
+            width: 100%;
+            padding: .5rem;
+            font-size: 1rem;
+        }
+    }
+}
+
+@media(max-width:421px){
+    .Mensagem{
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        z-index: 99999999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+
+        >p{
+            width: 100%;
+            padding: .5rem;
+            font-size: 1rem;
+        }
+    }
+}

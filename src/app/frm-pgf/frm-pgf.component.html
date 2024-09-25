@@ -1,0 +1,162 @@
+<mat-card class="Header1" style="background-color:  rgb(240, 240, 240);">
+  <div class="head">
+    <div class="btnFechar">
+      <div class="btnteste">
+      <button mat-icon-button class="close-button" (click)="onCancel()" id="fecha">
+          <mat-icon class="close-icon" color="warn">close</mat-icon>
+      </button>  
+      </div>
+  </div>
+
+  <h2 mat-dialog-title ><span class="titulo">{{titloAccao}}</span></h2>
+  </div>
+
+
+
+</mat-card>
+
+<!-- <h2 mat-dialog-title><span class="titulo">{{titloAccao}}</span></h2>
+<button mat-icon-button class="close-buttons" (click)="onCancel()">
+  <mat-icon class="close-icon" color="warn">close</mat-icon>
+</button> 
+<mat-divider></mat-divider> -->
+<mat-dialog-content>
+
+    <form [formGroup]="cadastro"  (ngSubmit)="Cadastrar()">           
+    
+       <mat-card  class="cardsDialog">
+    
+
+              <mat-card-content >   
+                     <div class="mat-elevation-z2">
+                      <div class="body table-responsive">
+                            <table mat-table [dataSource]="dataListaturma">
+                              <ng-container matColumnDef="descricao">
+                                <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Documento </th>
+                                <td mat-cell *matCellDef="let element"> {{element.col1
+                                }} </td>
+                              </ng-container>     
+                            
+                              <ng-container matColumnDef="nrdoc">
+                                <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Número </th>
+                                <td mat-cell *matCellDef="let element"> {{element.
+                                  col2
+                                  }} </td>
+                              </ng-container>
+                            
+                        
+                              <ng-container matColumnDef="valordoc">
+                                   <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Valor doc.  </th>
+                                   <td mat-cell *matCellDef="let element"> {{element.
+                                     col4
+                                     }} </td>
+                                 </ng-container>
+                                 
+                              <ng-container matColumnDef="valorpreg">
+                                   <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> Por Pagar </th>
+                                   <td mat-cell *matCellDef="let element"> {{element.
+                                     col5
+                                     }} </td>
+                                 </ng-container>
+                                 
+                              <ng-container matColumnDef="valorreg">
+                                   <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);"> À Pagar </th>
+                                   <td mat-cell *matCellDef="let element; let i = index" style="width: 10%;">          
+                                
+                                          <mat-form-field appearance="outline" class="example-full-width">
+                                              <input matInput autocomplete="off"  (input)="onKeyPresssd($event,element,i)"
+                                               class="form-control" type="number"  id="media-{{i}}" value="{{element.col6}}" >                
+                                          </mat-form-field>
+                                      
+                                      
+                                      </td>
+
+                                   
+                                 </ng-container>
+                            
+                            
+                              <ng-container matColumnDef="marcar">
+                        
+                                <th mat-header-cell *matHeaderCellDef style="background-color: rgb(1, 35, 57);">
+                                  <mat-checkbox style=" background-color: white;"  (change)="$event ? masterToggledmz() : null"
+                                                [checked]="selectiondmz.hasValue() && isAllSelecteddmz()"
+                                                [indeterminate]="selectiondmz.hasValue() && !isAllSelecteddmz()" >
+                                  </mat-checkbox>
+                                </th>
+                                
+                                <td mat-cell *matCellDef="let element; let i = index">
+                                  
+                                  
+                                  <mat-checkbox (click)="$event.stopPropagation()"
+                        
+                                  (change)="onKeyPress($event,element,i)"
+                                                [checked]="selectiondmz.isSelected(element)">
+                                  </mat-checkbox>
+                                
+                                </td>
+                                </ng-container>
+                               
+                            
+                              <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+                              <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+                            </table> 
+              
+                            <mat-paginator 
+                            [length]="totalrecordturma"
+                            [pageSize]="20"
+                            [pageSizeOptions]="[3, 5, 10,20, 50]" 
+                             showFirstLastButtons> </mat-paginator>
+                            </div>  
+                          </div>
+                    
+                  
+
+                     
+              </mat-card-content>
+            </mat-card>
+    </form>
+</mat-dialog-content>
+
+<!-- <mat-divider></mat-divider>
+
+<mat-dialog-actions align="end" >
+  
+       <button mat-raised-button (click)="onCancel()" color="warn" type="button"> Voltar </button>
+       <button mat-raised-button color="primary"  
+       [disabled]="cadastro.invalid" (click)="adicionarturmaleeee()" style="padding-right:10px; ">
+           Enviar </button>
+</mat-dialog-actions> -->
+
+<mat-dialog-actions style="background-color:  rgb(240, 240, 240); width: 100%; display: flex; justify-content: center;">
+  
+
+  <button   (click)="adicionarturmaleeee()">
+      Enviar </button>
+</mat-dialog-actions>
+
+<div  class="spinner-wrapper" *ngIf="isSpinnerDisplayed">
+  <mat-spinner></mat-spinner>
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

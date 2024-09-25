@@ -1,0 +1,97 @@
+<mat-card class="Header1" style="background-color:  rgb(240, 240, 240);">
+    <div class="head">
+      <div class="btnFechar">
+        <div class="btnteste">
+        <button mat-icon-button class="close-button" (click)="closeDialog()" id="fecha">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+        </button>
+        </div>
+    </div>
+  
+    <h2 mat-dialog-title ><span class="titulo">{{titloAccao}}</span></h2>
+    </div>
+  
+  
+  
+  </mat-card>
+  <mat-dialog-content>
+  
+  
+  
+  
+  
+  
+  
+       <mat-card  class="cardsDialog">
+  
+  
+         <mat-card-content >
+                <div class="mat-elevation-z2">
+  
+                  <div class="nomes1">
+  
+                    <div class="cont1" >
+                     <span>Click aqui</span>
+                      <input type="file" accept=".pdf" (change)="onChange($event)">
+  
+  
+                  </div>
+                  </div>
+  
+                     </div>
+  
+                     <div class="informa" *ngIf="valida">
+
+                        {{ficheiro}} <br>
+                        {{name}}
+
+                     </div>
+
+                
+ 
+  
+  
+         </mat-card-content>
+       </mat-card>
+  </mat-dialog-content>
+  
+  <div  class="spinner-wrapper" *ngIf="isSpinnerDisplayed">
+         <mat-spinner></mat-spinner>
+     </div>
+  
+  
+  <mat-dialog-actions
+   style="background-color:  rgb(240, 240, 240); width: 100%; display: flex; justify-content: center;"
+   >
+   <div  style="display: flex; width: 100%; justify-content: center; margin-top: 1rem;">
+    <button mat-raised-button  [disabled]="cadastro.invalid" (click)="Save()" class="btnsave">
+      <mat-icon style="color: rgb(222, 161, 6);">save</mat-icon>
+     Enviar </button>
+      </div>
+  
+  </mat-dialog-actions>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,228 @@
+
+
+
+<main>
+    <div class="Container {{muda}}">
+
+        <div class="form-container">
+            <form  class="form form-login" [formGroup]="  LoginForm" (ngSubmit)="iniciarSessao()">
+           
+
+                <div class="form-icons">
+                  <a href="https://isedef.ac.mz/"><img src="assets/Isedeflogo.png" alt=""  style="width: 70px;"></a>  
+                </div>
+                <h2 class="form-title">
+                    ISEDEF
+                </h2>
+
+                <p class="form-text">
+                    Insira os dados da sua conta
+                </p>
+
+                <div class="form-input-container" >
+                    
+                    <input type="text" matInput  placeholder="Usuario" formControlName="Login" class="form-input">
+                    <input [type]="passwordFieldType" placeholder="Senha"  formControlName="PasswordHash" class="form-input">
+                    <button type="button" (click)="togglePasswordVisibility()" style="border: none; background: none; display: flex; align-items: center; gap: .5rem;">
+                        <!-- {{ passwordFieldType === 'password' ? 'Mostrar' : 'Ocultar' }} -->
+                        <mat-icon style="color: rgb(186, 138, 4);">
+                            <span class="material-symbols-outlined">
+                                visibility
+                                </span>
+                        </mat-icon>
+                      <span>ver senha</span> 
+                      </button>
+                </div>
+
+           
+                <!-- <div class="msm" *ngIf="LoginForm.invalid">
+                    <p> Email invalido</p>
+                </div> -->
+
+                <div class="mensagem" >
+                    <p>{{Mensagem}}</p>
+                </div>
+
+
+                <button class="form-btn"  type="submit"  [disabled]="LoginForm.invalid"> Aceder</button>
+                <a href="#" class="form-link senha" (click)="trocar()">
+                    Esqueceu a sua senha?
+                </a>
+
+                
+
+            </form>
+
+             <form  class="form form-esqueceu" [formGroup]="Recuperar" (ngSubmit)="Recuperacao()" *ngIf="abilitaInput">
+
+                <div class="form-icons">
+                    <a href="https://isedef.ac.mz/"><img src="assets/Isedeflogo.png" alt=""  style="width: 70px;"></a>  
+                  </div>
+                  <h2 class="form-title">
+                      ISEDEF
+                  </h2>
+                <!-- <h2 class="form-title" *ngIf="abilitaInput">
+                    Recuperar senha
+                </h2> -->
+
+                <p class="form-text" *ngIf="abilitaInput">
+                 Campo de recuperação de senha
+                </p>
+
+                <div class="form-input-container" >
+                    <input type="email" placeholder="Email"  class="form-input" formControlName="email" *ngIf="abilitaInput">
+                    <input type="password" placeholder="Codigo"  class="form-input" formControlName="Codigo" *ngIf="abilitaInput" style="display: none">
+                      
+                </div>
+
+            
+
+                <button class="form-btn"  type="button" (click)="Recuperacao()" *ngIf="abilitaInput">Recuperar</button>
+             
+                <a href="#" class="form-link logar" (click)="trocar1()" *ngIf="abilitaInput">
+                   Aceder a página
+                </a>
+
+
+
+            </form> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <form  [formGroup]="codigo" class="form form-esqueceu" *ngIf="abilitaCod" >
+                <div class="form-icons">
+                    <a href="https://isedef.ac.mz/"><img src="assets/Isedeflogo.png" alt=""  style="width: 70px;"></a>  
+                  </div>
+                  <h2 class="form-title">
+                      ISEDEF
+                  </h2>
+
+
+                <!-- <h2 class="form-title">
+                    Recuperar senha
+                </h2> -->
+   
+
+                <p class="form-text" style="display: flex; flex-direction: column; gap: 1rem;">
+                   Enviamos um codigo ao seu Email
+                   <br>
+                    <span style="width: 100%; display: flex; align-items: center; justify-content: center;">insira o seu codigo</span>
+                </p>
+
+   
+                <div class="form-input-container" *ngIf="abilitaCod">
+
+                    
+                    <mat-form-field appearance="outline">
+                        <mat-label>Codigo de recuperação</mat-label>
+                        <input matInput type="text" formControlName="codigo">
+                      </mat-form-field>
+
+                    <!-- <input *ngIf="abilitaCod" type="password" placeholder="Codigo de recuperação" [ngModel]="verCod" class="form-input" > -->
+                </div>
+            
+
+                <button class="form-btn"  type="button" (click)="VerficaCod()" *ngIf="abilitaCod" [disabled]="codigo.invalid">Processar</button>
+             
+                <a href="#" class="form-link logar" (click)="trocar1()">
+                   Aceder a página
+                </a>
+
+
+
+            </form >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+            
+        </div>
+
+
+        <div class="Overlay-container">
+
+            <div class="overlay left">
+                <div class="text"></div>
+                <h2 class="form-title">  Aceder a página</h2>
+
+                <p class="form-text">
+                      Possui todos os dados e deseja aceder a página?
+                </p>
+
+                <button class="form-btn"  type="submit" (click)="trocar1()" [disabled]="isSpinnerDisplayed">Aceder</button>
+
+                <div class="text"></div>
+            </div>
+
+            <div class="overlay right">
+
+                <div class="text"></div>
+                <h2 class="form-title"> Seja bem vindo!</h2>
+
+                <p class="form-text">
+                      Deseja recuperar sua senha?
+                </p>
+
+                <button class="form-btn"  type="submit" (click)="trocar()" [disabled]="isSpinnerDisplayed">Recuperar senha</button>
+
+                <div class="text" ></div>
+             
+            </div>
+        </div>
+
+    </div>
+    <div  class="spinner-wrapper opacit" *ngIf="isSpinnerDisplayed" style="z-index: 9999; position: absolute;">
+        <div class="opa"></div>
+        <mat-spinner></mat-spinner> 
+    </div> 
+    <div class="Mensagem">
+        <H1>DMZ <span>SOFTWARE</span></H1>
+        <p>Caro  utilizador, informamos que o sistema encontra-se em desenvolvimento.
+            Dispositivos de telas iguais ou menores a 5 Polegadas não tem acesso!
+        </p>
+
+        
+    </div>
+  
+</main>
+
+
+

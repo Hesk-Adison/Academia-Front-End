@@ -1,0 +1,208 @@
+<h2 mat-dialog-title ><span class="titulo">{{titloAccao}}</span></h2>
+
+<div class="btnFechar">
+    <button mat-icon-button class="close-button" (click)="closeDialog()" id="fecha">
+        <mat-icon class="close-icon" color="warn">close</mat-icon>
+    </button>  
+</div>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-content>
+    <form [formGroup]="formularioMancebo">
+        <div class="Cabecalho">
+      <div class="input-lab">
+
+
+        <label>Turma</label>
+          <!-- <input  formControlName="turma" readonly> -->
+          <p>{{dadosMancebo.turma}}</p>
+
+      </div>
+      <!-- <div class="input-lab">
+        
+        <label>Curso</label>
+        <input formControlName="curso" readonly>
+        </div> -->
+
+        <div class="input-lab">
+            
+            <label>Curso</label>
+            <p>{{dadosMancebo.curso}}</p>
+
+            <!-- <input formControlName="curso" readonly> -->
+ 
+        </div> 
+
+
+        <div class="input-lab">
+            <label>Ano/Sem</label>
+            <p>{{dadosMancebo.anosem}}</p>
+            <!-- <input matInput autocomplete="off" formControlName="anosem" readonly> -->
+        </div>           
+               
+        <div class="input-lab">
+            <label>Disciplina</label>
+
+            <p>{{dadosMancebo.disciplina}}</p>
+            <!-- <input formControlName="disciplina" readonly> -->
+        </div>           
+                             
+
+        </div>
+        <!-- <mat-divider style="margin-top: -15px;"></mat-divider> -->
+
+ 
+
+        <mat-tab-group style='min-height:450px;'>
+
+          
+            <mat-tab>
+             
+                <div class="Seleciona">
+                    <!-- <mat-form-field>
+                        <mat-label>Escolha o teste</mat-label>
+                        <select matNativeControl required  (change)="Teste($event)" >
+                          <option [value]="item.descricao"  *ngFor="let item of dataSource">
+                            {{item.descricao}}
+                          </option>
+                        </select>
+                      </mat-form-field>  -->
+
+                      <!-- <mat-form-field>
+                        <mat-label>Selecione a Nota</mat-label>
+                        <select matNativeControl required (change)="Teste($event)">
+                          <option value="0"> </option>
+                          <option value="1">Exame</option>
+                          <option value="2">Recorrencia</option>
+                          <option value="3">Especial</option>
+                          
+                        </select>
+                      </mat-form-field>
+        
+                         <mat-form-field class="example-full-width" style="width: 50%;">
+                        <mat-label>Busca</mat-label>
+                        <input type="text" matInput placeholder="Nome do aluno"  name="Pesquisa" (input)="busca($event)" > 
+                      </mat-form-field>  -->
+        
+                   </div>
+
+                <div class="divider" style="margin-bottom: 1rem;">
+                   <span class="titulo1">Lista de alunos</span>
+                  
+                </div>
+<!-- 
+                <button type="button" mat-mini-fab (click)="addMancdoc()" style="margin-left: -450px;">
+                    <mat-icon>plus_one</mat-icon>
+                </button> -->
+
+                <div class="mancdoccss">
+                    
+                    <ng-container formArrayName="mancdoc" style="margin-top: 25px;">
+                        <ng-container *ngFor="let docItem of mancdocs().controls; let i=index" [formGroupName]="i">
+                            <mat-divider></mat-divider>
+                            <div class="row">
+
+                                <input hidden="true" matInput class="form-control" formControlName="turmanotastamp">
+                                <input hidden="true" matInput class="form-control" formControlName="turmastamp">                               
+                                <div class="di-Input">
+
+                                </div>
+
+                                <div class="di-Input">
+                                    
+                                </div>
+
+                                <div class="di-Input">
+                                    
+                                </div>
+                                <mat-form-field appearance="fill" style="width: 40%;">
+                                    <mat-label>Número</mat-label>
+                                    <input matInput autocomplete="off" formControlName="no" readonly >
+                                    <mat-icon matSuffix>account-box</mat-icon>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="fill" style="width: 100%;">
+                                    <mat-label>Nome Completo</mat-label>
+                                 <input matInput autocomplete="off" formControlName="alunoNome" readonly>
+                                    <mat-icon matSuffix>account-box</mat-icon>
+                                </mat-form-field>  
+                                
+                                <mat-form-field appearance="fill" style="width: 18%;">
+                                    <mat-label>Md. Freq</mat-label>
+                                    <input matInput autocomplete="off" formControlName="media" readonly>
+                                    <mat-icon matSuffix>account-box</mat-icon>
+                                </mat-form-field> 
+
+                               
+                                <div *ngIf="!Habilita1" style="width: 10%;">                                    
+                                <mat-form-field>
+                                    <mat-label>Normal</mat-label>
+                                    <input matInput autocomplete="off" formControlName="e1" max="20" min="0" type="number">
+                                    <mat-icon matSuffix>account-box</mat-icon>
+                                </mat-form-field>
+                                </div>
+
+                                <div *ngIf="!Habilita2" style="width: 10%;">  
+                                    <mat-form-field >
+                                        <mat-label>Recorrência</mat-label>
+                                        <input matInput autocomplete="off" formControlName="e2" max="20" min="0" type="number" >
+                                        <mat-icon matSuffix>account-box</mat-icon>
+                                    </mat-form-field>
+                                </div>
+                               
+
+                                <div *ngIf="!Habilita3" style="width: 10%;">
+                                    <mat-form-field >
+                                        <mat-label>Especial</mat-label>
+                                        <input matInput autocomplete="off" formControlName="es" max="20" min="0" type="number" >
+                                        <mat-icon matSuffix>account-box</mat-icon>
+                                    </mat-form-field> 
+                                </div>
+                            
+
+                             
+                                <!-- -->
+                             
+                                <!-- <mat-form-field appearance="fill" style="width: 40%;">
+                                    <mat-label>Obs</mat-label>
+                                    <input matInput autocomplete="off" formControlName="obs" >
+                                    <mat-icon matSuffix>account-box</mat-icon>
+                                </mat-form-field>
+                                
+                                
+                                 <mat-form-field appearance="fill" style="width: 150px;">
+                                    <mat-label>Resultado</mat-label>
+                                    <input matInput autocomplete="off" formControlName="resultado" readonly>
+                                    <mat-icon matSuffix>account-box</mat-icon>
+                                </mat-form-field>                                -->
+                                
+                            </div>
+
+                        </ng-container>
+                    </ng-container>
+
+                </div>
+
+                
+
+
+
+
+
+            </mat-tab>
+
+       
+
+        </mat-tab-group>
+    </form>
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-actions align="end">
+   <!-- <button mat-raised-button mat-dialog-close color="warm"> Voltar </button> -->
+    <button mat-raised-button (click)="closeDialog()" color="warn"> Voltar </button>
+    <button mat-raised-button color="primary" [disabled]="formularioMancebo.invalid" (click)="guardarEditarMancebo()">
+        {{botaoAccao}} </button>
+</mat-dialog-actions>

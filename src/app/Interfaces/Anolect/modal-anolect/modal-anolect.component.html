@@ -1,0 +1,192 @@
+
+
+<mat-card class="Header1" style="background-color:  rgb(240, 240, 240);">
+  <div class="head">
+    <div class="btnFechar">
+      <div class="btnteste">
+      <button mat-icon-button class="close-button" (click)="closeDialog()" id="fecha">
+          <mat-icon class="close-icon" color="warn">close</mat-icon>
+      </button>  
+      </div>
+  </div>
+
+  <h2 mat-dialog-title ><span class="titulo">{{titloAccao}}</span></h2>
+  </div>
+
+
+
+</mat-card>
+
+
+<mat-card>
+  <div  class="spinner-wrapper teste"  *ngIf="isSpinnerDisplayed" style="z-index: 9; ">
+    <mat-spinner></mat-spinner>
+  </div>
+
+<mat-dialog-content >
+  
+  <mat-card class="cardsDialog" >
+    <form [formGroup]="cadastro"  (ngSubmit)="Cadastrar()" >           
+    
+
+          
+                     <div class="contacto" >
+
+                      <div class="agrupados">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Código</mat-label>
+                          <input matInput type="number" formControlName="codigo"    [min]="0">
+                        </mat-form-field>
+
+                        
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Ano</mat-label>
+                          <input matInput type="number" formControlName="ano" [min]="2000">
+                        </mat-form-field>
+
+                      </div>
+                            
+                      <div class="solo">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                          <mat-label>Descrição</mat-label>
+                          <input matInput type="text" formControlName="descricao">
+                        </mat-form-field>
+                      </div>
+                              
+                                 
+                              
+
+                                 
+                     </div>
+                    
+        
+          
+         <div class="titulo123">
+          <h4>Adicione os Semestre</h4>
+         </div> 
+
+                 
+
+                      
+                            <div formArrayName="anoSem" class="agrega">
+                                
+                                
+                               <div *ngIf="visibilidadedoc1;then contentw else other_contentw">
+                               </div>
+              
+                               <ng-template #contentw> 
+                               <table>
+                                 <thead>
+                                   <tr>
+                                     <th>Código</th>
+                                     <th>Descrição</th>
+                                     <th>
+                                         <button type="button" mat-mini-fab (click)="adicionargradel()"
+                                         style="background-color: rgb(2, 43, 72); color: white;">
+                                         <mat-icon>plus_one</mat-icon>
+                                     </button>
+                                       </th>
+                                   </tr>
+                                 </thead>
+                         
+                         
+                                 <tbody *ngFor="let item of Gradel.controls; let i = index" [formGroupName]="i">
+                         
+                                   <tr>  
+                                       <td>
+                                             <mat-form-field appearance="outline" class="example-full-width" style="width: 100%;">    
+                                              <mat-label>Codigo</mat-label>                                        
+                                               <input type="text" matInput  formControlName="codigo" >
+                                               </mat-form-field>
+                                           </td> 
+                                           
+                                           <td>
+                                             <mat-form-field  appearance="outline" class="example-full-width"  style="width: 100%;">    
+                                              <mat-label>Descrição</mat-label>                                        
+                                               <input type="text" matInput  formControlName="descricao" >
+                                               </mat-form-field>
+                                           </td> 
+                                     <td>
+                                       <button type="button" mat-mini-fab color="warn" fxFlex="nogrow"
+                                       (click)="removergradel(i)"  style="cursor: pointer;
+                                       "> <mat-icon>delete_sweep</mat-icon></button>
+                                     </td>
+                                   </tr>
+                                 </tbody>
+                               </table>
+                         
+              
+                             </ng-template>
+                             <ng-template #other_contentw> 
+                               <div style="display: flex;justify-content: end;">
+                                 <button type="button" mat-mini-fab (click)="adicionargradel()"
+                                 style="background-color: rgb(2, 43, 72); color: white;">
+                                 <mat-icon>plus_one</mat-icon>
+                             </button>
+                               </div>
+                         
+                         </ng-template>
+              
+                             </div>
+                            
+              
+                   
+        
+        
+      
+      
+          
+      
+    </form>
+  </mat-card>
+</mat-dialog-content>
+</mat-card>
+
+
+<!-- <mat-dialog-actions align="end">
+  
+    <button mat-raised-button (click)="closeDialog()" color="warn"> Voltar </button>
+    <button mat-raised-button color="primary"  (click)="Cadastrar()">
+        {{botaoAccao}} </button>
+</mat-dialog-actions> -->
+
+
+
+<!-- <mat-dialog-actions style="display: flex; justify-content: center; align-items: center; background-color:  rgb(240, 240, 240);"> 
+  <button (click)="Cadastrar()" class="btnsalvardados">
+    <mat-icon style="color: rgb(222, 161, 6);">save</mat-icon>
+    {{botaoAccao}}</button>
+  
+  </mat-dialog-actions> -->
+
+
+
+
+  <mat-dialog-actions class="dialogaction"> 
+    <button (click)="Cadastrar()" class="Save">
+      <mat-icon>save</mat-icon>
+  
+      <span class="texto">
+        {{botaoAccao}}
+      </span>
+  
+    </button>
+    
+    </mat-dialog-actions>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

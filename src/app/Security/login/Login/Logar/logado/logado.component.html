@@ -1,0 +1,65 @@
+<mat-card class="Header1" style="background-color:  rgb(240, 240, 240);">
+    <div class="head">
+      <div class="btnFechar">
+        <div class="btnteste">
+          <button mat-icon-button class="close-button" (click)="closeDialog()" id="fecha">
+            <mat-icon class="close-icon" color="warn">close</mat-icon>
+        </button> 
+        </div>
+         
+    </div>
+    <h2 mat-dialog-title ><span class="titulo">{{titloAccao}}</span></h2>
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <div  class="spinner-wrapper teste"  *ngIf="isSpinnerDisplayed">
+      <mat-spinner></mat-spinner>
+    </div>
+    <Form [formGroup]="SenhaActualizada" (ngSubmit)="Alterar()">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+      </mat-form-field>
+      
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nome de usuario</mat-label>
+        <input matInput type="text" formControlName="user">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label> Nova senha</mat-label>
+        <input matInput [type]="passwordFieldType" formControlName="senha">
+       
+      </mat-form-field>
+      <button type="button" (click)="togglePasswordVisibility()" class="Veja">
+         <mat-icon style="color: rgb(186, 138, 4);">
+             <span class="material-symbols-outlined">
+                 visibility
+                 </span>
+         </mat-icon>
+       <span>ver senha</span> 
+       </button>
+    </Form>
+ 
+  </mat-card>
+
+ 
+  <mat-dialog-actions  class="dialogaction" style="z-index: 9999;">
+
+     <button  type="button" (click)="Alterar()" class="Save">
+      <mat-icon>
+        change_circle
+     </mat-icon>
+
+      <span class="texto">
+        {{botaoAccao}}
+      </span>
+        </button>
+ </mat-dialog-actions>
+ 
+ 
+ 
+ 
+ 

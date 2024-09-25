@@ -1,0 +1,32 @@
+// #teste{
+//     position: absolute;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: 100%;
+//     background-color: rgb(136, 136, 136);
+//     opacity: .5;
+    
+//     height: 100%;
+
+//     > mat-spinner>{
+//         z-index: 9999;
+//         position: absolute;
+//         opacity: 1;
+//     }
+// }
+
+.btnright11{
+    width: 100%;
+
+}
+.form11{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1rem;
+    >mat-form-field{
+        width: 30%;
+    }
+}
